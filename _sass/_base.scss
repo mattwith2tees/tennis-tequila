@@ -9,7 +9,8 @@ body {
 }
 
 hr {
-    border-color: $theme-primary;
+    // border-color: $theme-primary;
+    border-color: #1e4a91;
     border-width: 3px;
     max-width: 50px;
 }
@@ -23,7 +24,8 @@ a {
     color: $theme-primary;
     &:hover,
     &:focus {
-        color: darken($theme-primary, 10%);
+        // color: darken($theme-primary, 10%);
+        color: darken(#1e4a91, 10%);
     }
 }
 
@@ -76,7 +78,8 @@ aside {
     @include sans-serif-font;
     @include transition-all;
     .navbar-header .navbar-brand {
-        color: $theme-primary;
+        // color: $theme-primary;
+        color: #1e4a91;
         @include sans-serif-font;
         font-weight: 700;
         text-transform: uppercase;
@@ -132,18 +135,21 @@ aside {
             background-color: white;
             border-color: rgba($theme-dark, .5);
             .navbar-header .navbar-brand {
-                color: $theme-primary;
+                // color: $theme-primary;
+                color: #1e4a91;
                 font-size: 14px;
                 &:hover,
                 &:focus {
-                    color: darken($theme-primary, 10%);
+                    // color: darken($theme-primary, 10%);
+                    color: darken(#1e4a91, 10%);
                 }
             }
             .nav > li > a,
             .nav > li > a:focus {
                 color: $theme-dark;
                 &:hover {
-                    color: $theme-primary;
+                    // color: $theme-primary;
+                    color: #1e4a91;
                 }
             }
         }
