@@ -21,7 +21,8 @@ hr.light {
 
 a {
     @include transition-all;
-    color: $theme-primary;
+    // color: $theme-primary;
+    color: #1e4a91;
     &:hover,
     &:focus {
         // color: darken($theme-primary, 10%);
@@ -85,7 +86,8 @@ aside {
         text-transform: uppercase;
         &:hover,
         &:focus {
-            color: darken($theme-primary, 10%);
+            // color: darken($theme-primary, 10%);
+            color: darken(#1e4a91, 10%);
         }
     }
     .nav {
@@ -240,7 +242,8 @@ header {
         color: white;
         opacity: 0;
         display: block;
-        background: rgba( $theme-primary, .9 );
+        // background: rgba( $theme-primary, .9 );
+        background: rgba(#1e4a91, .9);
         position: absolute;
         bottom: 0;
         text-align: center;
@@ -295,7 +298,8 @@ header {
 
 // Bootstrap Overrides
 .text-primary {
-    color: $theme-primary;
+    // color: $theme-primary;
+    color: #1e4a91;
 }
 
 .no-gutter > [class*='col-'] {
@@ -309,7 +313,8 @@ header {
 }
 
 .btn-primary {
-    @include button-variant(white, $theme-primary, $theme-primary);
+    // @include button-variant(white, $theme-primary, $theme-primary);
+    @include button-variant(white, #1e4a91, #1e4a91);
 }
 
 .btn {
