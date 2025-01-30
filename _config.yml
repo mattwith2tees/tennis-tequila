@@ -6,7 +6,7 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "" # the base hostname & protocol for your site
 
 instagram_username: 10sandtequila
-slack_link: https://join.slack.com/t/tennistequila/shared_invite/zt-2yk10dobr-dSpFpek9bw6jXi6f9nYYYg
+slack_link: https://tinyurl.com/32yhwkjh
 
 # Build settings
 markdown: kramdown
