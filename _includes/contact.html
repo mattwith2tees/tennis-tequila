@@ -2,28 +2,30 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 text-center">
-                <h2 class="section-heading">Let's Get In Touch!</h2>
-                <hr class="primary">
-                <p>Want to stay up to date on the latest updates and events? Follow us on Instagram, reach out via email, or join us on Slack!</p>
+                <h2 class="section-heading">LET'S CONNECT</h2>
+                <hr class="primary center">
+                <p>Stay up to date on the latest updates and events. Follow us on Instagram, reach out via email, or join us on Slack!</p>
             </div>
-        <div class="col-lg-2 col-lg-offset-2 text-center">
-            <a href="https://instagram.com/{{ site.instagram_username }}">
-                <i class="fa fa-instagram fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                <p>{{ site.instagram_username }}</p>
-            </a>
         </div>
-        <div class="col-lg-2 col-lg-offset-1 text-center">
-            <a href="mailto:{{ site.email }}">
-            <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                <p>{{ site.email }}</p>
-            </a>
+        <div class="contact-grid">
+            <div class="contact-item wow fadeInUp">
+                <a href="https://instagram.com/{{ site.instagram_username }}">
+                    <i class="fa fa-instagram"></i>
+                    <p>@{{ site.instagram_username }}</p>
+                </a>
+            </div>
+            <div class="contact-item wow fadeInUp" data-wow-delay=".1s">
+                <a href="mailto:{{ site.email }}">
+                    <i class="fa fa-envelope"></i>
+                    <p>{{ site.email }}</p>
+                </a>
+            </div>
+            <div class="contact-item wow fadeInUp" data-wow-delay=".2s">
+                <a href="{{ site.slack_link }}">
+                    <i class="fa fa-slack"></i>
+                    <p>Join our Slack</p>
+                </a>
+            </div>
         </div>
-        <div class="col-lg-2 col-lg-offset-1 text-center">
-            <a href="{{ site.slack_link }}">
-            <i class="fa fa-slack fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                <p>{{ site.slack_link }}</p>
-            </a>
-        </div>
-
     </div>
 </section>

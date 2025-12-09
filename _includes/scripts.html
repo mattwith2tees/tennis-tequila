@@ -11,3 +11,49 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="js/creative.js"></script>
+
+<!-- FAQ Toggle -->
+<script>
+function toggleFaq(element) {
+    // Close all other FAQs
+    var allQuestions = document.querySelectorAll('.faq-question');
+    var allAnswers = document.querySelectorAll('.faq-answer');
+    
+    allQuestions.forEach(function(q) {
+        if (q !== element) {
+            q.classList.remove('active');
+        }
+    });
+    
+    allAnswers.forEach(function(a) {
+        if (a !== element.nextElementSibling) {
+            a.classList.remove('active');
+        }
+    });
+    
+    // Toggle current FAQ
+    element.classList.toggle('active');
+    var answer = element.nextElementSibling;
+    answer.classList.toggle('active');
+}
+
+// Announcement bar - adjust nav position
+document.addEventListener('DOMContentLoaded', function() {
+    var announcementBar = document.getElementById('announcementBar');
+    var mainNav = document.getElementById('mainNav');
+    
+    if (announcementBar && mainNav) {
+        var barHeight = announcementBar.offsetHeight;
+        mainNav.style.top = barHeight + 'px';
+        
+        // Adjust on scroll
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > barHeight) {
+                mainNav.style.top = '0';
+            } else {
+                mainNav.style.top = (barHeight - window.scrollY) + 'px';
+            }
+        });
+    }
+});
+</script>
