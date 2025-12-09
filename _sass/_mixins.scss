@@ -16,40 +16,6 @@
     background-repeat: no-repeat;
 }
 
-@mixin button-variant($color, $background, $border) {
-    color: $color;
-    background-color: $background;
-    border-color: $border;
-    @include transition-all;
-
-    &:hover,
-    &:focus,
-    &.focus {
-        color: $color;
-        background-color: darken($background, 8%);
-        border-color: darken($border, 10%);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-    
-    &:active,
-    &.active {
-        transform: translateY(0);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    &.disabled,
-    &[disabled],
-    fieldset[disabled] & {
-        opacity: 0.6;
-        cursor: not-allowed;
-        &:hover {
-            transform: none;
-            box-shadow: none;
-        }
-    }
-}
-
 // Typography
 @mixin heading-font() {
     font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
@@ -79,23 +45,4 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-// Overlay
-@mixin overlay($color: rgba(0,0,0,0.5)) {
-    position: relative;
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: $color;
-        z-index: 1;
-    }
-    > * {
-        position: relative;
-        z-index: 2;
-    }
 }

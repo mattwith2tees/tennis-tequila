@@ -4,33 +4,53 @@
 // ============================================
 
 // --------------------------------------------
-// CSS CUSTOM PROPERTIES
+// SASS VARIABLES (for compile-time functions)
+// --------------------------------------------
+$color-court-green: #2D8B4E;
+$color-court-green-dark: #236B3E;
+$color-lime: #A4D65E;
+$color-lime-bright: #C5E86C;
+$color-lime-hover: #b8e35f;
+$color-tennis-yellow: #DFFF00;
+$color-golden: #F5A623;
+$color-sunset: #FF6B35;
+
+$color-white: #FFFFFF;
+$color-cream: #FDFBF7;
+$color-sand: #F5F0E8;
+$color-gray-light: #E8E4DC;
+$color-gray: #9A9590;
+$color-charcoal: #2C2A28;
+$color-black: #1A1918;
+
+// --------------------------------------------
+// CSS CUSTOM PROPERTIES (for runtime use)
 // --------------------------------------------
 :root {
     // Primary Colors - Tennis & Tequila themed
-    --color-court-green: #2D8B4E;
-    --color-lime: #A4D65E;
-    --color-lime-bright: #C5E86C;
-    --color-tennis-yellow: #DFFF00;
-    --color-golden: #F5A623;
-    --color-sunset: #FF6B35;
+    --color-court-green: #{$color-court-green};
+    --color-lime: #{$color-lime};
+    --color-lime-bright: #{$color-lime-bright};
+    --color-tennis-yellow: #{$color-tennis-yellow};
+    --color-golden: #{$color-golden};
+    --color-sunset: #{$color-sunset};
     
     // Neutrals
-    --color-white: #FFFFFF;
-    --color-cream: #FDFBF7;
-    --color-sand: #F5F0E8;
-    --color-gray-light: #E8E4DC;
-    --color-gray: #9A9590;
-    --color-charcoal: #2C2A28;
-    --color-black: #1A1918;
+    --color-white: #{$color-white};
+    --color-cream: #{$color-cream};
+    --color-sand: #{$color-sand};
+    --color-gray-light: #{$color-gray-light};
+    --color-gray: #{$color-gray};
+    --color-charcoal: #{$color-charcoal};
+    --color-black: #{$color-black};
     
     // Functional
-    --color-primary: var(--color-court-green);
-    --color-accent: var(--color-lime);
-    --color-accent-bright: var(--color-lime-bright);
-    --color-highlight: var(--color-tennis-yellow);
-    --color-warm: var(--color-golden);
-    --color-energy: var(--color-sunset);
+    --color-primary: #{$color-court-green};
+    --color-accent: #{$color-lime};
+    --color-accent-bright: #{$color-lime-bright};
+    --color-highlight: #{$color-tennis-yellow};
+    --color-warm: #{$color-golden};
+    --color-energy: #{$color-sunset};
     
     // Typography
     --font-heading: 'Barlow Condensed', 'Arial Narrow', sans-serif;
@@ -80,8 +100,8 @@ body {
     @include body-font;
     font-size: 16px;
     line-height: 1.6;
-    color: var(--color-charcoal);
-    background-color: var(--color-white);
+    color: $color-charcoal;
+    background-color: $color-white;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -91,7 +111,7 @@ body {
 // --------------------------------------------
 h1, h2, h3, h4, h5, h6 {
     @include heading-font;
-    color: var(--color-black);
+    color: $color-black;
     margin-top: 0;
     line-height: 1.1;
 }
@@ -120,7 +140,7 @@ p {
     font-size: 1rem;
     line-height: 1.7;
     margin-bottom: 1.25rem;
-    color: var(--color-charcoal);
+    color: $color-charcoal;
 }
 
 .text-large {
@@ -133,32 +153,32 @@ p {
 }
 
 .text-faded {
-    color: var(--color-gray);
+    color: $color-gray;
 }
 
 .text-white {
-    color: var(--color-white);
+    color: $color-white;
 }
 
 a {
     @include transition-fast;
-    color: var(--color-primary);
+    color: $color-court-green;
     text-decoration: none;
     
     &:hover, &:focus {
-        color: var(--color-court-green);
+        color: $color-court-green-dark;
     }
 }
 
 hr {
     border: none;
     height: 4px;
-    background: var(--color-lime);
+    background: $color-lime;
     max-width: 80px;
-    margin: var(--space-md) 0;
+    margin: 1.5rem 0;
     
     &.light {
-        background: var(--color-white);
+        background: $color-white;
     }
     
     &.center {
@@ -167,7 +187,7 @@ hr {
     }
     
     &.primary {
-        background: var(--color-primary);
+        background: $color-court-green;
     }
 }
 
@@ -175,8 +195,8 @@ hr {
 // ANNOUNCEMENT BAR
 // --------------------------------------------
 .announcement-bar {
-    background: var(--color-black);
-    color: var(--color-white);
+    background: $color-black;
+    color: $color-white;
     padding: 12px 20px;
     text-align: center;
     font-size: 0.875rem;
@@ -184,12 +204,12 @@ hr {
     letter-spacing: 0.02em;
     
     a {
-        color: var(--color-lime-bright);
+        color: $color-lime-bright;
         text-decoration: underline;
         text-underline-offset: 2px;
         
         &:hover {
-            color: var(--color-tennis-yellow);
+            color: $color-tennis-yellow;
         }
     }
     
@@ -200,7 +220,7 @@ hr {
         transform: translateY(-50%);
         background: none;
         border: none;
-        color: var(--color-white);
+        color: $color-white;
         cursor: pointer;
         font-size: 1.25rem;
         opacity: 0.7;
@@ -215,7 +235,7 @@ hr {
 // NAVIGATION
 // --------------------------------------------
 #mainNav {
-    background-color: var(--color-white);
+    background-color: $color-white;
     border: none;
     box-shadow: none;
     @include transition-all;
@@ -225,7 +245,7 @@ hr {
         background-color: transparent;
         
         @media (max-width: 767px) {
-            background-color: var(--color-white);
+            background-color: $color-white;
         }
     }
     
@@ -242,22 +262,22 @@ hr {
             @include heading-font;
             font-size: 1.5rem;
             font-weight: 900;
-            color: var(--color-black);
+            color: $color-black;
             letter-spacing: 0.05em;
             padding: 10px 0;
             
-            &:hover {
-                color: var(--color-primary);
+                    &:hover {
+                color: $color-court-green;
             }
         }
         
         .navbar-toggle {
-            border: 2px solid var(--color-black);
-            border-radius: var(--radius-sm);
+            border: 2px solid $color-black;
+            border-radius: 4px;
             margin-top: 10px;
             
             .icon-bar {
-                background-color: var(--color-black);
+                background-color: $color-black;
             }
         }
     }
@@ -268,11 +288,11 @@ hr {
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: var(--color-charcoal);
+            color: $color-charcoal;
             padding: 15px 18px;
             
             &:hover {
-                color: var(--color-primary);
+                color: $color-court-green;
             }
         }
     }
@@ -282,34 +302,34 @@ hr {
         font-size: 0.8rem;
         font-weight: 700;
         padding: 12px 24px;
-        border: 2px solid var(--color-black);
-        border-radius: var(--radius-pill);
-        color: var(--color-black);
+        border: 2px solid $color-black;
+        border-radius: 100px;
+        color: $color-black;
         background: transparent;
         margin-left: 15px;
         @include transition-all;
         
         &:hover {
-            background: var(--color-black);
-            color: var(--color-white);
+            background: $color-black;
+            color: $color-white;
         }
     }
     
     // Scrolled state
     &.affix {
-        background-color: var(--color-white);
-        box-shadow: var(--shadow-md);
+        background-color: $color-white;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         padding: 10px 0;
         
         .navbar-brand {
-            color: var(--color-black);
+            color: $color-black;
         }
         
         .navbar-nav > li > a {
-            color: var(--color-charcoal);
+            color: $color-charcoal;
             
             &:hover {
-                color: var(--color-primary);
+                color: $color-court-green;
             }
         }
     }
@@ -318,24 +338,24 @@ hr {
     @media (min-width: 768px) {
         &.navbar-default:not(.affix) {
             .navbar-brand {
-                color: var(--color-white);
+                color: $color-white;
             }
             
             .navbar-nav > li > a {
                 color: rgba(255,255,255,0.9);
                 
                 &:hover {
-                    color: var(--color-white);
+                    color: $color-white;
                 }
             }
             
             .btn-nav {
-                border-color: var(--color-white);
-                color: var(--color-white);
+                border-color: $color-white;
+                color: $color-white;
                 
                 &:hover {
-                    background: var(--color-white);
-                    color: var(--color-black);
+                    background: $color-white;
+                    color: $color-black;
                 }
             }
         }
@@ -345,9 +365,9 @@ hr {
 // Mobile nav
 @media (max-width: 767px) {
     #mainNav .navbar-collapse {
-        background: var(--color-white);
+        background: $color-white;
         padding: 20px;
-        border-top: 1px solid var(--color-gray-light);
+        border-top: 1px solid $color-gray-light;
     }
 }
 
@@ -390,8 +410,8 @@ header {
         
         .header-content-inner {
             h1 {
-                color: var(--color-white);
-                margin-bottom: var(--space-sm);
+                color: $color-white;
+                margin-bottom: 1rem;
                 text-shadow: 0 2px 20px rgba(0,0,0,0.3);
             }
             
@@ -399,17 +419,17 @@ header {
                 @include heading-font;
                 font-size: clamp(1.25rem, 3vw, 1.75rem);
                 font-weight: 600;
-                color: var(--color-lime-bright);
+                color: $color-lime-bright;
                 text-transform: uppercase;
                 letter-spacing: 0.15em;
-                margin-bottom: var(--space-lg);
+                margin-bottom: 2.5rem;
             }
             
             p {
                 font-size: 1.125rem;
                 color: rgba(255,255,255,0.9);
                 max-width: 600px;
-                margin: 0 auto var(--space-lg);
+                margin: 0 auto 2.5rem;
             }
             
             hr {
@@ -423,15 +443,15 @@ header {
 // SECTIONS
 // --------------------------------------------
 section {
-    padding: var(--space-2xl) 0;
+    padding: 6rem 0;
     
     @media (min-width: 768px) {
-        padding: var(--space-3xl) 0;
+        padding: 8rem 0;
     }
 }
 
 aside {
-    padding: var(--space-xl) 0;
+    padding: 4rem 0;
 }
 
 .no-padding {
@@ -440,12 +460,12 @@ aside {
 
 .section-heading {
     margin-top: 0;
-    margin-bottom: var(--space-sm);
+    margin-bottom: 1rem;
 }
 
 .section-intro {
     max-width: 700px;
-    margin: 0 auto var(--space-xl);
+    margin: 0 auto 4rem;
     text-align: center;
 }
 
@@ -453,25 +473,25 @@ aside {
 // ABOUT SECTION (Call to Action)
 // --------------------------------------------
 #about {
-    background: linear-gradient(135deg, var(--color-court-green) 0%, #236B3E 100%);
-    color: var(--color-white);
+    background: linear-gradient(135deg, $color-court-green 0%, $color-court-green-dark 100%);
+    color: $color-white;
     position: relative;
     overflow: hidden;
     
     &::before {
         content: '';
-        position: absolute;
+            position: absolute;
         top: -50%;
         right: -20%;
         width: 600px;
         height: 600px;
-        background: var(--color-lime);
+        background: $color-lime;
         opacity: 0.1;
         border-radius: 50%;
     }
     
     h2 {
-        color: var(--color-white);
+        color: $color-white;
     }
     
     p {
@@ -480,8 +500,8 @@ aside {
     }
     
     hr.light {
-        background: var(--color-lime-bright);
-        margin: var(--space-md) auto;
+        background: $color-lime-bright;
+        margin: 1.5rem auto;
     }
 }
 
@@ -489,13 +509,13 @@ aside {
 // EVENTS SECTION
 // --------------------------------------------
 #events {
-    background: var(--color-cream);
+    background: $color-cream;
     
     .events-grid {
         display: grid;
         grid-template-columns: 1fr;
-        gap: var(--space-md);
-        margin-top: var(--space-xl);
+        gap: 1.5rem;
+        margin-top: 4rem;
         
         @media (min-width: 768px) {
             grid-template-columns: repeat(2, 1fr);
@@ -507,40 +527,49 @@ aside {
     }
     
     .event-card {
-        background: var(--color-white);
-        padding: var(--space-lg);
-        border-radius: var(--radius-md);
-        box-shadow: var(--shadow-sm);
+        background: $color-white;
+        padding: 2.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         @include transition-all;
         
         &:hover {
             transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
         }
         
         .event-name {
             @include heading-font;
             font-size: 1.5rem;
             font-weight: 800;
-            margin-bottom: var(--space-xs);
-            color: var(--color-black);
+            margin-bottom: 0.5rem;
+            color: $color-black;
         }
         
         .event-time {
             @include body-font-medium;
             font-size: 1rem;
-            color: var(--color-primary);
-            margin-bottom: var(--space-sm);
+            color: $color-court-green;
+            margin-bottom: 1rem;
+            
+            a {
+                color: $color-court-green;
+                
+                &:hover {
+                    color: $color-court-green-dark;
+                }
+            }
         }
         
         .event-location {
             font-size: 0.875rem;
-            color: var(--color-gray);
+            color: $color-gray;
         }
     }
     
     .events-intro {
         max-width: 600px;
+        margin: 0 auto;
     }
 }
 
@@ -548,72 +577,74 @@ aside {
 // VALUES/SERVICES SECTION
 // --------------------------------------------
 #services {
-    background: var(--color-white);
-    
-    .service-box {
-        max-width: 400px;
-        margin: var(--space-lg) auto 0;
-        padding: var(--space-lg);
-        background: var(--color-cream);
-        border-radius: var(--radius-lg);
+    background: $color-white;
+
+.service-box {
+    max-width: 400px;
+        margin: 2.5rem auto 0;
+        padding: 2.5rem;
+        background: $color-cream;
+        border-radius: 16px;
         @include transition-all;
         
         &:hover {
             transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
         }
         
-        @media (min-width: 992px) {
+    @media (min-width: 992px) {
             margin: 0 auto;
         }
         
         .icon-wrapper {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, var(--color-lime) 0%, var(--color-court-green) 100%);
+            background: linear-gradient(135deg, $color-lime 0%, $color-court-green 100%);
             border-radius: 50%;
-            @include flex-center;
-            margin: 0 auto var(--space-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
             
             i {
                 font-size: 2rem;
-                color: var(--color-white);
+                color: $color-white;
             }
         }
         
         // Override old icon styles
         i.fa-4x {
             font-size: 2rem !important;
-            color: var(--color-white) !important;
+            color: $color-white !important;
         }
         
         h3 {
             @include heading-font;
             font-size: 1.5rem;
-            margin-bottom: var(--space-sm);
+            margin-bottom: 1rem;
         }
         
         p {
             margin-bottom: 0;
-            color: var(--color-charcoal);
+            color: $color-charcoal;
         }
     }
 }
 
 // Fallback for icons without wrapper
 .text-primary {
-    color: var(--color-primary) !important;
+    color: $color-court-green !important;
 }
 
 // --------------------------------------------
 // DONATIONS SECTION
 // --------------------------------------------
 #donate {
-    background: linear-gradient(135deg, var(--color-court-green) 0%, #236B3E 100%);
-    color: var(--color-white);
+    background: linear-gradient(135deg, $color-court-green 0%, $color-court-green-dark 100%);
+    color: $color-white;
     
     h2 {
-        color: var(--color-white);
+        color: $color-white;
     }
     
     p {
@@ -621,8 +652,8 @@ aside {
     }
     
     hr.light {
-        background: var(--color-lime-bright);
-        margin: var(--space-md) auto;
+        background: $color-lime-bright;
+        margin: 1.5rem auto;
     }
 }
 
@@ -630,13 +661,13 @@ aside {
 // TESTIMONIALS
 // --------------------------------------------
 #testimonials {
-    background: var(--color-sand);
+    background: $color-sand;
     
     .testimonial-grid {
         display: grid;
         grid-template-columns: 1fr;
-        gap: var(--space-lg);
-        margin-top: var(--space-xl);
+        gap: 2.5rem;
+        margin-top: 4rem;
         
         @media (min-width: 768px) {
             grid-template-columns: repeat(2, 1fr);
@@ -648,17 +679,17 @@ aside {
     }
     
     .testimonial-card {
-        background: var(--color-white);
-        padding: var(--space-lg);
-        border-radius: var(--radius-lg);
-        box-shadow: var(--shadow-sm);
-        position: relative;
+        background: $color-white;
+        padding: 2.5rem;
+        border-radius: 16px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: relative;
         
         &::before {
             content: '"';
             @include heading-font;
             font-size: 6rem;
-            color: var(--color-lime);
+            color: $color-lime;
             opacity: 0.3;
             position: absolute;
             top: 10px;
@@ -669,20 +700,20 @@ aside {
         .testimonial-text {
             font-size: 1rem;
             font-style: italic;
-            margin-bottom: var(--space-md);
+            margin-bottom: 1.5rem;
             position: relative;
             z-index: 1;
         }
         
         .testimonial-author {
             @include body-font-medium;
-            font-weight: 600;
-            color: var(--color-black);
+                font-weight: 600;
+            color: $color-black;
         }
         
         .testimonial-role {
             font-size: 0.875rem;
-            color: var(--color-gray);
+            color: $color-gray;
         }
     }
 }
@@ -691,7 +722,7 @@ aside {
 // PORTFOLIO / GALLERY
 // --------------------------------------------
 #portfolio {
-    background: var(--color-white);
+    background: $color-white;
     
     .portfolio-box {
         position: relative;
@@ -725,7 +756,7 @@ aside {
             @include transition-all;
             display: flex;
             align-items: flex-end;
-            padding: var(--space-lg);
+            padding: 2.5rem;
             
             .portfolio-box-caption-content {
                 width: 100%;
@@ -733,7 +764,7 @@ aside {
                 .project-name {
                     @include heading-font;
                     font-size: 1.5rem;
-                    color: var(--color-white);
+                    color: $color-white;
                     margin: 0;
                 }
             }
@@ -754,13 +785,13 @@ aside {
 // TEAM / LEADERSHIP
 // --------------------------------------------
 #team {
-    background: var(--color-cream);
+    background: $color-cream;
     
     .team-grid {
         display: grid;
         grid-template-columns: 1fr;
-        gap: var(--space-lg);
-        margin-top: var(--space-xl);
+        gap: 2.5rem;
+        margin-top: 4rem;
         
         @media (min-width: 768px) {
             grid-template-columns: repeat(2, 1fr);
@@ -779,26 +810,26 @@ aside {
             height: 180px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: var(--space-md);
-            border: 4px solid var(--color-lime);
+            margin-bottom: 1.5rem;
+            border: 4px solid $color-lime;
         }
         
         .team-name {
             @include heading-font;
             font-size: 1.5rem;
-            margin-bottom: var(--space-xs);
+            margin-bottom: 0.5rem;
         }
         
         .team-role {
-            color: var(--color-primary);
+            color: $color-court-green;
             @include body-font-medium;
             font-weight: 600;
-            margin-bottom: var(--space-sm);
+            margin-bottom: 1rem;
         }
         
         .team-bio {
             font-size: 0.9375rem;
-            color: var(--color-gray);
+            color: $color-gray;
         }
     }
 }
@@ -807,18 +838,18 @@ aside {
 // FAQ SECTION
 // --------------------------------------------
 #faq {
-    background: var(--color-white);
+    background: $color-white;
     
     .faq-list {
         max-width: 800px;
-        margin: var(--space-xl) auto 0;
+        margin: 4rem auto 0;
     }
     
     .faq-item {
-        border-bottom: 1px solid var(--color-gray-light);
+        border-bottom: 1px solid $color-gray-light;
         
         &:first-child {
-            border-top: 1px solid var(--color-gray-light);
+            border-top: 1px solid $color-gray-light;
         }
     }
     
@@ -826,7 +857,7 @@ aside {
         @include heading-font;
         font-size: 1.25rem;
         font-weight: 700;
-        padding: var(--space-md) 0;
+        padding: 1.5rem 0;
         cursor: pointer;
         display: flex;
         justify-content: space-between;
@@ -834,13 +865,13 @@ aside {
         @include transition-fast;
         
         &:hover {
-            color: var(--color-primary);
+            color: $color-court-green;
         }
         
         .faq-icon {
             font-size: 1.5rem;
             @include transition-all;
-            color: var(--color-primary);
+            color: $color-court-green;
         }
         
         &.active .faq-icon {
@@ -849,7 +880,7 @@ aside {
     }
     
     .faq-answer {
-        padding: 0 0 var(--space-md);
+        padding: 0 0 1.5rem;
         display: none;
         
         &.active {
@@ -858,7 +889,7 @@ aside {
         
         p {
             margin-bottom: 0;
-            color: var(--color-charcoal);
+            color: $color-charcoal;
         }
     }
 }
@@ -867,19 +898,19 @@ aside {
 // SHOP ASIDE
 // --------------------------------------------
 #shop {
-    background: var(--color-black);
-    color: var(--color-white);
+    background: $color-black;
+    color: $color-white;
     text-align: center;
     
     h2 {
-        color: var(--color-white);
-        margin-bottom: var(--space-md);
+        color: $color-white;
+        margin-bottom: 1.5rem;
     }
     
     .shop-tagline {
-        color: var(--color-lime-bright);
+        color: $color-lime-bright;
         @include body-font-medium;
-        margin-bottom: var(--space-lg);
+        margin-bottom: 2.5rem;
     }
 }
 
@@ -887,14 +918,14 @@ aside {
 // CONTACT SECTION
 // --------------------------------------------
 #contact {
-    background: var(--color-cream);
+    background: $color-cream;
     
     .contact-grid {
         display: flex;
         justify-content: center;
-        gap: var(--space-xl);
+        gap: 4rem;
         flex-wrap: wrap;
-        margin-top: var(--space-xl);
+        margin-top: 4rem;
     }
     
     .contact-item {
@@ -906,17 +937,17 @@ aside {
         }
         
         a {
-            color: var(--color-charcoal);
+            color: $color-charcoal;
             
             &:hover {
-                color: var(--color-primary);
+                color: $color-court-green;
             }
         }
         
         .fa {
             font-size: 2.5rem;
-            color: var(--color-primary);
-            margin-bottom: var(--space-sm);
+            color: $color-court-green;
+            margin-bottom: 1rem;
             display: block;
         }
         
@@ -933,27 +964,27 @@ aside {
 // FOOTER
 // --------------------------------------------
 footer {
-    background: var(--color-black);
-    color: var(--color-white);
-    padding: var(--space-lg) 0;
+    background: $color-black;
+    color: $color-white;
+    padding: 2.5rem 0;
     text-align: center;
     
     .footer-brand {
         @include heading-font;
         font-size: 1.25rem;
-        color: var(--color-white);
-        margin-bottom: var(--space-sm);
+        color: $color-white;
+        margin-bottom: 1rem;
     }
     
     .footer-tagline {
-        color: var(--color-lime-bright);
+        color: $color-lime-bright;
         font-size: 0.875rem;
-        margin-bottom: var(--space-md);
+        margin-bottom: 1.5rem;
     }
     
     .footer-copy {
         font-size: 0.75rem;
-        color: var(--color-gray);
+        color: $color-gray;
         margin: 0;
     }
 }
@@ -967,7 +998,7 @@ footer {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     border: none;
-    border-radius: var(--radius-pill);
+    border-radius: 100px;
     padding: 14px 32px;
     font-size: 0.875rem;
     cursor: pointer;
@@ -982,26 +1013,53 @@ footer {
 }
 
 .btn-primary {
-    @include button-variant(var(--color-white), var(--color-court-green), var(--color-court-green));
+    color: $color-white;
+    background-color: $color-court-green;
+    
+    &:hover,
+    &:focus {
+        background-color: $color-court-green-dark;
+        color: $color-white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
 }
 
 .btn-default {
-    @include button-variant(var(--color-black), var(--color-white), var(--color-white));
+    color: $color-black;
+    background-color: $color-white;
+    
+    &:hover,
+    &:focus {
+        background-color: darken($color-white, 5%);
+        color: $color-black;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
 }
 
 .btn-outline {
     background: transparent;
-    color: var(--color-white);
-    border: 2px solid var(--color-white);
+    color: $color-white;
+    border: 2px solid $color-white;
     
     &:hover {
-        background: var(--color-white);
-        color: var(--color-black);
+        background: $color-white;
+        color: $color-black;
     }
 }
 
 .btn-lime {
-    @include button-variant(var(--color-black), var(--color-lime-bright), var(--color-lime-bright));
+    color: $color-black;
+    background-color: $color-lime-bright;
+    
+    &:hover,
+    &:focus {
+        background-color: $color-lime-hover;
+        color: $color-black;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
 }
 
 .btn-xl {
@@ -1017,20 +1075,20 @@ footer {
 // UTILITIES
 // --------------------------------------------
 .bg-primary {
-    background: linear-gradient(135deg, var(--color-court-green) 0%, #236B3E 100%);
+    background: linear-gradient(135deg, $color-court-green 0%, $color-court-green-dark 100%);
 }
 
 .bg-dark {
-    background-color: var(--color-black);
-    color: var(--color-white);
+    background-color: $color-black;
+    color: $color-white;
 }
 
 .bg-cream {
-    background-color: var(--color-cream);
+    background-color: $color-cream;
 }
 
 .bg-sand {
-    background-color: var(--color-sand);
+    background-color: $color-sand;
 }
 
 // Text alignment
@@ -1081,7 +1139,7 @@ footer {
 // --------------------------------------------
 @media (max-width: 767px) {
     section {
-        padding: var(--space-xl) 0;
+        padding: 4rem 0;
     }
     
     .container {
