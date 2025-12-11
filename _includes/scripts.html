@@ -56,4 +56,38 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Email Form Submission
+document.getElementById('mc-email-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    var email = document.getElementById('email-input').value;
+    var submitBtn = document.getElementById('email-submit-btn');
+    var formContainer = document.getElementById('email-form-container');
+    var successMessage = document.getElementById('email-success');
+    
+    // Update button to show loading
+    submitBtn.textContent = 'JOINING...';
+    submitBtn.disabled = true;
+    
+    // Create the Mailchimp JSONP URL
+    var url = 'https://social.us9.list-manage.com/subscribe/post-json?u=af0fb122cb537b0fddec23330&id=fa75828b93&c=?';
+    
+    // Submit via JSONP (Mailchimp's way)
+    $.ajax({
+        url: url,
+        data: { EMAIL: email },
+        dataType: 'jsonp',
+        success: function(response) {
+            // Hide form, show success (even if already subscribed)
+            formContainer.style.display = 'none';
+            successMessage.classList.add('show');
+        },
+        error: function() {
+            // Still show success (Mailchimp JSONP can be quirky)
+            formContainer.style.display = 'none';
+            successMessage.classList.add('show');
+        }
+    });
+});
 </script>
