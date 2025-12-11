@@ -511,26 +511,28 @@ aside {
 #events {
     background: $color-cream;
     
-    .events-grid {
+    .events-intro {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    // Schedule Preview Grid
+    .schedule-preview {
         display: grid;
         grid-template-columns: 1fr;
         gap: 1.5rem;
-        margin-top: 4rem;
+        margin-top: 3rem;
         
         @media (min-width: 768px) {
-            grid-template-columns: repeat(2, 1fr);
-        }
-        
-        @media (min-width: 992px) {
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
         }
     }
     
-    .event-card {
+    .schedule-card {
         background: $color-white;
-        padding: 2.5rem;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         @include transition-all;
         
         &:hover {
@@ -538,38 +540,92 @@ aside {
             box-shadow: 0 8px 24px rgba(0,0,0,0.12);
         }
         
-        .event-name {
+        .schedule-day {
             @include heading-font;
-            font-size: 1.5rem;
+            background: $color-court-green;
+            color: $color-white;
+            padding: 1rem 1.5rem;
+            font-size: 0.875rem;
             font-weight: 800;
-            margin-bottom: 0.5rem;
-            color: $color-black;
+            letter-spacing: 0.1em;
         }
         
-        .event-time {
-            @include body-font-medium;
-            font-size: 1rem;
-            color: $color-court-green;
-            margin-bottom: 1rem;
+        .schedule-sessions {
+            padding: 1.5rem;
+        }
+        
+        .session {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
             
-            a {
-                color: $color-court-green;
-                
-                &:hover {
-                    color: $color-court-green-dark;
-                }
+            &:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+            
+            &:first-child {
+                padding-top: 0;
             }
         }
         
-        .event-location {
+        .session-name {
+            @include body-font-medium;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: $color-black;
+            margin-bottom: 0.25rem;
+        }
+        
+        .session-details {
             font-size: 0.875rem;
             color: $color-gray;
+            margin-bottom: 0.5rem;
+        }
+        
+        .session-price {
+            @include heading-font;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: $color-court-green;
         }
     }
     
-    .events-intro {
-        max-width: 600px;
-        margin: 0 auto;
+    // Coming Soon Banner
+    .coming-soon-banner {
+        margin-top: 3rem;
+        text-align: center;
+        
+        .banner-content {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: $color-lime-bright;
+            color: $color-black;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            @include body-font-medium;
+            font-weight: 600;
+        }
+        
+        .banner-icon {
+            font-size: 1.25rem;
+        }
+        
+        .banner-text {
+            font-size: 1rem;
+        }
+    }
+    
+    // CTA Buttons
+    .events-cta {
+        margin-top: 2.5rem;
+        text-align: center;
+        
+        .btn {
+            margin: 0.5rem;
+        }
     }
 }
 
