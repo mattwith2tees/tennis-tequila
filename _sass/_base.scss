@@ -1415,6 +1415,92 @@ footer {
 .stagger-4 { animation-delay: 0.4s; }
 
 // --------------------------------------------
+// PARTNERSHIPS SECTION
+// --------------------------------------------
+#partnerships {
+    background: $color-cream;
+    padding: 5rem 0;
+    
+    .partnerships-intro {
+        font-size: 1.15rem;
+        color: $color-charcoal;
+        max-width: 600px;
+        margin: 0 auto 3rem;
+    }
+    
+    .partnership-types {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        max-width: 900px;
+        margin: 0 auto 3rem;
+        
+        @media (max-width: 767px) {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+    }
+    
+    .partnership-card {
+        background: $color-white;
+        border-radius: 12px;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .partnership-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        h4 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: $color-charcoal;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        p {
+            font-size: 0.95rem;
+            color: $color-gray;
+            line-height: 1.5;
+            margin: 0;
+        }
+    }
+    
+    .partnership-cta {
+        margin-top: 2rem;
+        
+        .btn {
+            margin-bottom: 1rem;
+        }
+        
+        .partnership-email {
+            font-size: 0.95rem;
+            color: $color-gray;
+            
+            a {
+                color: $color-court-green;
+                font-weight: 600;
+                
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+// --------------------------------------------
 // RESPONSIVE HELPERS
 // --------------------------------------------
 @media (max-width: 767px) {
