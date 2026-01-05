@@ -817,7 +817,6 @@ aside {
         }
         
         .category-details {
-            margin-bottom: 1.5rem;
             padding-left: 3rem;
             
             @media (max-width: 767px) {
@@ -825,41 +824,29 @@ aside {
             }
             
             p {
-                margin-bottom: 0.5rem;
-                font-size: 0.9375rem;
+                margin-bottom: 1rem;
+                font-size: 1rem;
+                line-height: 1.6;
+                color: $color-charcoal;
                 
                 strong {
                     @include body-font-medium;
                     font-weight: 600;
                     color: $color-black;
                 }
-            }
-        }
-        
-        .category-dates {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            padding-left: 3rem;
-            
-            @media (max-width: 767px) {
-                padding-left: 0;
-            }
-            
-            span {
-                display: inline-block;
-                background: $color-sand;
-                color: $color-charcoal;
-                padding: 0.5rem 1rem;
-                border-radius: 8px;
-                font-size: 0.875rem;
-                @include body-font-medium;
-                font-weight: 600;
-                @include transition-fast;
                 
-                &:hover {
-                    background: $color-lime;
-                    color: $color-black;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+            
+            .event-schedule-note {
+                font-size: 0.875rem;
+                color: $color-gray;
+                margin-top: 1rem;
+                
+                em {
+                    font-style: normal;
                 }
             }
         }
@@ -880,36 +867,13 @@ aside {
             }
         }
         
-        .signature-event-list {
-            padding-left: 3rem;
-            
-            @media (max-width: 767px) {
-                padding-left: 0;
-            }
-        }
-        
-        .signature-event {
-            background: rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            
-            &:last-child {
-                margin-bottom: 0;
-            }
-            
-            h5 {
-                @include heading-font;
-                font-size: 1.25rem;
-                font-weight: 700;
-                color: $color-white;
-                margin-bottom: 0.5rem;
-            }
-            
+        .category-details {
             p {
                 color: rgba(255,255,255,0.9);
-                margin: 0;
-                font-size: 0.9375rem;
+            }
+            
+            .event-schedule-note {
+                color: rgba(255,255,255,0.8);
             }
         }
     }
