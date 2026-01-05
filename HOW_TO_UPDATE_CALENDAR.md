@@ -77,8 +77,8 @@ Use ONE of these status classes on `event-status`:
 ```
 Current:
 - Feb 28: Kickoff Party
-- Mar 8: Monthly Mixer
-- Apr 12: Monthly Mixer
+- Mar 29: Monthly Mixer (last Saturday)
+- Apr 26: Monthly Mixer (last Saturday)
 
 Action: Keep all three (Feb event hasn't happened yet)
 ```
@@ -89,24 +89,24 @@ Remove:
 - Feb 28: Kickoff Party (already happened)
 
 Keep:
-- Mar 8: Monthly Mixer
-- Apr 12: Monthly Mixer
+- Mar 29: Monthly Mixer (last Saturday)
+- Apr 26: Monthly Mixer (last Saturday)
 
 Add:
-- May 10: Monthly Mixer (new)
+- May 31: Monthly Mixer (last Saturday - new)
 ```
 
 ### **April 1st Update:**
 ```
 Remove:
-- Mar 8: Monthly Mixer (already happened)
+- Mar 29: Monthly Mixer (already happened)
 
 Keep:
-- Apr 12: Monthly Mixer
-- May 10: Monthly Mixer
+- Apr 26: Monthly Mixer (last Saturday)
+- May 31: Monthly Mixer (last Saturday)
 
 Add:
-- Jun 14: Monthly Mixer (new)
+- Jun 28: Monthly Mixer (last Saturday - new)
 ```
 
 ---
