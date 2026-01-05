@@ -747,6 +747,180 @@ aside {
         .btn {
             margin: 0.5rem;
         }
+        
+        .cta-note {
+            font-size: 0.875rem;
+            color: $color-gray;
+            margin-top: 1rem;
+        }
+    }
+    
+    // Event Categories
+    .event-categories {
+        margin-top: 4rem;
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+        
+        .categories-title {
+            @include heading-font;
+            font-size: 2rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: $color-black;
+        }
+    }
+    
+    .event-category {
+        background: $color-white;
+        border-radius: 16px;
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        @include transition-all;
+        
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            
+            .category-icon {
+                font-size: 2rem;
+            }
+            
+            h4 {
+                @include heading-font;
+                font-size: 1.75rem;
+                font-weight: 800;
+                color: $color-black;
+                margin: 0;
+                flex: 1;
+            }
+            
+            .category-frequency {
+                @include body-font-medium;
+                font-size: 0.875rem;
+                font-weight: 600;
+                color: $color-gray;
+                background: $color-sand;
+                padding: 0.5rem 1rem;
+                border-radius: 50px;
+            }
+        }
+        
+        .category-details {
+            margin-bottom: 1.5rem;
+            padding-left: 3rem;
+            
+            @media (max-width: 767px) {
+                padding-left: 0;
+            }
+            
+            p {
+                margin-bottom: 0.5rem;
+                font-size: 0.9375rem;
+                
+                strong {
+                    @include body-font-medium;
+                    font-weight: 600;
+                    color: $color-black;
+                }
+            }
+        }
+        
+        .category-dates {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            padding-left: 3rem;
+            
+            @media (max-width: 767px) {
+                padding-left: 0;
+            }
+            
+            span {
+                display: inline-block;
+                background: $color-sand;
+                color: $color-charcoal;
+                padding: 0.5rem 1rem;
+                border-radius: 8px;
+                font-size: 0.875rem;
+                @include body-font-medium;
+                font-weight: 600;
+                @include transition-fast;
+                
+                &:hover {
+                    background: $color-lime;
+                    color: $color-black;
+                }
+            }
+        }
+    }
+    
+    // Signature Events
+    .signature-events {
+        background: linear-gradient(135deg, $color-court-green 0%, $color-court-green-dark 100%);
+        
+        .category-header {
+            h4 {
+                color: $color-white;
+            }
+            
+            .category-frequency {
+                background: rgba(255,255,255,0.15);
+                color: $color-white;
+            }
+        }
+        
+        .signature-event-list {
+            padding-left: 3rem;
+            
+            @media (max-width: 767px) {
+                padding-left: 0;
+            }
+        }
+        
+        .signature-event {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            
+            &:last-child {
+                margin-bottom: 0;
+            }
+            
+            h5 {
+                @include heading-font;
+                font-size: 1.25rem;
+                font-weight: 700;
+                color: $color-white;
+                margin-bottom: 0.5rem;
+            }
+            
+            p {
+                color: rgba(255,255,255,0.9);
+                margin: 0;
+                font-size: 0.9375rem;
+            }
+        }
+    }
+    
+    // Update kickoff time style
+    .kickoff-time {
+        @include body-font-medium;
+        font-size: 1rem;
+        font-weight: 600;
+        color: rgba(255,255,255,0.9);
+        margin-bottom: 0.25rem;
     }
 }
 
