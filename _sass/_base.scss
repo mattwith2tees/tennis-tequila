@@ -621,6 +621,14 @@ aside {
         span {
             font-size: 1rem;
         }
+        
+        @media (max-width: 767px) {
+            gap: 0.75rem;
+            
+            span {
+                font-size: 0.9rem;
+            }
+        }
     }
     
     .kickoff-description {
