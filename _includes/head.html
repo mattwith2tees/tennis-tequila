@@ -2,19 +2,19 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Tennis & Tequila Social Club - A modern, lifestyle-driven tennis community for young professionals. Serve. Sip. Socialize.">
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}Tennis & Tequila Social Club - A modern, lifestyle-driven tennis community for young professionals. Serve. Sip. Socialize.{% endif %}">
     <meta name="author" content="Tennis & Tequila">
-    <meta name="keywords" content="tennis club, social tennis, young professionals, tennis community, tennis events">
+    <meta name="keywords" content="tennis club, social tennis, young professionals, tennis community, tennis events, Atlanta tennis">
     
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Tennis & Tequila Social Club">
-    <meta property="og:description" content="A modern, lifestyle-driven tennis community for young professionals. Serve. Sip. Socialize.">
+    <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+    <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}A modern, lifestyle-driven tennis community for young professionals. Serve. Sip. Socialize.{% endif %}">
     <meta property="og:image" content="{{ site.url }}/img/og-image.jpg">
-    <meta property="og:url" content="{{ site.url }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
     <meta name="twitter:card" content="summary_large_image">
 
-    <title>{{ site.title }}</title>
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/img/favicon.svg">

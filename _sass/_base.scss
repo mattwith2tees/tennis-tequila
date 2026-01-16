@@ -266,8 +266,18 @@ hr {
             letter-spacing: 0.05em;
             padding: 10px 0;
             
-                    &:hover {
+            &:hover {
                 color: $color-court-green;
+            }
+            
+            .navbar-logo {
+                height: 45px;
+                width: auto;
+                @include transition-all;
+                
+                @media (max-width: 767px) {
+                    height: 40px;
+                }
             }
         }
         
@@ -339,6 +349,13 @@ hr {
         &.navbar-default:not(.affix) {
             .navbar-brand {
                 color: $color-white;
+                
+                .navbar-logo {
+                    // If you have a white version of the logo, uncomment this:
+                    // content: url('../img/logo-white.png');
+                    // OR add a white background/shadow to make it visible:
+                    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+                }
             }
             
             .navbar-nav > li > a {
@@ -1762,6 +1779,553 @@ footer {
                     text-decoration: underline;
                 }
             }
+        }
+    }
+}
+
+// --------------------------------------------
+// KICKOFF LANDING PAGE
+// --------------------------------------------
+.landing-page {
+    #mainNav {
+        background-color: $color-white;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        
+        &.navbar-default:not(.affix) {
+            .navbar-brand {
+                color: $color-black;
+                
+                .navbar-logo {
+                    filter: none;
+                }
+            }
+            
+            .navbar-nav > li > a {
+                color: $color-charcoal;
+            }
+            
+            .btn-nav {
+                border-color: $color-black;
+                color: $color-black;
+            }
+        }
+    }
+}
+
+.kickoff-hero {
+    background: linear-gradient(135deg, $color-court-green 0%, $color-court-green-dark 100%);
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 20px 80px;
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: -30%;
+        right: -20%;
+        width: 600px;
+        height: 600px;
+        background: $color-lime;
+        opacity: 0.1;
+        border-radius: 50%;
+    }
+    
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -40%;
+        left: -10%;
+        width: 400px;
+        height: 400px;
+        background: $color-lime-bright;
+        opacity: 0.08;
+        border-radius: 50%;
+    }
+}
+
+.kickoff-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    
+    .kickoff-hero-badge {
+        display: inline-block;
+        background: $color-lime-bright;
+        color: $color-black;
+        @include heading-font;
+        font-size: 0.875rem;
+        font-weight: 800;
+        padding: 0.75rem 1.5rem;
+        border-radius: 50px;
+        letter-spacing: 0.1em;
+        margin-bottom: 1.5rem;
+    }
+    
+    h1 {
+        color: $color-white;
+        font-size: clamp(3rem, 12vw, 6rem);
+        line-height: 1;
+        margin-bottom: 1.5rem;
+        text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    
+    .kickoff-hero-tagline {
+        color: rgba(255,255,255,0.9);
+        font-size: 1.25rem;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
+
+.kickoff-details-section {
+    padding: 4rem 0;
+    background: $color-cream;
+}
+
+.kickoff-main-card {
+    background: $color-white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    
+    @media (max-width: 767px) {
+        padding: 1.5rem;
+    }
+}
+
+.kickoff-event-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    
+    @media (max-width: 767px) {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+}
+
+.kickoff-date-block {
+    background: linear-gradient(135deg, $color-court-green 0%, $color-court-green-dark 100%);
+    color: $color-white;
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    text-align: center;
+    min-width: 120px;
+    
+    .kickoff-month {
+        display: block;
+        @include heading-font;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        opacity: 0.9;
+    }
+    
+    .kickoff-day {
+        display: block;
+        @include heading-font;
+        font-size: 3.5rem;
+        font-weight: 900;
+        line-height: 1;
+        margin: 0.25rem 0;
+    }
+    
+    .kickoff-year {
+        display: block;
+        font-size: 0.875rem;
+        opacity: 0.8;
+    }
+}
+
+.kickoff-event-info {
+    flex: 1;
+    
+    h2 {
+        @include heading-font;
+        font-size: 2rem;
+        font-weight: 800;
+        margin-bottom: 0.75rem;
+        color: $color-black;
+        
+        @media (max-width: 767px) {
+            font-size: 1.75rem;
+        }
+    }
+    
+    .kickoff-meta {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        
+        @media (max-width: 767px) {
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        span {
+            @include body-font-medium;
+            font-size: 1rem;
+            color: $color-charcoal;
+        }
+    }
+}
+
+.kickoff-highlights {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding-top: 1.5rem;
+    border-top: 1px solid $color-gray-light;
+    
+    @media (max-width: 767px) {
+        gap: 1rem;
+    }
+}
+
+.highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+    .highlight-icon {
+        font-size: 1.5rem;
+    }
+    
+    .highlight-text {
+        @include body-font-medium;
+        font-weight: 600;
+        color: $color-charcoal;
+    }
+}
+
+// Ticket Section
+.ticket-section {
+    max-width: 900px;
+    margin: 0 auto 4rem;
+}
+
+.ticket-section-title {
+    @include heading-font;
+    font-size: 2rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: $color-black;
+}
+
+.ticket-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.ticket-card {
+    background: $color-white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    position: relative;
+    @include transition-all;
+    
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    }
+    
+    .ticket-badge {
+        @include heading-font;
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        margin-bottom: 1rem;
+    }
+    
+    .ticket-tier {
+        @include heading-font;
+        font-size: 1.75rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+    }
+    
+    .ticket-price {
+        margin-bottom: 1.5rem;
+        
+        .price-amount {
+            @include heading-font;
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+        
+        .price-note {
+            display: block;
+            font-size: 0.875rem;
+            color: $color-gray;
+            margin-top: 0.25rem;
+        }
+    }
+    
+    .ticket-perks {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 2rem;
+        
+        li {
+            padding: 0.5rem 0;
+            font-size: 0.95rem;
+            color: $color-charcoal;
+            border-bottom: 1px solid $color-gray-light;
+            
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+}
+
+.ticket-vip {
+    border: 3px solid $color-golden;
+    
+    .ticket-badge {
+        color: $color-golden;
+    }
+    
+    .ticket-tier {
+        color: $color-black;
+    }
+    
+    .price-amount {
+        color: $color-court-green;
+    }
+}
+
+.ticket-ga {
+    border: 3px solid $color-court-green;
+    
+    .ticket-badge {
+        color: $color-court-green;
+    }
+    
+    .ticket-tier {
+        color: $color-black;
+    }
+    
+    .price-amount {
+        color: $color-court-green;
+    }
+}
+
+.btn-vip {
+    background: linear-gradient(135deg, $color-golden 0%, darken($color-golden, 10%) 100%);
+    color: $color-white;
+    width: 100%;
+    
+    &:hover {
+        background: linear-gradient(135deg, darken($color-golden, 5%) 0%, darken($color-golden, 15%) 100%);
+        color: $color-white;
+        transform: translateY(-2px);
+    }
+}
+
+.btn-ga {
+    background: linear-gradient(135deg, $color-court-green 0%, $color-court-green-dark 100%);
+    color: $color-white;
+    width: 100%;
+    
+    &:hover {
+        background: linear-gradient(135deg, $color-court-green-dark 0%, darken($color-court-green-dark, 5%) 100%);
+        color: $color-white;
+        transform: translateY(-2px);
+    }
+}
+
+.ticket-note {
+    text-align: center;
+    font-size: 1rem;
+    color: $color-charcoal;
+    margin-top: 2rem;
+}
+
+// What to Expect Section
+.expect-section {
+    max-width: 900px;
+    margin: 0 auto 4rem;
+}
+
+.expect-title {
+    @include heading-font;
+    font-size: 2rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: $color-black;
+}
+
+.expect-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.expect-item {
+    background: $color-white;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    
+    .expect-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    h4 {
+        @include heading-font;
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        color: $color-black;
+    }
+    
+    p {
+        font-size: 0.95rem;
+        color: $color-charcoal;
+        margin: 0;
+        line-height: 1.6;
+    }
+}
+
+// Venue Section
+.venue-section {
+    max-width: 700px;
+    margin: 0 auto 4rem;
+}
+
+.venue-title {
+    @include heading-font;
+    font-size: 2rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: $color-black;
+}
+
+.venue-card {
+    background: $color-white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.venue-info {
+    padding: 2rem;
+    text-align: center;
+    
+    h4 {
+        @include heading-font;
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin-bottom: 0.75rem;
+        color: $color-black;
+    }
+    
+    .venue-address {
+        @include body-font-medium;
+        font-size: 1rem;
+        color: $color-charcoal;
+        margin-bottom: 1rem;
+    }
+    
+    .venue-description {
+        font-size: 0.95rem;
+        color: $color-gray;
+        margin-bottom: 1.5rem;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.btn-outline-dark {
+    background: transparent;
+    color: $color-black;
+    border: 2px solid $color-black;
+    
+    &:hover {
+        background: $color-black;
+        color: $color-white;
+    }
+}
+
+// Final CTA
+.final-cta {
+    text-align: center;
+    background: linear-gradient(135deg, $color-court-green 0%, $color-court-green-dark 100%);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    
+    h3 {
+        @include heading-font;
+        font-size: 2rem;
+        font-weight: 800;
+        color: $color-white;
+        margin-bottom: 0.5rem;
+    }
+    
+    p {
+        color: rgba(255,255,255,0.9);
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .final-cta-note {
+        font-size: 0.875rem;
+        color: rgba(255,255,255,0.7);
+        margin-top: 1.5rem;
+        margin-bottom: 0;
+        
+        a {
+            color: $color-lime-bright;
+            
+            &:hover {
+                color: $color-white;
+            }
+        }
+    }
+}
+
+// Back Section
+.back-section {
+    background: $color-white;
+    padding: 2rem 0;
+    
+    .back-link {
+        @include body-font-medium;
+        font-size: 0.95rem;
+        color: $color-gray;
+        
+        &:hover {
+            color: $color-court-green;
         }
     }
 }
