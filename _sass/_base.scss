@@ -1812,24 +1812,29 @@ footer {
     }
 }
 
+// ===========================================
+// KICKOFF LANDING PAGE - MOBILE FIRST
+// ===========================================
+
 .kickoff-hero {
     background: linear-gradient(135deg, $color-court-green 0%, $color-court-green-dark 100%);
-    min-height: 60vh;
+    min-height: 70vh; // Taller on mobile for impact
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 120px 20px 80px;
+    padding: 100px 16px 60px; // Mobile: tighter padding
     position: relative;
     overflow: hidden;
     
+    // Decorative circles - smaller on mobile
     &::before {
         content: '';
         position: absolute;
-        top: -30%;
-        right: -20%;
-        width: 600px;
-        height: 600px;
+        top: -20%;
+        right: -30%;
+        width: 300px;
+        height: 300px;
         background: $color-lime;
         opacity: 0.1;
         border-radius: 50%;
@@ -1838,111 +1843,181 @@ footer {
     &::after {
         content: '';
         position: absolute;
-        bottom: -40%;
-        left: -10%;
-        width: 400px;
-        height: 400px;
+        bottom: -30%;
+        left: -20%;
+        width: 200px;
+        height: 200px;
         background: $color-lime-bright;
         opacity: 0.08;
         border-radius: 50%;
+    }
+    
+    // Scale up decorative elements for tablet+
+    @media (min-width: 768px) {
+        min-height: 60vh;
+        padding: 120px 20px 80px;
+        
+        &::before {
+            top: -30%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+        }
+        
+        &::after {
+            bottom: -40%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+        }
     }
 }
 
 .kickoff-hero-content {
     position: relative;
     z-index: 2;
-    max-width: 800px;
+    max-width: 100%;
+    padding: 0 8px;
+    
+    @media (min-width: 768px) {
+        max-width: 800px;
+        padding: 0;
+    }
     
     .kickoff-hero-badge {
         display: inline-block;
         background: $color-lime-bright;
         color: $color-black;
         @include heading-font;
-        font-size: 0.875rem;
+        font-size: 0.75rem; // Smaller on mobile
         font-weight: 800;
-        padding: 0.75rem 1.5rem;
+        padding: 0.6rem 1.25rem;
         border-radius: 50px;
         letter-spacing: 0.1em;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
+        
+        @media (min-width: 768px) {
+            font-size: 0.875rem;
+            padding: 0.75rem 1.5rem;
+            margin-bottom: 1.5rem;
+        }
     }
     
     h1 {
         color: $color-white;
-        font-size: clamp(4rem, 15vw, 9rem);
-        line-height: 0.95;
-        margin-bottom: 1.5rem;
+        font-size: clamp(3rem, 18vw, 9rem); // Responsive scaling
+        line-height: 0.9;
+        margin-bottom: 1rem;
         text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        
+        @media (min-width: 768px) {
+            margin-bottom: 1.5rem;
+        }
     }
     
     .kickoff-hero-tagline {
         color: rgba(255,255,255,0.9);
-        font-size: 1.25rem;
-        max-width: 500px;
+        font-size: 1rem; // Smaller on mobile
+        max-width: 320px;
         margin: 0 auto;
+        line-height: 1.5;
+        
+        @media (min-width: 768px) {
+            font-size: 1.25rem;
+            max-width: 500px;
+        }
     }
 }
 
 .kickoff-details-section {
-    padding: 4rem 0;
+    padding: 2.5rem 0; // Mobile: less padding
     background: $color-cream;
+    
+    @media (min-width: 768px) {
+        padding: 4rem 0;
+    }
 }
 
 .kickoff-main-card {
     background: $color-white;
-    border-radius: 20px;
-    padding: 2.5rem;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    border-radius: 16px; // Slightly smaller radius on mobile
+    padding: 1.25rem; // Mobile: compact padding
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     max-width: 800px;
-    margin: 0 auto 3rem;
+    margin: 0 auto 2rem;
     
-    @media (max-width: 767px) {
-        padding: 1.5rem;
+    @media (min-width: 768px) {
+        border-radius: 20px;
+        padding: 2.5rem;
+        margin-bottom: 3rem;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.08);
     }
 }
 
 .kickoff-event-header {
     display: flex;
+    flex-direction: column; // Mobile: stack vertically
     align-items: center;
-    gap: 2rem;
-    margin-bottom: 2rem;
+    text-align: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
     
-    @media (max-width: 767px) {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
+    @media (min-width: 768px) {
+        flex-direction: row;
+        text-align: left;
+        gap: 2rem;
+        margin-bottom: 2rem;
     }
 }
 
 .kickoff-date-block {
     background: linear-gradient(135deg, $color-court-green 0%, $color-court-green-dark 100%);
     color: $color-white;
-    padding: 1.5rem 2rem;
-    border-radius: 16px;
+    padding: 1rem 1.5rem; // Mobile: compact
+    border-radius: 12px;
     text-align: center;
-    min-width: 120px;
+    min-width: 100px;
+    
+    @media (min-width: 768px) {
+        padding: 1.5rem 2rem;
+        border-radius: 16px;
+        min-width: 120px;
+    }
     
     .kickoff-month {
         display: block;
         @include heading-font;
-        font-size: 1rem;
+        font-size: 0.875rem;
         font-weight: 700;
         letter-spacing: 0.1em;
         opacity: 0.9;
+        
+        @media (min-width: 768px) {
+            font-size: 1rem;
+        }
     }
     
     .kickoff-day {
         display: block;
         @include heading-font;
-        font-size: 3.5rem;
+        font-size: 2.75rem; // Mobile: slightly smaller
         font-weight: 900;
         line-height: 1;
         margin: 0.25rem 0;
+        
+        @media (min-width: 768px) {
+            font-size: 3.5rem;
+        }
     }
     
     .kickoff-year {
         display: block;
-        font-size: 0.875rem;
+        font-size: 0.75rem;
         opacity: 0.8;
+        
+        @media (min-width: 768px) {
+            font-size: 0.875rem;
+        }
     }
 }
 
@@ -1951,144 +2026,216 @@ footer {
     
     h2 {
         @include heading-font;
-        font-size: 2rem;
+        font-size: 1.5rem; // Mobile: smaller
         font-weight: 800;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.5rem;
         color: $color-black;
         
-        @media (max-width: 767px) {
-            font-size: 1.75rem;
+        @media (min-width: 768px) {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
         }
     }
     
     .kickoff-meta {
         display: flex;
-        gap: 1.5rem;
+        justify-content: center; // Mobile: centered
+        gap: 0.75rem;
         flex-wrap: wrap;
         
-        @media (max-width: 767px) {
-            justify-content: center;
-            gap: 1rem;
+        @media (min-width: 768px) {
+            justify-content: flex-start;
+            gap: 1.5rem;
         }
         
         span {
             @include body-font-medium;
-            font-size: 1rem;
+            font-size: 0.875rem; // Mobile: smaller
             color: $color-charcoal;
+            
+            @media (min-width: 768px) {
+                font-size: 1rem;
+            }
         }
     }
 }
 
 .kickoff-highlights {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    padding-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); // Mobile: 2x2 grid
+    gap: 0.75rem;
+    padding-top: 1.25rem;
     border-top: 1px solid $color-gray-light;
     
-    @media (max-width: 767px) {
-        gap: 1rem;
+    @media (min-width: 768px) {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        padding-top: 1.5rem;
     }
 }
 
 .highlight-item {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: center; // Mobile: center items in grid
+    gap: 0.35rem;
+    
+    @media (min-width: 768px) {
+        gap: 0.5rem;
+    }
     
     .highlight-icon {
-        font-size: 1.5rem;
+        font-size: 1.25rem; // Mobile: slightly smaller
+        
+        @media (min-width: 768px) {
+            font-size: 1.5rem;
+        }
     }
     
     .highlight-text {
         @include body-font-medium;
         font-weight: 600;
+        font-size: 0.8rem; // Mobile: smaller text
         color: $color-charcoal;
+        
+        @media (min-width: 768px) {
+            font-size: 1rem;
+        }
     }
 }
 
-// Ticket Section
+// Ticket Section - Mobile First
 .ticket-section {
     max-width: 900px;
-    margin: 0 auto 4rem;
+    margin: 0 auto 2.5rem; // Mobile: less margin
+    
+    @media (min-width: 768px) {
+        margin-bottom: 4rem;
+    }
 }
 
 .ticket-section-title {
     @include heading-font;
-    font-size: 2rem;
+    font-size: 1.5rem; // Mobile: smaller
     font-weight: 800;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     color: $color-black;
+    
+    @media (min-width: 768px) {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
 }
 
 .ticket-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    grid-template-columns: 1fr; // Mobile: single column
+    gap: 1.25rem; // Mobile: tighter gap
     
     @media (min-width: 768px) {
         grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
     }
 }
 
 .ticket-card {
     background: $color-white;
-    border-radius: 20px;
-    padding: 2rem;
+    border-radius: 16px; // Mobile: slightly smaller
+    padding: 1.25rem; // Mobile: compact padding
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     position: relative;
     @include transition-all;
     
-    &:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    @media (min-width: 768px) {
+        border-radius: 20px;
+        padding: 2rem;
+    }
+    
+    // Disable hover transform on touch devices (mobile)
+    @media (hover: hover) {
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
     }
     
     .ticket-badge {
         @include heading-font;
-        font-size: 0.75rem;
+        font-size: 0.7rem; // Mobile: smaller
         font-weight: 800;
         letter-spacing: 0.1em;
-        margin-bottom: 1rem;
+        margin-bottom: 0.75rem;
+        
+        @media (min-width: 768px) {
+            font-size: 0.75rem;
+            margin-bottom: 1rem;
+        }
     }
     
     .ticket-tier {
         @include heading-font;
-        font-size: 1.75rem;
+        font-size: 1.5rem; // Mobile: smaller
         font-weight: 800;
-        margin-bottom: 1rem;
+        margin-bottom: 0.75rem;
+        
+        @media (min-width: 768px) {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
     }
     
     .ticket-price {
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.25rem;
+        
+        @media (min-width: 768px) {
+            margin-bottom: 1.5rem;
+        }
         
         .price-amount {
             @include heading-font;
-            font-size: 3rem;
+            font-size: 2.5rem; // Mobile: smaller
             font-weight: 900;
             line-height: 1;
+            
+            @media (min-width: 768px) {
+                font-size: 3rem;
+            }
         }
         
         .price-note {
             display: block;
-            font-size: 0.875rem;
+            font-size: 0.8rem; // Mobile: smaller
             color: $color-gray;
             margin-top: 0.25rem;
+            
+            @media (min-width: 768px) {
+                font-size: 0.875rem;
+            }
         }
     }
     
     .ticket-perks {
         list-style: none;
         padding: 0;
-        margin: 0 0 2rem;
+        margin: 0 0 1.5rem;
+        
+        @media (min-width: 768px) {
+            margin-bottom: 2rem;
+        }
         
         li {
-            padding: 0.5rem 0;
-            font-size: 0.95rem;
+            padding: 0.4rem 0; // Mobile: tighter
+            font-size: 0.875rem; // Mobile: smaller
             color: $color-charcoal;
             border-bottom: 1px solid $color-gray-light;
+            
+            @media (min-width: 768px) {
+                padding: 0.5rem 0;
+                font-size: 0.95rem;
+            }
             
             &:last-child {
                 border-bottom: none;
@@ -2098,7 +2245,11 @@ footer {
 }
 
 .ticket-vip {
-    border: 3px solid $color-golden;
+    border: 2px solid $color-golden; // Mobile: thinner border
+    
+    @media (min-width: 768px) {
+        border-width: 3px;
+    }
     
     .ticket-badge {
         color: $color-golden;
@@ -2114,7 +2265,11 @@ footer {
 }
 
 .ticket-ga {
-    border: 3px solid $color-court-green;
+    border: 2px solid $color-court-green;
+    
+    @media (min-width: 768px) {
+        border-width: 3px;
+    }
     
     .ticket-badge {
         color: $color-court-green;
@@ -2133,11 +2288,22 @@ footer {
     background: linear-gradient(135deg, $color-golden 0%, darken($color-golden, 10%) 100%);
     color: $color-white;
     width: 100%;
+    padding: 0.875rem 1.5rem; // Mobile: good tap target
+    font-size: 1rem;
+    
+    @media (min-width: 768px) {
+        padding: 1rem 2rem;
+    }
     
     &:hover {
         background: linear-gradient(135deg, darken($color-golden, 5%) 0%, darken($color-golden, 15%) 100%);
         color: $color-white;
-        transform: translateY(-2px);
+    }
+    
+    @media (hover: hover) {
+        &:hover {
+            transform: translateY(-2px);
+        }
     }
 }
 
@@ -2145,108 +2311,170 @@ footer {
     background: linear-gradient(135deg, $color-court-green 0%, $color-court-green-dark 100%);
     color: $color-white;
     width: 100%;
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    
+    @media (min-width: 768px) {
+        padding: 1rem 2rem;
+    }
     
     &:hover {
         background: linear-gradient(135deg, $color-court-green-dark 0%, darken($color-court-green-dark, 5%) 100%);
         color: $color-white;
-        transform: translateY(-2px);
+    }
+    
+    @media (hover: hover) {
+        &:hover {
+            transform: translateY(-2px);
+        }
     }
 }
 
 .ticket-note {
     text-align: center;
-    font-size: 1rem;
+    font-size: 0.875rem; // Mobile: smaller
     color: $color-charcoal;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
+    
+    @media (min-width: 768px) {
+        font-size: 1rem;
+        margin-top: 2rem;
+    }
 }
 
-// What to Expect Section
+// What to Expect Section - Mobile First
 .expect-section {
     max-width: 900px;
-    margin: 0 auto 4rem;
+    margin: 0 auto 2.5rem;
+    
+    @media (min-width: 768px) {
+        margin-bottom: 4rem;
+    }
 }
 
 .expect-title {
     @include heading-font;
-    font-size: 2rem;
+    font-size: 1.5rem; // Mobile: smaller
     font-weight: 800;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
     color: $color-black;
+    
+    @media (min-width: 768px) {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
 }
 
 .expect-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    grid-template-columns: 1fr; // Mobile: single column
+    gap: 1rem; // Mobile: tighter gap
     
     @media (min-width: 768px) {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
 }
 
 .expect-item {
     background: $color-white;
-    border-radius: 16px;
-    padding: 2rem;
+    border-radius: 12px; // Mobile: slightly smaller
+    padding: 1.25rem; // Mobile: compact
     text-align: center;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     
+    @media (min-width: 768px) {
+        border-radius: 16px;
+        padding: 2rem;
+    }
+    
     .expect-icon {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
+        font-size: 2rem; // Mobile: smaller
+        margin-bottom: 0.75rem;
+        
+        @media (min-width: 768px) {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
     }
     
     h4 {
         @include heading-font;
-        font-size: 1.25rem;
+        font-size: 1.1rem; // Mobile: smaller
         font-weight: 700;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.5rem;
         color: $color-black;
+        
+        @media (min-width: 768px) {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
     }
     
     p {
-        font-size: 0.95rem;
+        font-size: 0.875rem; // Mobile: smaller
         color: $color-charcoal;
         margin: 0;
-        line-height: 1.6;
+        line-height: 1.5;
+        
+        @media (min-width: 768px) {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
     }
 }
 
-// Venue Section
+// Venue Section - Mobile First
 .venue-section {
     max-width: 700px;
-    margin: 0 auto 4rem;
+    margin: 0 auto 2.5rem;
+    
+    @media (min-width: 768px) {
+        margin-bottom: 4rem;
+    }
 }
 
 .venue-title {
     @include heading-font;
-    font-size: 2rem;
+    font-size: 1.5rem; // Mobile: smaller
     font-weight: 800;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
     color: $color-black;
+    
+    @media (min-width: 768px) {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
 }
 
 .venue-gallery {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    grid-template-columns: 1fr; // Mobile: single column
+    gap: 0.75rem; // Mobile: tighter gap
+    margin-bottom: 1.5rem;
     
     @media (min-width: 768px) {
         grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-bottom: 2rem;
     }
 }
 
 .venue-photo {
-    border-radius: 12px;
+    border-radius: 10px; // Mobile: slightly smaller
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    
+    @media (min-width: 768px) {
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
     
     img {
         width: 100%;
-        height: 200px;
+        height: 180px; // Mobile: slightly shorter
         object-fit: cover;
         display: block;
         @include transition-all;
@@ -2256,44 +2484,72 @@ footer {
         }
     }
     
-    &:hover img {
-        transform: scale(1.05);
+    // Only apply hover effect on devices that support hover (not touch)
+    @media (hover: hover) {
+        &:hover img {
+            transform: scale(1.05);
+        }
     }
 }
 
 .venue-card {
     background: $color-white;
-    border-radius: 16px;
+    border-radius: 12px; // Mobile: slightly smaller
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+    
+    @media (min-width: 768px) {
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
 }
 
 .venue-info {
-    padding: 2rem;
+    padding: 1.25rem; // Mobile: compact
     text-align: center;
+    
+    @media (min-width: 768px) {
+        padding: 2rem;
+    }
     
     h4 {
         @include heading-font;
-        font-size: 1.5rem;
+        font-size: 1.25rem; // Mobile: smaller
         font-weight: 800;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.5rem;
         color: $color-black;
+        
+        @media (min-width: 768px) {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
     }
     
     .venue-address {
         @include body-font-medium;
-        font-size: 1rem;
+        font-size: 0.9rem; // Mobile: smaller
         color: $color-charcoal;
-        margin-bottom: 1rem;
+        margin-bottom: 0.75rem;
+        
+        @media (min-width: 768px) {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
     }
     
     .venue-description {
-        font-size: 0.95rem;
+        font-size: 0.875rem; // Mobile: smaller
         color: $color-gray;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.25rem;
         max-width: 500px;
         margin-left: auto;
         margin-right: auto;
+        line-height: 1.5;
+        
+        @media (min-width: 768px) {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
     }
 }
 
@@ -2301,6 +2557,7 @@ footer {
     background: transparent;
     color: $color-black;
     border: 2px solid $color-black;
+    padding: 0.75rem 1.5rem; // Good tap target
     
     &:hover {
         background: $color-black;
@@ -2308,34 +2565,65 @@ footer {
     }
 }
 
-// Final CTA
+// Final CTA - Mobile First
 .final-cta {
     text-align: center;
     background: linear-gradient(135deg, $color-court-green 0%, $color-court-green-dark 100%);
-    border-radius: 20px;
-    padding: 3rem 2rem;
+    border-radius: 16px; // Mobile: smaller radius
+    padding: 2rem 1.25rem; // Mobile: compact
     max-width: 700px;
     margin: 0 auto;
     
+    @media (min-width: 768px) {
+        border-radius: 20px;
+        padding: 3rem 2rem;
+    }
+    
     h3 {
         @include heading-font;
-        font-size: 2rem;
+        font-size: 1.5rem; // Mobile: smaller
         font-weight: 800;
         color: $color-white;
         margin-bottom: 0.5rem;
+        
+        @media (min-width: 768px) {
+            font-size: 2rem;
+        }
     }
     
     p {
         color: rgba(255,255,255,0.9);
-        font-size: 1.1rem;
-        margin-bottom: 1.5rem;
+        font-size: 0.95rem; // Mobile: smaller
+        margin-bottom: 1.25rem;
+        
+        @media (min-width: 768px) {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+    }
+    
+    .btn-lime {
+        width: 100%; // Full width on mobile
+        max-width: 280px;
+        padding: 0.875rem 1.5rem; // Good tap target
+        
+        @media (min-width: 768px) {
+            width: auto;
+            max-width: none;
+        }
     }
     
     .final-cta-note {
-        font-size: 0.875rem;
+        font-size: 0.8rem; // Mobile: smaller
         color: rgba(255,255,255,0.7);
-        margin-top: 1.5rem;
+        margin-top: 1.25rem;
         margin-bottom: 0;
+        line-height: 1.5;
+        
+        @media (min-width: 768px) {
+            font-size: 0.875rem;
+            margin-top: 1.5rem;
+        }
         
         a {
             color: $color-lime-bright;
@@ -2347,15 +2635,23 @@ footer {
     }
 }
 
-// Back Section
+// Back Section - Mobile First
 .back-section {
     background: $color-white;
-    padding: 2rem 0;
+    padding: 1.5rem 0; // Mobile: less padding
+    
+    @media (min-width: 768px) {
+        padding: 2rem 0;
+    }
     
     .back-link {
         @include body-font-medium;
-        font-size: 0.95rem;
+        font-size: 0.875rem; // Mobile: smaller
         color: $color-gray;
+        
+        @media (min-width: 768px) {
+            font-size: 0.95rem;
+        }
         
         &:hover {
             color: $color-court-green;
