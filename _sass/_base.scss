@@ -239,7 +239,11 @@ hr {
     border: none;
     box-shadow: none;
     @include transition-all;
-    padding: 15px 0;
+    padding: 10px 0; // Reduced from 15px
+    
+    @media (max-width: 767px) {
+        padding: 6px 0; // Even tighter on mobile
+    }
     
     &.navbar-default {
         background-color: transparent;
@@ -251,6 +255,10 @@ hr {
     
     .container-fluid {
         padding: 0 30px;
+        
+        @media (max-width: 767px) {
+            padding: 0 12px; // Tighter on mobile
+        }
         
         @media (min-width: 992px) {
             padding: 0 50px;
@@ -264,7 +272,11 @@ hr {
             font-weight: 900;
             color: $color-black;
             letter-spacing: 0.05em;
-            padding: 10px 0;
+            padding: 5px 0; // Reduced from 10px
+            
+            @media (max-width: 767px) {
+                padding: 2px 0; // Even tighter on mobile
+            }
             
             &:hover {
                 color: $color-court-green;
@@ -276,7 +288,7 @@ hr {
                 @include transition-all;
                 
                 @media (max-width: 767px) {
-                    height: 48px; // Bigger on mobile for visibility
+                    height: 60px; // Bigger on mobile for visibility
                 }
             }
         }
