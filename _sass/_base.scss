@@ -271,12 +271,12 @@ hr {
             }
             
             .navbar-logo {
-                height: 45px;
+                height: 50px;
                 width: auto;
                 @include transition-all;
                 
                 @media (max-width: 767px) {
-                    height: 40px;
+                    height: 48px; // Bigger on mobile for visibility
                 }
             }
         }
@@ -2086,22 +2086,14 @@ footer {
         gap: 0.5rem;
     }
     
-    .highlight-icon {
-        font-size: 1.25rem; // Mobile: slightly smaller
-        
-        @media (min-width: 768px) {
-            font-size: 1.5rem;
-        }
-    }
-    
     .highlight-text {
-        @include body-font-medium;
-        font-weight: 600;
-        font-size: 0.8rem; // Mobile: smaller text
+        @include heading-font;
+        font-weight: 700;
+        font-size: 0.75rem; // Mobile: smaller text
         color: $color-charcoal;
         
         @media (min-width: 768px) {
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
     }
 }
@@ -2389,21 +2381,12 @@ footer {
         padding: 2rem;
     }
     
-    .expect-icon {
-        font-size: 2rem; // Mobile: smaller
-        margin-bottom: 0.75rem;
-        
-        @media (min-width: 768px) {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-    }
-    
     h4 {
         @include heading-font;
         font-size: 1.1rem; // Mobile: smaller
         font-weight: 700;
         margin-bottom: 0.5rem;
+        margin-top: 0;
         color: $color-black;
         
         @media (min-width: 768px) {
