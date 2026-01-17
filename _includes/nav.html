@@ -14,8 +14,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand page-scroll" href="#page-top">
-                <img src="img/logo.png" alt="Tennis & Tequila Social Club" class="navbar-logo">
+            <a class="navbar-brand page-scroll" href="{% if page.layout == 'landing' %}/{% else %}#page-top{% endif %}">
+                <img src="/img/logo.png" alt="Tennis & Tequila Social Club" class="navbar-logo">
             </a>
         </div>
 
@@ -23,25 +23,25 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a class="page-scroll" href="#about">About</a>
+                    <a class="page-scroll" href="{% if page.layout == 'landing' %}/#about{% else %}#about{% endif %}">About</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#events">Events</a>
+                    <a class="page-scroll" href="{% if page.layout == 'landing' %}/#events{% else %}#events{% endif %}">Events</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#services">Values</a>
+                    <a class="page-scroll" href="{% if page.layout == 'landing' %}/#services{% else %}#services{% endif %}">Values</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#portfolio">Gallery</a>
+                    <a class="page-scroll" href="{% if page.layout == 'landing' %}/#portfolio{% else %}#portfolio{% endif %}">Gallery</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#faq">FAQ</a>
+                    <a class="page-scroll" href="{% if page.layout == 'landing' %}/#faq{% else %}#faq{% endif %}">FAQ</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#partnerships">Partners</a>
+                    <a class="page-scroll" href="{% if page.layout == 'landing' %}/#partnerships{% else %}#partnerships{% endif %}">Partners</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#contact">Contact</a>
+                    <a class="page-scroll" href="{% if page.layout == 'landing' %}/#contact{% else %}#contact{% endif %}">Contact</a>
                 </li>
                 <li>
                     <a href="https://forms.gle/xUVbFbeCh8LDGgFJ8" class="btn-nav">Join Us</a>
