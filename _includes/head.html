@@ -3,19 +3,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#1B5E20">
-    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}Tennis & Tequila Social Club - A modern, lifestyle-driven tennis community for young professionals. Serve. Sip. Socialize.{% endif %}">
-    <meta name="author" content="Tennis & Tequila">
-    <meta name="keywords" content="tennis club, social tennis, young professionals, tennis community, tennis events, Atlanta tennis">
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}Atlanta's social tennis club for young professionals. Join 340+ members for mixers, clinics, and events. No experience required. Serve. Sip. Socialize.{% endif %}">
+    <meta name="author" content="Tennis & Tequila Social Club Atlanta">
+    <meta name="keywords" content="tennis club Atlanta, social tennis Atlanta, Atlanta tennis club, tennis for young professionals, tennis events Atlanta, tennis mixers Atlanta, beginner tennis Atlanta, Tennis and Tequila Atlanta">
+    <meta name="geo.region" content="US-GA">
+    <meta name="geo.placename" content="Atlanta">
     
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
-    <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}A modern, lifestyle-driven tennis community for young professionals. Serve. Sip. Socialize.{% endif %}">
+    <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}Tennis & Tequila Social Club Atlanta{% endif %}">
+    <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}Atlanta's social tennis club for young professionals. Join 340+ members for mixers, clinics, and events. Serve. Sip. Socialize.{% endif %}">
     <meta property="og:image" content="{{ site.url }}/img/og-image.jpg">
     <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
 
     <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+    
+    <!-- Schema.org Local Business Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SportsClub",
+        "name": "Tennis & Tequila Social Club",
+        "description": "Atlanta's social tennis club for young professionals. Mixers, clinics, and events for all skill levels.",
+        "url": "https://tennisandtequila.social",
+        "logo": "https://tennisandtequila.social/img/logo.png",
+        "image": "https://tennisandtequila.social/img/og-image.jpg",
+        "email": "info@tennisandtequila.social",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Atlanta",
+            "addressRegion": "GA",
+            "addressCountry": "US"
+        },
+        "areaServed": {
+            "@type": "City",
+            "name": "Atlanta",
+            "sameAs": "https://en.wikipedia.org/wiki/Atlanta"
+        },
+        "sameAs": [
+            "https://instagram.com/10sandtequila"
+        ],
+        "sport": "Tennis",
+        "keywords": "tennis club, social tennis, Atlanta tennis, young professionals"
+    }
+    </script>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/img/favicon.png">

@@ -1,9 +1,9 @@
 # Site settings
-title: Tennis & Tequila Social Club
+title: Tennis & Tequila Social Club Atlanta | Social Tennis for Young Professionals
 email: info@tennisandtequila.social
-description: > # this means to ignore newlines until "baseurl:"
+description: "Atlanta's social tennis club for young professionals. Join 340+ members for mixers, clinics, and events. No experience required. Serve. Sip. Socialize."
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "" # the base hostname & protocol for your site
+url: "https://tennisandtequila.social" # the base hostname & protocol for your site
 
 instagram_username: 10sandtequila
 slack_link: https://tinyurl.com/32yhwkjh
