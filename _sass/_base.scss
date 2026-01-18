@@ -2344,6 +2344,17 @@ footer {
         font-size: 1rem;
         margin-top: 2rem;
     }
+    
+    .age-disclaimer {
+        display: inline-block;
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+        color: $color-gray;
+        
+        @media (min-width: 768px) {
+            font-size: 0.875rem;
+        }
+    }
 }
 
 // What to Expect Section - Mobile First
