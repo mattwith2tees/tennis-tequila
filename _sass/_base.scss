@@ -2686,3 +2686,284 @@ footer {
         font-size: 2rem;
     }
 }
+
+// ===========================================
+// ATLANTA MOOD BOARD PAGE
+// ===========================================
+
+.moodboard-hero {
+    background: $color-black;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 20px 60px;
+    position: relative;
+    
+    // Add a background image later
+    // background-image: url('/img/atlanta/hero.jpg');
+    // background-size: cover;
+    // background-position: center;
+    
+    @media (min-width: 768px) {
+        min-height: 60vh;
+        padding: 120px 20px 80px;
+    }
+}
+
+.moodboard-hero-content {
+    position: relative;
+    z-index: 2;
+    
+    h1 {
+        @include heading-font;
+        font-size: clamp(3rem, 15vw, 8rem);
+        color: $color-white;
+        letter-spacing: 0.1em;
+        margin-bottom: 0.5rem;
+        line-height: 1;
+    }
+    
+    .moodboard-tagline {
+        @include heading-font;
+        font-size: clamp(0.875rem, 3vw, 1.25rem);
+        color: $color-lime-bright;
+        letter-spacing: 0.2em;
+        font-weight: 600;
+    }
+}
+
+.moodboard-section {
+    background: $color-cream;
+    padding: 3rem 0;
+    
+    @media (min-width: 768px) {
+        padding: 4rem 0;
+    }
+}
+
+// Masonry-style grid
+.moodboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 3rem;
+    
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+    
+    @media (min-width: 1024px) {
+        gap: 1.25rem;
+    }
+}
+
+.moodboard-item {
+    border-radius: 8px;
+    overflow: hidden;
+    background: $color-gray-light;
+    aspect-ratio: 1; // Default square
+    
+    @media (min-width: 768px) {
+        border-radius: 12px;
+    }
+    
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        @include transition-all;
+    }
+    
+    &:hover img {
+        transform: scale(1.05);
+    }
+    
+    // Wide item (spans 2 columns)
+    &.moodboard-wide {
+        grid-column: span 2;
+        aspect-ratio: 2 / 1;
+    }
+    
+    // Tall item (spans 2 rows)
+    &.moodboard-tall {
+        grid-row: span 2;
+        aspect-ratio: auto;
+        
+        @media (max-width: 767px) {
+            grid-row: span 1;
+            aspect-ratio: 1;
+        }
+    }
+    
+    // Quote item
+    &.moodboard-quote {
+        background: $color-court-green;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        grid-column: span 2;
+        aspect-ratio: 2 / 1;
+        
+        @media (min-width: 768px) {
+            grid-column: span 1;
+            aspect-ratio: 1;
+            padding: 2rem;
+        }
+        
+        blockquote {
+            @include heading-font;
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: $color-white;
+            text-align: center;
+            margin: 0;
+            line-height: 1.4;
+            letter-spacing: 0.02em;
+        }
+    }
+}
+
+// Courts Section
+.courts-section {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+    
+    @media (min-width: 768px) {
+        margin-bottom: 4rem;
+        padding: 3rem 0;
+    }
+    
+    h2 {
+        @include heading-font;
+        font-size: 1.5rem;
+        color: $color-black;
+        margin-bottom: 2rem;
+        letter-spacing: 0.1em;
+        
+        @media (min-width: 768px) {
+            font-size: 2rem;
+        }
+    }
+}
+
+.courts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+.court-item {
+    background: $color-white;
+    padding: 1.25rem 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    
+    @media (min-width: 768px) {
+        padding: 1.5rem;
+    }
+    
+    .court-name {
+        display: block;
+        @include heading-font;
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: $color-black;
+        margin-bottom: 0.25rem;
+        
+        @media (min-width: 768px) {
+            font-size: 1rem;
+        }
+    }
+    
+    .court-hood {
+        font-size: 0.8rem;
+        color: $color-gray;
+        
+        @media (min-width: 768px) {
+            font-size: 0.875rem;
+        }
+    }
+}
+
+// Mood board CTA
+.moodboard-cta {
+    text-align: center;
+    padding: 2rem;
+    background: $color-white;
+    border-radius: 16px;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    
+    @media (min-width: 768px) {
+        padding: 3rem;
+        border-radius: 20px;
+    }
+    
+    h3 {
+        @include heading-font;
+        font-size: 1.5rem;
+        color: $color-black;
+        margin-bottom: 0.5rem;
+        
+        @media (min-width: 768px) {
+            font-size: 1.75rem;
+        }
+    }
+    
+    p {
+        color: $color-charcoal;
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+    }
+}
+
+// Instagram Section
+.instagram-section {
+    background: $color-black;
+    padding: 3rem 0;
+    
+    @media (min-width: 768px) {
+        padding: 4rem 0;
+    }
+    
+    h3 {
+        @include heading-font;
+        font-size: 1.25rem;
+        color: $color-white;
+        margin-bottom: 1rem;
+        letter-spacing: 0.1em;
+        
+        @media (min-width: 768px) {
+            font-size: 1.5rem;
+        }
+    }
+    
+    .instagram-handle {
+        @include heading-font;
+        font-size: 1.5rem;
+        color: $color-lime-bright;
+        text-decoration: none;
+        letter-spacing: 0.05em;
+        
+        &:hover {
+            color: $color-white;
+        }
+        
+        @media (min-width: 768px) {
+            font-size: 2rem;
+        }
+    }
+}
