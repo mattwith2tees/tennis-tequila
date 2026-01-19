@@ -12,11 +12,13 @@
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <!-- Atlanta page hidden until content is ready
   <url>
     <loc>https://tennisandtequila.social/atlanta</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  -->
 </urlset>
 
