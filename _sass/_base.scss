@@ -2266,6 +2266,35 @@ footer {
     .price-amount {
         color: $color-court-green;
     }
+    
+    // Sold out state
+    &.ticket-soldout {
+        opacity: 0.7;
+        border-color: $color-gray;
+        
+        .ticket-badge {
+            color: $color-gray;
+            background: $color-gray-light;
+        }
+        
+        .ticket-perks li {
+            color: $color-gray;
+        }
+    }
+}
+
+.btn-soldout {
+    background: $color-gray-light;
+    color: $color-gray;
+    cursor: not-allowed;
+    width: 100%;
+    
+    &:hover {
+        background: $color-gray-light;
+        color: $color-gray;
+        transform: none;
+        box-shadow: none;
+    }
 }
 
 .ticket-ga {
