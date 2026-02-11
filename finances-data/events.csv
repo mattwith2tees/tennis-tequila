@@ -1,0 +1,3 @@
+event_name,date,venue,ticket_type_1_name,ticket_type_1_qty_sold,ticket_type_1_list_price,ticket_type_1_adj_price,ticket_type_2_name,ticket_type_2_qty_sold,ticket_type_2_list_price,ticket_type_2_adj_price,venue_fees,drink_cost_per_ticket,drink_tax_rate,drink_gratuity_rate,swag_giveaways,equipment_rentals,other_expenses,attendance,notes
+2026 Kickoff Party,2026-02-28,ITP Training Academy,VIP,25,45,40.01,GA,100,25,21.83,300,7,0.09,0.20,69.98,0,0,102,First event of the season
+

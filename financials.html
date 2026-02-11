@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tennis & Tequila - 2026 Financial Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-court-green: #2D8B4E;
+            --color-lime: #A4D65E;
+            --color-lime-bright: #C5E86C;
+            --color-tennis-yellow: #DFFF00;
+            --color-golden: #F5A623;
+            --color-sunset: #FF6B35;
+            --color-red: #E53935;
+            --color-white: #FFFFFF;
+            --color-cream: #FDFBF7;
+            --color-charcoal: #2C2A28;
+            --color-black: #1A1918;
+            --font-heading: 'Barlow Condensed', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(135deg, #1a1f1c 0%, #0d1210 50%, #1a1f1c 100%);
+            min-height: 100vh;
+            color: var(--color-white);
+            padding: 2rem;
+        }
+
+        .dashboard {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(164, 214, 94, 0.2);
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .logo span { color: var(--color-lime); }
+
+        .year-badge {
+            background: var(--color-court-green);
+            padding: 0.5rem 1.5rem;
+            border-radius: 100px;
+            font-family: var(--font-mono);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        h2 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 1rem;
+        }
+
+        /* Summary Cards */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .summary-card {
+            background: linear-gradient(145deg, rgba(45, 139, 78, 0.15), rgba(45, 139, 78, 0.05));
+            border: 1px solid rgba(164, 214, 94, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .summary-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-court-green), var(--color-lime));
+        }
+
+        .summary-card.warning::before {
+            background: linear-gradient(90deg, var(--color-golden), var(--color-sunset));
+        }
+
+        .summary-card.danger::before {
+            background: linear-gradient(90deg, var(--color-sunset), var(--color-red));
+        }
+
+        .summary-card.success::before {
+            background: linear-gradient(90deg, var(--color-lime), var(--color-tennis-yellow));
+        }
+
+        .card-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-value {
+            font-family: var(--font-mono);
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--color-lime);
+        }
+
+        .card-value.warning { color: var(--color-golden); }
+        .card-value.danger { color: var(--color-red); }
+        .card-value.success { color: var(--color-lime-bright); }
+
+        .card-note {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+            margin-top: 0.5rem;
+        }
+
+        /* Main Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .panel {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(164, 214, 94, 0.15);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+
+        .panel-title {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .panel-title .icon {
+            width: 32px;
+            height: 32px;
+            background: var(--color-court-green);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        /* Financial Table */
+        .fin-table {
+            width: 100%;
+        }
+
+        .fin-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .fin-row:last-child { border-bottom: none; }
+
+        .fin-row.total {
+            border-top: 2px solid rgba(164, 214, 94, 0.3);
+            border-bottom: none;
+            margin-top: 0.5rem;
+            padding-top: 1rem;
+        }
+
+        .fin-label {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .fin-value {
+            font-family: var(--font-mono);
+            font-weight: 500;
+        }
+
+        .fin-value.positive { color: var(--color-lime); }
+        .fin-value.negative { color: var(--color-red); }
+        .fin-value.total { 
+            font-weight: 700; 
+            font-size: 1.1rem;
+            color: var(--color-lime-bright);
+        }
+
+        .fin-row.total .fin-label {
+            font-weight: 700;
+            color: var(--color-white);
+        }
+
+        /* Scenario Section */
+        .scenario-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .scenario-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(164, 214, 94, 0.1);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .scenario-card.best {
+            border-color: rgba(164, 214, 94, 0.4);
+            background: rgba(164, 214, 94, 0.05);
+        }
+
+        .scenario-card.worst {
+            border-color: rgba(229, 57, 53, 0.4);
+            background: rgba(229, 57, 53, 0.05);
+        }
+
+        .scenario-title {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 0.5rem;
+        }
+
+        .scenario-guests {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 1rem;
+        }
+
+        .scenario-profit {
+            font-family: var(--font-mono);
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .scenario-profit.positive { color: var(--color-lime); }
+        .scenario-profit.negative { color: var(--color-red); }
+
+        .scenario-breakdown {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Recommendations */
+        .recommendations {
+            background: linear-gradient(145deg, rgba(45, 139, 78, 0.1), rgba(45, 139, 78, 0.02));
+            border: 1px solid rgba(164, 214, 94, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .rec-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .rec-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .rec-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .rec-number {
+            width: 32px;
+            height: 32px;
+            background: var(--color-court-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .rec-content h4 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .rec-content p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.5;
+        }
+
+        .highlight {
+            color: var(--color-lime);
+            font-weight: 600;
+        }
+
+        /* Breakeven Calculator */
+        .breakeven-section {
+            margin-top: 2.5rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(164, 214, 94, 0.15);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .breakeven-result {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .breakeven-stat {
+            text-align: center;
+        }
+
+        .breakeven-stat .value {
+            font-family: var(--font-mono);
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--color-golden);
+        }
+
+        .breakeven-stat .label {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .divider {
+            width: 2px;
+            height: 60px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .summary-grid { grid-template-columns: repeat(2, 1fr); }
+            .content-grid { grid-template-columns: 1fr; }
+            .scenario-grid { grid-template-columns: 1fr; }
+            .rec-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .header { flex-direction: column; gap: 1rem; text-align: center; }
+            .breakeven-result { flex-direction: column; }
+            .divider { width: 60px; height: 2px; }
+        }
+
+        .alert-box {
+            background: rgba(229, 57, 53, 0.1);
+            border: 1px solid rgba(229, 57, 53, 0.3);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .alert-box .icon {
+            font-size: 1.5rem;
+        }
+
+        .alert-box p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
+        }
+
+        .alert-box strong {
+            color: var(--color-sunset);
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <header class="header">
+            <div class="logo">Tennis <span>&</span> Tequila</div>
+            <div class="year-badge">2026 FINANCIALS</div>
+        </header>
+
+        <div class="alert-box" style="background: rgba(164, 214, 94, 0.1); border-color: rgba(164, 214, 94, 0.3);">
+            <div class="icon">💡</div>
+            <p><strong>Good news:</strong> Your event profit was <strong>$2,813.27</strong> before operating costs. The $2,673 in marketing (mostly the $1,750 campaign shoot) is a one-time investment that will pay off across all 2026 events.</p>
+        </div>
+        
+        <div class="alert-box">
+            <div class="icon">⚠️</div>
+            <p><strong>Heads up:</strong> Drink ticket costs ($7 × 1.09 tax × 1.20 gratuity = <strong>$9.16/drink</strong>) aren't reflected yet. At 102 attendees, that's ~$934 in drink costs coming.</p>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="summary-grid">
+            <div class="summary-card">
+                <div class="card-label">Total Net Revenue</div>
+                <div class="card-value">$3,760.30</div>
+                <div class="card-note">Tickets + all merch sold</div>
+            </div>
+            <div class="summary-card warning">
+                <div class="card-label">Total Expenses</div>
+                <div class="card-value warning">$3,977.28</div>
+                <div class="card-note">Includes $934 drink costs</div>
+            </div>
+            <div class="summary-card danger">
+                <div class="card-label">Net Profit (Event 1)</div>
+                <div class="card-value danger">-$216.98</div>
+                <div class="card-note">After all costs</div>
+            </div>
+            <div class="summary-card success">
+                <div class="card-label">Event Profit (no marketing)</div>
+                <div class="card-value success">+$2,455.99</div>
+                <div class="card-note">Future events potential</div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content-grid">
+            <div class="panel">
+                <div class="panel-title">
+                    <div class="icon">💰</div>
+                    Revenue Breakdown
+                </div>
+                <div class="fin-table">
+                    <div class="fin-row" style="color: rgba(255,255,255,0.4); font-size: 0.8rem;">
+                        <span class="fin-label">TICKET SALES</span>
+                        <span class="fin-value"></span>
+                    </div>
+                    <div class="fin-row">
+                        <span class="fin-label">VIP Tickets (25 × $40.01 net)</span>
+                        <span class="fin-value">$1,000.25</span>
+                    </div>
+                    <div class="fin-row">
+                        <span class="fin-label">GA Tickets (100 × $21.83 net)</span>
+                        <span class="fin-value">$2,183.00</span>
+                    </div>
+                    <div class="fin-row">
+                        <span class="fin-label">Net Ticket Revenue</span>
+                        <span class="fin-value positive">$3,183.25</span>
+                    </div>
+                    <div class="fin-row" style="color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-top: 0.5rem;">
+                        <span class="fin-label">MERCH (PROJECTED)</span>
+                        <span class="fin-value"></span>
+                    </div>
+                    <div class="fin-row">
+                        <span class="fin-label">T-Shirt Sales (25 × $25)</span>
+                        <span class="fin-value positive">$625.00</span>
+                    </div>
+                    <div class="fin-row">
+                        <span class="fin-label">T-Shirt Costs (25 × $11.01)</span>
+                        <span class="fin-value negative">-$275.25</span>
+                    </div>
+                    <div class="fin-row">
+                        <span class="fin-label">Polo Sales (10 × $45)</span>
+                        <span class="fin-value positive">$450.00</span>
+                    </div>
+                    <div class="fin-row">
+                        <span class="fin-label">Polo Costs (10 × $22.27)</span>
+                        <span class="fin-value negative">-$222.70</span>
+                    </div>
+                    <div class="fin-row">
+                        <span class="fin-label">Net Merch Profit</span>
+                        <span class="fin-value positive">$577.05</span>
+                    </div>
+                    <div class="fin-row total">
+                        <span class="fin-label">TOTAL NET REVENUE</span>
+                        <span class="fin-value total">$3,760.30</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-title">
+                    <div class="icon">📊</div>
+                    Expense Breakdown
+                </div>
+                <div class="fin-table">
+                    <div class="fin-row" style="color: rgba(255,255,255,0.4); font-size: 0.8rem;">
+                        <span class="fin-label">EVENT COSTS</span>
+                        <span class="fin-value"></span>
+                    </div>
+                    <div class="fin-row">
+                        <span class="fin-label">Venue / Court Fees</span>
+                        <span class="fin-value">$300.00</span>
+                    </div>
+                    <div class="fin-row">
+                        <span class="fin-label">Swag (towels + bottles)</span>
+                        <span class="fin-value">$69.98</span>
+                    </div>
+                    <div class="fin-row">
+                        <span class="fin-label">Drink Tickets (102 × $9.16)</span>
+                        <span class="fin-value">$934.32</span>
+                    </div>
+                    <div class="fin-row" style="color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-top: 0.5rem;">
+                        <span class="fin-label">MARKETING / OPERATING</span>
+                        <span class="fin-value"></span>
+                    </div>
+                    <div class="fin-row">
+                        <span class="fin-label">TikTok Ads</span>
+                        <span class="fin-value">$163.00</span>
+                    </div>
+                    <div class="fin-row">
+                        <span class="fin-label">Instagram Ads</span>
+                        <span class="fin-value">$100.00</span>
+                    </div>
+                    <div class="fin-row">
+                        <span class="fin-label">Campaign Shoot (videographer)</span>
+                        <span class="fin-value">$1,750.00</span>
+                    </div>
+                    <div class="fin-row">
+                        <span class="fin-label">Campaign Shoot (crew meals)</span>
+                        <span class="fin-value">$659.98</span>
+                    </div>
+                    <div class="fin-row total">
+                        <span class="fin-label">TOTAL EXPENSES</span>
+                        <span class="fin-value total" style="color: var(--color-sunset);">$3,977.28</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event Stats -->
+        <section class="scenario-section">
+            <h2>🎾 2026 Kickoff Party Results</h2>
+            <div class="scenario-grid">
+                <div class="scenario-card">
+                    <div class="scenario-title">Attendance</div>
+                    <div class="scenario-profit positive" style="font-size: 3rem;">102</div>
+                    <div class="scenario-breakdown">
+                        25 VIP @ $45<br>
+                        100 GA @ $25
+                    </div>
+                </div>
+                <div class="scenario-card">
+                    <div class="scenario-title">Event Profit</div>
+                    <div class="scenario-guests">(before marketing)</div>
+                    <div class="scenario-profit positive">+$1,878.95</div>
+                    <div class="scenario-breakdown">
+                        Revenue: $3,183.25<br>
+                        Event Costs: $1,304.30
+                    </div>
+                </div>
+                <div class="scenario-card worst">
+                    <div class="scenario-title">Net After All Costs</div>
+                    <div class="scenario-guests">(including $2,673 marketing)</div>
+                    <div class="scenario-profit negative">-$216.98</div>
+                    <div class="scenario-breakdown">
+                        + Merch profit: $577.05<br>
+                        = Final: <strong>-$216.98</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Future Events Projection -->
+        <section class="scenario-section">
+            <h2>📈 Future Events (No Campaign Costs)</h2>
+            <p style="color: rgba(255,255,255,0.5); margin-bottom: 1.5rem; font-size: 0.9rem;">Your campaign shoot is done. Future events only need ~$263 in ads. Here's what that looks like:</p>
+            <div class="scenario-grid">
+                <div class="scenario-card best">
+                    <div class="scenario-title">Event 2+</div>
+                    <div class="scenario-guests">Same attendance (102)</div>
+                    <div class="scenario-profit positive">+$1,615.95</div>
+                    <div class="scenario-breakdown">
+                        Revenue: $3,183.25<br>
+                        Costs: $1,567.30 (no shoot)
+                    </div>
+                </div>
+                <div class="scenario-card best">
+                    <div class="scenario-title">Event 2+ with Merch</div>
+                    <div class="scenario-guests">+25 tees, +10 polos</div>
+                    <div class="scenario-profit positive">+$2,193.00</div>
+                    <div class="scenario-breakdown">
+                        Event: $1,615.95<br>
+                        Merch: +$577.05
+                    </div>
+                </div>
+                <div class="scenario-card best">
+                    <div class="scenario-title">4 Events Total</div>
+                    <div class="scenario-guests">Full 2026 season</div>
+                    <div class="scenario-profit positive">+$4,630.87</div>
+                    <div class="scenario-breakdown">
+                        Event 1: -$216.98<br>
+                        Events 2-4: +$4,847.85
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inventory Status -->
+        <section class="breakeven-section">
+            <h2>📦 Inventory Status</h2>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 1.5rem;">
+                <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(164, 214, 94, 0.2); border-radius: 12px; padding: 1.5rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <div style="font-family: var(--font-heading); font-size: 1.2rem; text-transform: uppercase;">Logo Tees</div>
+                        <div style="font-family: var(--font-mono); font-size: 0.9rem; color: var(--color-lime);">28 remaining</div>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem; margin-bottom: 0.75rem;">
+                        <div style="flex: 2; height: 8px; background: var(--color-lime); border-radius: 4px;"></div>
+                        <div style="flex: 28; height: 8px; background: rgba(164, 214, 94, 0.3); border-radius: 4px;"></div>
+                    </div>
+                    <div style="font-size: 0.85rem; color: rgba(255,255,255,0.5);">2 sold • Cost: $11.01 • Price: $25 • <span style="color: var(--color-lime);">$13.99 profit each</span></div>
+                </div>
+                <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(164, 214, 94, 0.2); border-radius: 12px; padding: 1.5rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <div style="font-family: var(--font-heading); font-size: 1.2rem; text-transform: uppercase;">Embroidered Polos</div>
+                        <div style="font-family: var(--font-mono); font-size: 0.9rem; color: var(--color-golden);">10 remaining</div>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem; margin-bottom: 0.75rem;">
+                        <div style="flex: 0; height: 8px; background: var(--color-lime); border-radius: 4px;"></div>
+                        <div style="flex: 10; height: 8px; background: rgba(245, 166, 35, 0.3); border-radius: 4px;"></div>
+                    </div>
+                    <div style="font-size: 0.85rem; color: rgba(255,255,255,0.5);">0 sold • Cost: $22.27 • Price: $45 • <span style="color: var(--color-lime);">$22.73 profit each</span></div>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; padding: 1rem 1.5rem; background: rgba(164, 214, 94, 0.1); border-radius: 12px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <div style="font-family: var(--font-heading); text-transform: uppercase;">Total Inventory Value</div>
+                    <div style="font-size: 0.85rem; color: rgba(255,255,255,0.5);">38 items at cost</div>
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 1.5rem; color: var(--color-golden);">$553.00</div>
+            </div>
+            <div style="margin-top: 1rem; padding: 1rem 1.5rem; background: rgba(164, 214, 94, 0.15); border-radius: 12px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <div style="font-family: var(--font-heading); text-transform: uppercase;">Potential Profit if All Sold</div>
+                    <div style="font-size: 0.85rem; color: rgba(255,255,255,0.5);">28 tees ($391.72) + 10 polos ($227.30)</div>
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 1.5rem; color: var(--color-lime);">+$619.02</div>
+            </div>
+        </section>
+
+        <!-- Recommendations -->
+        <section class="recommendations">
+            <div class="rec-title">
+                💡 Path to Profitability
+            </div>
+            <div class="rec-grid">
+                <div class="rec-item">
+                    <div class="rec-number">1</div>
+                    <div class="rec-content">
+                        <h4>Negotiate Drink Costs</h4>
+                        <p>At $7/drink, you're paying retail. Negotiate a <span class="highlight">$4-5 bulk rate</span> with the venue. This alone saves $250-375/event.</p>
+                    </div>
+                </div>
+                <div class="rec-item">
+                    <div class="rec-number">2</div>
+                    <div class="rec-content">
+                        <h4>Reduce Operating Expenses</h4>
+                        <p>$2,672.98 in operating costs is <span class="highlight">84% of revenue</span>. What's included? Insurance, marketing, software? Find cuts.</p>
+                    </div>
+                </div>
+                <div class="rec-item">
+                    <div class="rec-number">3</div>
+                    <div class="rec-content">
+                        <h4>Increase Ticket Price</h4>
+                        <p>A <span class="highlight">$5 price increase</span> across 125 guests = $625 more revenue. Test market tolerance.</p>
+                    </div>
+                </div>
+                <div class="rec-item">
+                    <div class="rec-number">4</div>
+                    <div class="rec-content">
+                        <h4>Add Revenue Streams</h4>
+                        <p>Sell more merch, add premium ticket tiers, or get <span class="highlight">sponsors ($500-1000/event)</span> to cover drink costs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Merch Profit Calculator -->
+        <section class="breakeven-section" style="margin-top: 2rem;">
+            <h2>👕 Merch Profit Calculator</h2>
+            <p style="color: rgba(255,255,255,0.5); margin-bottom: 1.5rem; font-size: 0.9rem;">Your merch margins are solid. Here's what you need to sell to cover the gap.</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 2rem;">
+                <!-- Polo Card -->
+                <div style="background: linear-gradient(145deg, rgba(45, 139, 78, 0.15), rgba(45, 139, 78, 0.05)); border: 1px solid rgba(164, 214, 94, 0.3); border-radius: 16px; padding: 1.5rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <div style="font-family: var(--font-heading); font-size: 1.3rem; text-transform: uppercase;">Polos</div>
+                        <div style="background: var(--color-court-green); padding: 0.25rem 0.75rem; border-radius: 100px; font-family: var(--font-mono); font-size: 0.8rem;">51% margin</div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; text-align: center;">
+                        <div>
+                            <div style="font-size: 0.7rem; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.25rem;">Cost</div>
+                            <div style="font-family: var(--font-mono); font-size: 1.2rem;">$22</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.7rem; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.25rem;">Price</div>
+                            <div style="font-family: var(--font-mono); font-size: 1.2rem;">$45</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.7rem; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.25rem;">Profit</div>
+                            <div style="font-family: var(--font-mono); font-size: 1.2rem; color: var(--color-lime);">$23</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- T-Shirt Card -->
+                <div style="background: linear-gradient(145deg, rgba(45, 139, 78, 0.15), rgba(45, 139, 78, 0.05)); border: 1px solid rgba(164, 214, 94, 0.3); border-radius: 16px; padding: 1.5rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <div style="font-family: var(--font-heading); font-size: 1.3rem; text-transform: uppercase;">T-Shirts</div>
+                        <div style="background: var(--color-court-green); padding: 0.25rem 0.75rem; border-radius: 100px; font-family: var(--font-mono); font-size: 0.8rem;">56% margin</div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; text-align: center;">
+                        <div>
+                            <div style="font-size: 0.7rem; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.25rem;">Cost</div>
+                            <div style="font-family: var(--font-mono); font-size: 1.2rem;">$11</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.7rem; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.25rem;">Price</div>
+                            <div style="font-family: var(--font-mono); font-size: 1.2rem;">$25</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.7rem; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.25rem;">Profit</div>
+                            <div style="font-family: var(--font-mono); font-size: 1.2rem; color: var(--color-lime);">$14</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Breakeven Merch Sales -->
+            <div style="background: rgba(245, 166, 35, 0.1); border: 1px solid rgba(245, 166, 35, 0.3); border-radius: 12px; padding: 1.5rem; text-align: center;">
+                <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem;">To Cover Your $379.71 Gap (at 125 guests)</div>
+                <div style="display: flex; justify-content: center; gap: 3rem; margin-top: 1rem;">
+                    <div>
+                        <div style="font-family: var(--font-mono); font-size: 2.5rem; font-weight: 700; color: var(--color-golden);">17</div>
+                        <div style="font-size: 0.85rem; color: rgba(255,255,255,0.5);">Polos only</div>
+                    </div>
+                    <div style="font-size: 1.5rem; color: rgba(255,255,255,0.3); align-self: center;">or</div>
+                    <div>
+                        <div style="font-family: var(--font-mono); font-size: 2.5rem; font-weight: 700; color: var(--color-golden);">28</div>
+                        <div style="font-size: 0.85rem; color: rgba(255,255,255,0.5);">T-Shirts only</div>
+                    </div>
+                    <div style="font-size: 1.5rem; color: rgba(255,255,255,0.3); align-self: center;">or</div>
+                    <div>
+                        <div style="font-family: var(--font-mono); font-size: 2.5rem; font-weight: 700; color: var(--color-golden);">10 + 12</div>
+                        <div style="font-size: 0.85rem; color: rgba(255,255,255,0.5);">Polos + Tees mix</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Current T-Shirt Sales -->
+            <div style="margin-top: 1.5rem; padding: 1rem 1.5rem; background: rgba(164, 214, 94, 0.1); border-radius: 12px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <div style="font-family: var(--font-heading); text-transform: uppercase;">Current T-Shirt Preorders</div>
+                    <div style="font-size: 0.85rem; color: rgba(255,255,255,0.5);">25 shirts × $14 profit = $350 already secured</div>
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 1.5rem; color: var(--color-lime);">+$350</div>
+            </div>
+
+            <!-- Remaining Gap -->
+            <div style="margin-top: 1rem; padding: 1rem 1.5rem; background: rgba(229, 57, 53, 0.1); border: 1px solid rgba(229, 57, 53, 0.2); border-radius: 12px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <div style="font-family: var(--font-heading); text-transform: uppercase;">Remaining Gap After T-Shirt Sales</div>
+                    <div style="font-size: 0.85rem; color: rgba(255,255,255,0.5);">$379.71 - $350 = only $29.71 more needed!</div>
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 1.5rem; color: var(--color-sunset);">-$29.71</div>
+            </div>
+
+            <!-- Almost There -->
+            <div style="margin-top: 1.5rem; text-align: center; padding: 1.5rem; background: linear-gradient(145deg, rgba(164, 214, 94, 0.15), rgba(164, 214, 94, 0.05)); border: 2px solid rgba(164, 214, 94, 0.4); border-radius: 16px;">
+                <div style="font-family: var(--font-heading); font-size: 1.5rem; text-transform: uppercase; color: var(--color-lime-bright); margin-bottom: 0.5rem;">🎾 You're Almost There!</div>
+                <div style="color: rgba(255,255,255,0.7);">Sell just <strong style="color: var(--color-lime);">2 more polos</strong> or <strong style="color: var(--color-lime);">3 more t-shirts</strong> to break even.</div>
+                <div style="margin-top: 1rem; font-size: 0.9rem; color: rgba(255,255,255,0.5);">Every polo after that = $23 profit. Every tee = $14 profit.</div>
+            </div>
+        </section>
+
+        <!-- Quick Math -->
+        <section class="breakeven-section" style="margin-top: 2rem;">
+            <h2>🧮 Profit Scenarios with Merch</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                <div style="background: rgba(164, 214, 94, 0.1); padding: 1.5rem; border-radius: 12px;">
+                    <div style="font-family: var(--font-heading); text-transform: uppercase; margin-bottom: 0.5rem;">Sell 25 Tees + 10 Polos</div>
+                    <div style="font-family: var(--font-mono); font-size: 1.5rem; color: var(--color-lime);">+$200 profit</div>
+                    <div style="font-size: 0.85rem; color: rgba(255,255,255,0.5);">$350 + $230 - $379.71 gap</div>
+                </div>
+                <div style="background: rgba(164, 214, 94, 0.1); padding: 1.5rem; border-radius: 12px;">
+                    <div style="font-family: var(--font-heading); text-transform: uppercase; margin-bottom: 0.5rem;">Sell 25 Tees + 20 Polos</div>
+                    <div style="font-family: var(--font-mono); font-size: 1.5rem; color: var(--color-lime);">+$430 profit</div>
+                    <div style="font-size: 0.85rem; color: rgba(255,255,255,0.5);">$350 + $460 - $379.71 gap</div>
+                </div>
+                <div style="background: rgba(164, 214, 94, 0.1); padding: 1.5rem; border-radius: 12px;">
+                    <div style="font-family: var(--font-heading); text-transform: uppercase; margin-bottom: 0.5rem;">Sell 50 Tees + 25 Polos</div>
+                    <div style="font-family: var(--font-mono); font-size: 1.5rem; color: var(--color-lime);">+$895 profit</div>
+                    <div style="font-size: 0.85rem; color: rgba(255,255,255,0.5);">$700 + $575 - $379.71 gap</div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
+

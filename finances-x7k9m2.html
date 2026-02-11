@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tennis & Tequila - 2026 Financial Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-court-green: #2D8B4E;
+            --color-lime: #A4D65E;
+            --color-lime-bright: #C5E86C;
+            --color-tennis-yellow: #DFFF00;
+            --color-golden: #F5A623;
+            --color-sunset: #FF6B35;
+            --color-red: #E53935;
+            --color-white: #FFFFFF;
+            --color-cream: #FDFBF7;
+            --color-charcoal: #2C2A28;
+            --color-black: #1A1918;
+            --font-heading: 'Barlow Condensed', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(135deg, #1a1f1c 0%, #0d1210 50%, #1a1f1c 100%);
+            min-height: 100vh;
+            color: var(--color-white);
+            padding: 2rem;
+        }
+
+        body.locked { overflow: hidden; }
+
+        .dashboard { max-width: 1400px; margin: 0 auto; }
+
+        /* Login Screen */
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #1a1f1c 0%, #0d1210 50%, #1a1f1c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        .login-overlay.hidden { display: none; }
+        
+        .login-box {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(164, 214, 94, 0.3);
+            border-radius: 24px;
+            padding: 3rem;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .login-logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+        .login-logo span { color: var(--color-lime); }
+        
+        .login-subtitle {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+        
+        .login-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(164, 214, 94, 0.2);
+            border-radius: 12px;
+            color: var(--color-white);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            letter-spacing: 0.1em;
+        }
+        .login-input:focus {
+            outline: none;
+            border-color: var(--color-lime);
+        }
+        .login-input::placeholder {
+            color: rgba(255,255,255,0.3);
+            letter-spacing: normal;
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: var(--color-court-green);
+            border: none;
+            border-radius: 12px;
+            color: var(--color-white);
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .login-btn:hover {
+            background: var(--color-lime);
+            color: var(--color-black);
+        }
+        
+        .login-error {
+            color: var(--color-red);
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            display: none;
+        }
+        .login-error.show { display: block; }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(164, 214, 94, 0.2);
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .logo span { color: var(--color-lime); }
+
+        .header-right { display: flex; align-items: center; gap: 1rem; }
+
+        .year-badge {
+            background: var(--color-court-green);
+            padding: 0.5rem 1.5rem;
+            border-radius: 100px;
+            font-family: var(--font-mono);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .refresh-btn {
+            background: rgba(164, 214, 94, 0.2);
+            border: 1px solid rgba(164, 214, 94, 0.4);
+            color: var(--color-lime);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+        .refresh-btn:hover { background: rgba(164, 214, 94, 0.3); }
+
+        .last-updated {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        h2 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 1rem;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 4rem;
+            color: rgba(255,255,255,0.5);
+        }
+        .loading .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(164, 214, 94, 0.2);
+            border-top-color: var(--color-lime);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .summary-card {
+            background: linear-gradient(145deg, rgba(45, 139, 78, 0.15), rgba(45, 139, 78, 0.05));
+            border: 1px solid rgba(164, 214, 94, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .summary-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-court-green), var(--color-lime));
+        }
+        .summary-card.warning::before { background: linear-gradient(90deg, var(--color-golden), var(--color-sunset)); }
+        .summary-card.danger::before { background: linear-gradient(90deg, var(--color-sunset), var(--color-red)); }
+        .summary-card.success::before { background: linear-gradient(90deg, var(--color-lime), var(--color-tennis-yellow)); }
+
+        .card-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 0.5rem;
+        }
+        .card-value {
+            font-family: var(--font-mono);
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--color-lime);
+        }
+        .card-value.warning { color: var(--color-golden); }
+        .card-value.danger { color: var(--color-red); }
+        .card-value.success { color: var(--color-lime-bright); }
+        .card-note {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+            margin-top: 0.5rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .panel {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(164, 214, 94, 0.15);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+        .panel-title {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .panel-title .icon {
+            width: 32px;
+            height: 32px;
+            background: var(--color-court-green);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .fin-table { width: 100%; }
+        .fin-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .fin-row:last-child { border-bottom: none; }
+        .fin-row.total {
+            border-top: 2px solid rgba(164, 214, 94, 0.3);
+            border-bottom: none;
+            margin-top: 0.5rem;
+            padding-top: 1rem;
+        }
+        .fin-row.section-header {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.8rem;
+            border-bottom: none;
+            padding-bottom: 0.25rem;
+        }
+        .fin-label { color: rgba(255,255,255,0.7); }
+        .fin-value { font-family: var(--font-mono); font-weight: 500; }
+        .fin-value.positive { color: var(--color-lime); }
+        .fin-value.negative { color: var(--color-red); }
+        .fin-value.total { font-weight: 700; font-size: 1.1rem; color: var(--color-lime-bright); }
+        .fin-row.total .fin-label { font-weight: 700; color: var(--color-white); }
+
+        .scenario-section { margin-bottom: 2.5rem; }
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .scenario-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(164, 214, 94, 0.1);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .scenario-card.best {
+            border-color: rgba(164, 214, 94, 0.4);
+            background: rgba(164, 214, 94, 0.05);
+        }
+        .scenario-card.worst {
+            border-color: rgba(229, 57, 53, 0.4);
+            background: rgba(229, 57, 53, 0.05);
+        }
+        .scenario-title {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 0.5rem;
+        }
+        .scenario-guests {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 1rem;
+        }
+        .scenario-profit { font-family: var(--font-mono); font-size: 2.5rem; font-weight: 700; }
+        .scenario-profit.positive { color: var(--color-lime); }
+        .scenario-profit.negative { color: var(--color-red); }
+        .scenario-breakdown {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .breakeven-section {
+            margin-top: 2.5rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(164, 214, 94, 0.15);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .inventory-item {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(164, 214, 94, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        .inventory-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .inventory-name {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+        }
+        .inventory-count {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+        .inventory-bar {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            height: 8px;
+        }
+        .inventory-bar-sold {
+            background: var(--color-lime);
+            border-radius: 4px;
+            transition: flex 0.3s;
+        }
+        .inventory-bar-remaining {
+            background: rgba(164, 214, 94, 0.3);
+            border-radius: 4px;
+            transition: flex 0.3s;
+        }
+        .inventory-details {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+        }
+        .inventory-details .profit { color: var(--color-lime); }
+
+        .stat-row {
+            margin-top: 1rem;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .stat-row.highlight { background: rgba(164, 214, 94, 0.1); }
+        .stat-row.warning { background: rgba(245, 166, 35, 0.1); }
+        .stat-row.success { background: rgba(164, 214, 94, 0.15); border: 1px solid rgba(164, 214, 94, 0.3); }
+        .stat-label { font-family: var(--font-heading); text-transform: uppercase; }
+        .stat-sublabel { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+        .stat-value { font-family: var(--font-mono); font-size: 1.5rem; }
+        .stat-value.lime { color: var(--color-lime); }
+        .stat-value.golden { color: var(--color-golden); }
+        .stat-value.sunset { color: var(--color-sunset); }
+
+        .events-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .events-table th {
+            text-align: left;
+            padding: 0.75rem;
+            font-family: var(--font-heading);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            border-bottom: 1px solid rgba(164, 214, 94, 0.2);
+        }
+        .events-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .events-table .mono { font-family: var(--font-mono); }
+
+        .alert-box {
+            background: rgba(164, 214, 94, 0.1);
+            border: 1px solid rgba(164, 214, 94, 0.3);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .alert-box.warning {
+            background: rgba(229, 57, 53, 0.1);
+            border-color: rgba(229, 57, 53, 0.3);
+        }
+        .alert-box .icon { font-size: 1.5rem; }
+        .alert-box p { color: rgba(255,255,255,0.8); font-size: 0.95rem; }
+        .alert-box strong { color: var(--color-lime); }
+        .alert-box.warning strong { color: var(--color-sunset); }
+
+        @media (max-width: 1024px) {
+            .summary-grid { grid-template-columns: repeat(2, 1fr); }
+            .content-grid { grid-template-columns: 1fr; }
+            .scenario-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .header { flex-direction: column; gap: 1rem; text-align: center; }
+        }
+    </style>
+</head>
+<body class="locked">
+    <!-- Login Overlay -->
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-box">
+            <div class="login-logo">Tennis <span>&</span> Tequila</div>
+            <div class="login-subtitle">Team Financial Dashboard</div>
+            <input type="password" class="login-input" id="passwordInput" placeholder="Enter team password" autocomplete="off">
+            <button class="login-btn" onclick="checkPassword()">Access Dashboard</button>
+            <div class="login-error" id="loginError">Incorrect password. Try again.</div>
+        </div>
+    </div>
+
+    <div class="dashboard">
+        <header class="header">
+            <div class="logo">Tennis <span>&</span> Tequila</div>
+            <div class="header-right">
+                <span class="last-updated" id="lastUpdated">Loading...</span>
+                <button class="refresh-btn" onclick="loadAllData()">↻ Refresh</button>
+                <div class="year-badge">2026 FINANCIALS</div>
+                <button class="refresh-btn" onclick="logout()" style="margin-left: 0.5rem; border-color: rgba(229, 57, 53, 0.4); color: rgba(255,255,255,0.6);">Logout</button>
+            </div>
+        </header>
+
+        <div id="content">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>Loading financial data...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // DATA STORAGE
+        // ============================================
+        let eventsData = [];
+        let inventoryData = [];
+        let marketingData = [];
+        let configData = {};
+
+        // ============================================
+        // CSV PARSER
+        // ============================================
+        function parseCSV(text) {
+            const lines = text.trim().split('\n');
+            const headers = lines[0].split(',').map(h => h.trim());
+            const data = [];
+            
+            for (let i = 1; i < lines.length; i++) {
+                const values = parseCSVLine(lines[i]);
+                const row = {};
+                headers.forEach((header, index) => {
+                    let value = values[index] || '';
+                    // Try to convert to number
+                    if (value && !isNaN(value)) {
+                        value = parseFloat(value);
+                    }
+                    row[header] = value;
+                });
+                data.push(row);
+            }
+            return data;
+        }
+
+        function parseCSVLine(line) {
+            const values = [];
+            let current = '';
+            let inQuotes = false;
+            
+            for (let char of line) {
+                if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    values.push(current.trim());
+                    current = '';
+                } else {
+                    current += char;
+                }
+            }
+            values.push(current.trim());
+            return values;
+        }
+
+        // ============================================
+        // DATA LOADING
+        // ============================================
+        async function loadCSV(filename) {
+            try {
+                const response = await fetch(`finances-data/${filename}?t=${Date.now()}`);
+                if (!response.ok) throw new Error(`Failed to load ${filename}`);
+                const text = await response.text();
+                return parseCSV(text);
+            } catch (error) {
+                console.error(`Error loading ${filename}:`, error);
+                return [];
+            }
+        }
+
+        async function loadAllData() {
+            document.getElementById('content').innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Loading financial data...</p>
+                </div>
+            `;
+
+            try {
+                const [events, inventory, marketing, config] = await Promise.all([
+                    loadCSV('events.csv'),
+                    loadCSV('inventory.csv'),
+                    loadCSV('marketing.csv'),
+                    loadCSV('config.csv')
+                ]);
+
+                eventsData = events;
+                inventoryData = inventory;
+                marketingData = marketing;
+                
+                // Convert config to object
+                configData = {};
+                config.forEach(row => {
+                    configData[row.setting] = row.value;
+                });
+
+                renderDashboard();
+                document.getElementById('lastUpdated').textContent = `Updated: ${new Date().toLocaleTimeString()}`;
+            } catch (error) {
+                document.getElementById('content').innerHTML = `
+                    <div class="alert-box warning">
+                        <div class="icon">⚠️</div>
+                        <p><strong>Error loading data.</strong> Make sure CSV files exist in the /data folder.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // ============================================
+        // CALCULATIONS
+        // ============================================
+        function calculateFinancials() {
+            const fin = {
+                totalTicketRevenue: 0,
+                totalPlatformFees: 0,
+                totalNetTicketRevenue: 0,
+                totalVenueFees: 0,
+                totalDrinkCosts: 0,
+                totalSwag: 0,
+                totalEquipment: 0,
+                totalOtherExpenses: 0,
+                totalEventExpenses: 0,
+                totalAttendance: 0,
+                totalMarketingRecurring: 0,
+                totalMarketingOneTime: 0,
+                totalMarketingExpenses: 0,
+                totalMerchRevenue: 0,
+                totalMerchCost: 0,
+                totalMerchProfit: 0,
+                inventoryValue: 0,
+                inventoryPotentialProfit: 0,
+                events: []
+            };
+
+            // Process events
+            eventsData.forEach(event => {
+                const ticket1Revenue = (event.ticket_type_1_qty_sold || 0) * (event.ticket_type_1_adj_price || 0);
+                const ticket2Revenue = (event.ticket_type_2_qty_sold || 0) * (event.ticket_type_2_adj_price || 0);
+                const grossRevenue = (event.ticket_type_1_qty_sold || 0) * (event.ticket_type_1_list_price || 0) +
+                                    (event.ticket_type_2_qty_sold || 0) * (event.ticket_type_2_list_price || 0);
+                const netRevenue = ticket1Revenue + ticket2Revenue;
+                const platformFees = grossRevenue - netRevenue;
+                
+                const attendance = event.attendance || 0;
+                const drinkCostBase = (event.drink_cost_per_ticket || 7) * attendance;
+                const drinkTax = drinkCostBase * (event.drink_tax_rate || 0.09);
+                const drinkGratuity = (drinkCostBase + drinkTax) * (event.drink_gratuity_rate || 0.20);
+                const totalDrinkCost = drinkCostBase + drinkTax + drinkGratuity;
+
+                const eventExpenses = (event.venue_fees || 0) + totalDrinkCost + 
+                                     (event.swag_giveaways || 0) + (event.equipment_rentals || 0) + 
+                                     (event.other_expenses || 0);
+
+                fin.totalTicketRevenue += grossRevenue;
+                fin.totalPlatformFees += platformFees;
+                fin.totalNetTicketRevenue += netRevenue;
+                fin.totalVenueFees += event.venue_fees || 0;
+                fin.totalDrinkCosts += totalDrinkCost;
+                fin.totalSwag += event.swag_giveaways || 0;
+                fin.totalEquipment += event.equipment_rentals || 0;
+                fin.totalOtherExpenses += event.other_expenses || 0;
+                fin.totalEventExpenses += eventExpenses;
+                fin.totalAttendance += attendance;
+
+                fin.events.push({
+                    ...event,
+                    grossRevenue,
+                    netRevenue,
+                    platformFees,
+                    totalDrinkCost,
+                    eventExpenses,
+                    eventProfit: netRevenue - eventExpenses
+                });
+            });
+
+            // Process marketing
+            marketingData.forEach(expense => {
+                const amount = expense.amount || 0;
+                fin.totalMarketingExpenses += amount;
+                if (expense.is_recurring === 'yes' || expense.is_recurring === true) {
+                    fin.totalMarketingRecurring += amount;
+                } else {
+                    fin.totalMarketingOneTime += amount;
+                }
+            });
+
+            // Process inventory
+            inventoryData.forEach(item => {
+                const qtySold = item.qty_sold || 0;
+                const qtyRemaining = item.qty_remaining || 0;
+                const unitCost = item.unit_cost || 0;
+                const sellPrice = item.sell_price || 0;
+                const profitPerUnit = sellPrice - unitCost;
+
+                fin.totalMerchRevenue += qtySold * sellPrice;
+                fin.totalMerchCost += qtySold * unitCost;
+                fin.totalMerchProfit += qtySold * profitPerUnit;
+                fin.inventoryValue += qtyRemaining * unitCost;
+                fin.inventoryPotentialProfit += qtyRemaining * profitPerUnit;
+            });
+
+            // Totals
+            fin.totalRevenue = fin.totalNetTicketRevenue + fin.totalMerchProfit;
+            fin.totalExpenses = fin.totalEventExpenses + fin.totalMarketingExpenses;
+            fin.netProfit = fin.totalRevenue - fin.totalExpenses;
+            
+            // Future event projection (without one-time marketing)
+            fin.futureEventProfit = fin.totalNetTicketRevenue - fin.totalEventExpenses - fin.totalMarketingRecurring;
+
+            return fin;
+        }
+
+        // ============================================
+        // FORMATTING
+        // ============================================
+        function formatCurrency(amount) {
+            const absAmount = Math.abs(amount);
+            const formatted = '$' + absAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            return amount < 0 ? '-' + formatted : formatted;
+        }
+
+        function formatDate(dateStr) {
+            if (!dateStr) return '';
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        // ============================================
+        // RENDER DASHBOARD
+        // ============================================
+        function renderDashboard() {
+            const fin = calculateFinancials();
+            const projectedEvents = configData.projected_events_2026 || 4;
+
+            const html = `
+                ${fin.totalMarketingOneTime > 0 ? `
+                <div class="alert-box">
+                    <div class="icon">💡</div>
+                    <p><strong>Good news:</strong> Your event profit was <strong>${formatCurrency(fin.events[0]?.eventProfit || 0)}</strong> before marketing. The ${formatCurrency(fin.totalMarketingOneTime)} in one-time costs (campaign shoot) will pay off across all 2026 events.</p>
+                </div>
+                ` : ''}
+
+                ${fin.totalDrinkCosts > 0 ? `
+                <div class="alert-box warning">
+                    <div class="icon">⚠️</div>
+                    <p><strong>Drink costs included:</strong> ${formatCurrency(fin.totalDrinkCosts)} for ${fin.totalAttendance} attendees (with tax + gratuity).</p>
+                </div>
+                ` : ''}
+
+                <!-- Summary Cards -->
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <div class="card-label">Total Net Revenue</div>
+                        <div class="card-value">${formatCurrency(fin.totalRevenue)}</div>
+                        <div class="card-note">Tickets + merch profit</div>
+                    </div>
+                    <div class="summary-card warning">
+                        <div class="card-label">Total Expenses</div>
+                        <div class="card-value warning">${formatCurrency(fin.totalExpenses)}</div>
+                        <div class="card-note">Events + marketing</div>
+                    </div>
+                    <div class="summary-card ${fin.netProfit >= 0 ? 'success' : 'danger'}">
+                        <div class="card-label">Net Profit</div>
+                        <div class="card-value ${fin.netProfit >= 0 ? 'success' : 'danger'}">${formatCurrency(fin.netProfit)}</div>
+                        <div class="card-note">${eventsData.length} event(s) hosted</div>
+                    </div>
+                    <div class="summary-card success">
+                        <div class="card-label">Future Event Potential</div>
+                        <div class="card-value success">${formatCurrency(fin.futureEventProfit + fin.totalMarketingOneTime)}</div>
+                        <div class="card-note">Without one-time costs</div>
+                    </div>
+                </div>
+
+                <!-- Revenue & Expenses -->
+                <div class="content-grid">
+                    <div class="panel">
+                        <div class="panel-title">
+                            <div class="icon">💰</div>
+                            Revenue Breakdown
+                        </div>
+                        <div class="fin-table">
+                            <div class="fin-row section-header">
+                                <span class="fin-label">TICKET SALES</span>
+                            </div>
+                            ${fin.events.map(e => `
+                                <div class="fin-row">
+                                    <span class="fin-label">${e.ticket_type_1_name} (${e.ticket_type_1_qty_sold} × $${e.ticket_type_1_adj_price?.toFixed(2)})</span>
+                                    <span class="fin-value">${formatCurrency(e.ticket_type_1_qty_sold * e.ticket_type_1_adj_price)}</span>
+                                </div>
+                                <div class="fin-row">
+                                    <span class="fin-label">${e.ticket_type_2_name} (${e.ticket_type_2_qty_sold} × $${e.ticket_type_2_adj_price?.toFixed(2)})</span>
+                                    <span class="fin-value">${formatCurrency(e.ticket_type_2_qty_sold * e.ticket_type_2_adj_price)}</span>
+                                </div>
+                            `).join('')}
+                            <div class="fin-row">
+                                <span class="fin-label">Net Ticket Revenue</span>
+                                <span class="fin-value positive">${formatCurrency(fin.totalNetTicketRevenue)}</span>
+                            </div>
+                            
+                            ${inventoryData.length > 0 ? `
+                            <div class="fin-row section-header" style="margin-top: 0.5rem;">
+                                <span class="fin-label">MERCH SALES</span>
+                            </div>
+                            ${inventoryData.filter(i => i.qty_sold > 0).map(item => `
+                                <div class="fin-row">
+                                    <span class="fin-label">${item.item} (${item.qty_sold} × $${item.sell_price})</span>
+                                    <span class="fin-value positive">${formatCurrency(item.qty_sold * item.sell_price)}</span>
+                                </div>
+                                <div class="fin-row">
+                                    <span class="fin-label">${item.item} Cost (${item.qty_sold} × $${item.unit_cost})</span>
+                                    <span class="fin-value negative">${formatCurrency(-item.qty_sold * item.unit_cost)}</span>
+                                </div>
+                            `).join('')}
+                            <div class="fin-row">
+                                <span class="fin-label">Net Merch Profit</span>
+                                <span class="fin-value positive">${formatCurrency(fin.totalMerchProfit)}</span>
+                            </div>
+                            ` : ''}
+                            
+                            <div class="fin-row total">
+                                <span class="fin-label">TOTAL NET REVENUE</span>
+                                <span class="fin-value total">${formatCurrency(fin.totalRevenue)}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-title">
+                            <div class="icon">📊</div>
+                            Expense Breakdown
+                        </div>
+                        <div class="fin-table">
+                            <div class="fin-row section-header">
+                                <span class="fin-label">EVENT COSTS</span>
+                            </div>
+                            <div class="fin-row">
+                                <span class="fin-label">Venue / Court Fees</span>
+                                <span class="fin-value">${formatCurrency(fin.totalVenueFees)}</span>
+                            </div>
+                            <div class="fin-row">
+                                <span class="fin-label">Drink Costs (with tax/grat)</span>
+                                <span class="fin-value">${formatCurrency(fin.totalDrinkCosts)}</span>
+                            </div>
+                            <div class="fin-row">
+                                <span class="fin-label">Swag / Giveaways</span>
+                                <span class="fin-value">${formatCurrency(fin.totalSwag)}</span>
+                            </div>
+                            ${fin.totalEquipment > 0 ? `
+                            <div class="fin-row">
+                                <span class="fin-label">Equipment / Rentals</span>
+                                <span class="fin-value">${formatCurrency(fin.totalEquipment)}</span>
+                            </div>
+                            ` : ''}
+                            
+                            <div class="fin-row section-header" style="margin-top: 0.5rem;">
+                                <span class="fin-label">MARKETING</span>
+                            </div>
+                            <div class="fin-row">
+                                <span class="fin-label">Recurring (Ads)</span>
+                                <span class="fin-value">${formatCurrency(fin.totalMarketingRecurring)}</span>
+                            </div>
+                            <div class="fin-row">
+                                <span class="fin-label">One-Time (Campaign Shoot)</span>
+                                <span class="fin-value">${formatCurrency(fin.totalMarketingOneTime)}</span>
+                            </div>
+                            
+                            <div class="fin-row total">
+                                <span class="fin-label">TOTAL EXPENSES</span>
+                                <span class="fin-value total" style="color: var(--color-sunset);">${formatCurrency(fin.totalExpenses)}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Performance -->
+                <section class="scenario-section">
+                    <h2>🎾 Event Performance</h2>
+                    <div class="scenario-grid">
+                        <div class="scenario-card">
+                            <div class="scenario-title">Total Attendance</div>
+                            <div class="scenario-profit positive" style="font-size: 3rem;">${fin.totalAttendance}</div>
+                            <div class="scenario-breakdown">
+                                ${fin.events.map(e => `${e.event_name}`).join('<br>')}
+                            </div>
+                        </div>
+                        <div class="scenario-card ${fin.events[0]?.eventProfit >= 0 ? 'best' : ''}">
+                            <div class="scenario-title">Event Profit</div>
+                            <div class="scenario-guests">(before marketing)</div>
+                            <div class="scenario-profit ${fin.events[0]?.eventProfit >= 0 ? 'positive' : 'negative'}">${formatCurrency(fin.events.reduce((sum, e) => sum + e.eventProfit, 0))}</div>
+                            <div class="scenario-breakdown">
+                                Revenue - Event Costs
+                            </div>
+                        </div>
+                        <div class="scenario-card ${fin.netProfit >= 0 ? 'best' : 'worst'}">
+                            <div class="scenario-title">Net After All Costs</div>
+                            <div class="scenario-guests">(including marketing)</div>
+                            <div class="scenario-profit ${fin.netProfit >= 0 ? 'positive' : 'negative'}">${formatCurrency(fin.netProfit)}</div>
+                            <div class="scenario-breakdown">
+                                + Merch: ${formatCurrency(fin.totalMerchProfit)}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Future Projections -->
+                <section class="scenario-section">
+                    <h2>📈 Future Events Projection</h2>
+                    <p style="color: rgba(255,255,255,0.5); margin-bottom: 1.5rem; font-size: 0.9rem;">
+                        Campaign shoot is done. Future events only need ~${formatCurrency(fin.totalMarketingRecurring)} in recurring ads.
+                    </p>
+                    <div class="scenario-grid">
+                        <div class="scenario-card best">
+                            <div class="scenario-title">Next Event</div>
+                            <div class="scenario-guests">Same attendance</div>
+                            <div class="scenario-profit positive">${formatCurrency(fin.events[0]?.eventProfit + fin.totalMarketingOneTime || 0)}</div>
+                            <div class="scenario-breakdown">
+                                No one-time costs
+                            </div>
+                        </div>
+                        <div class="scenario-card best">
+                            <div class="scenario-title">Next Event + Merch</div>
+                            <div class="scenario-guests">+${inventoryData.reduce((sum, i) => sum + (i.qty_remaining || 0), 0)} items potential</div>
+                            <div class="scenario-profit positive">${formatCurrency((fin.events[0]?.eventProfit || 0) + fin.totalMarketingOneTime + fin.inventoryPotentialProfit)}</div>
+                            <div class="scenario-breakdown">
+                                Event + all inventory sold
+                            </div>
+                        </div>
+                        <div class="scenario-card best">
+                            <div class="scenario-title">${projectedEvents} Events Total</div>
+                            <div class="scenario-guests">Full 2026 season</div>
+                            <div class="scenario-profit positive">${formatCurrency(fin.netProfit + ((fin.events[0]?.eventProfit || 0) + fin.totalMarketingOneTime) * (projectedEvents - 1))}</div>
+                            <div class="scenario-breakdown">
+                                Event 1 + ${projectedEvents - 1} future events
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Inventory -->
+                ${inventoryData.length > 0 ? `
+                <section class="breakeven-section">
+                    <h2>📦 Inventory Status</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 1.5rem;">
+                        ${inventoryData.map(item => {
+                            const sold = item.qty_sold || 0;
+                            const remaining = item.qty_remaining || 0;
+                            const total = sold + remaining;
+                            const profitPerUnit = (item.sell_price || 0) - (item.unit_cost || 0);
+                            return `
+                            <div class="inventory-item">
+                                <div class="inventory-header">
+                                    <div class="inventory-name">${item.item}</div>
+                                    <div class="inventory-count" style="color: var(--color-lime);">${remaining} remaining</div>
+                                </div>
+                                <div class="inventory-bar">
+                                    <div class="inventory-bar-sold" style="flex: ${sold};"></div>
+                                    <div class="inventory-bar-remaining" style="flex: ${remaining};"></div>
+                                </div>
+                                <div class="inventory-details">
+                                    ${sold} sold • Cost: $${item.unit_cost} • Price: $${item.sell_price} • 
+                                    <span class="profit">$${profitPerUnit.toFixed(2)} profit each</span>
+                                </div>
+                            </div>
+                            `;
+                        }).join('')}
+                    </div>
+                    
+                    <div class="stat-row warning" style="margin-top: 1.5rem;">
+                        <div>
+                            <div class="stat-label">Total Inventory Value</div>
+                            <div class="stat-sublabel">${inventoryData.reduce((sum, i) => sum + (i.qty_remaining || 0), 0)} items at cost</div>
+                        </div>
+                        <div class="stat-value golden">${formatCurrency(fin.inventoryValue)}</div>
+                    </div>
+                    
+                    <div class="stat-row success">
+                        <div>
+                            <div class="stat-label">Potential Profit if All Sold</div>
+                            <div class="stat-sublabel">Remaining inventory at full margin</div>
+                        </div>
+                        <div class="stat-value lime">+${formatCurrency(fin.inventoryPotentialProfit)}</div>
+                    </div>
+                </section>
+                ` : ''}
+
+                <!-- Merch Calculator -->
+                <section class="breakeven-section" style="margin-top: 2rem;">
+                    <h2>👕 Merch Profit Calculator</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                        ${inventoryData.map(item => {
+                            const profitPerUnit = (item.sell_price || 0) - (item.unit_cost || 0);
+                            const margin = ((profitPerUnit / item.sell_price) * 100).toFixed(0);
+                            return `
+                            <div style="background: linear-gradient(145deg, rgba(45, 139, 78, 0.15), rgba(45, 139, 78, 0.05)); border: 1px solid rgba(164, 214, 94, 0.3); border-radius: 16px; padding: 1.5rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                    <div style="font-family: var(--font-heading); font-size: 1.3rem; text-transform: uppercase;">${item.item}</div>
+                                    <div style="background: var(--color-court-green); padding: 0.25rem 0.75rem; border-radius: 100px; font-family: var(--font-mono); font-size: 0.8rem;">${margin}% margin</div>
+                                </div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; text-align: center;">
+                                    <div>
+                                        <div style="font-size: 0.7rem; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.25rem;">Cost</div>
+                                        <div style="font-family: var(--font-mono); font-size: 1.2rem;">$${item.unit_cost}</div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size: 0.7rem; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.25rem;">Price</div>
+                                        <div style="font-family: var(--font-mono); font-size: 1.2rem;">$${item.sell_price}</div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size: 0.7rem; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.25rem;">Profit</div>
+                                        <div style="font-family: var(--font-mono); font-size: 1.2rem; color: var(--color-lime);">$${profitPerUnit.toFixed(2)}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            `;
+                        }).join('')}
+                    </div>
+                    
+                    ${fin.netProfit < 0 ? `
+                    <div style="background: rgba(245, 166, 35, 0.1); border: 1px solid rgba(245, 166, 35, 0.3); border-radius: 12px; padding: 1.5rem; text-align: center; margin-top: 1.5rem;">
+                        <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem;">To Cover Your ${formatCurrency(Math.abs(fin.netProfit))} Gap</div>
+                        <div style="display: flex; justify-content: center; gap: 3rem; margin-top: 1rem; flex-wrap: wrap;">
+                            ${inventoryData.map(item => {
+                                const profitPerUnit = (item.sell_price || 0) - (item.unit_cost || 0);
+                                const needed = Math.ceil(Math.abs(fin.netProfit) / profitPerUnit);
+                                return `
+                                <div>
+                                    <div style="font-family: var(--font-mono); font-size: 2.5rem; font-weight: 700; color: var(--color-golden);">${needed}</div>
+                                    <div style="font-size: 0.85rem; color: rgba(255,255,255,0.5);">${item.item} only</div>
+                                </div>
+                                `;
+                            }).join('<div style="font-size: 1.5rem; color: rgba(255,255,255,0.3); align-self: center;">or</div>')}
+                        </div>
+                    </div>
+                    ` : `
+                    <div style="margin-top: 1.5rem; text-align: center; padding: 1.5rem; background: linear-gradient(145deg, rgba(164, 214, 94, 0.15), rgba(164, 214, 94, 0.05)); border: 2px solid rgba(164, 214, 94, 0.4); border-radius: 16px;">
+                        <div style="font-family: var(--font-heading); font-size: 1.5rem; text-transform: uppercase; color: var(--color-lime-bright); margin-bottom: 0.5rem;">🎾 You're Profitable!</div>
+                        <div style="color: rgba(255,255,255,0.7);">Every additional sale is pure profit.</div>
+                    </div>
+                    `}
+                </section>
+
+                <!-- Events Table -->
+                ${eventsData.length > 0 ? `
+                <section class="breakeven-section" style="margin-top: 2rem;">
+                    <h2>📅 Events Log</h2>
+                    <table class="events-table">
+                        <thead>
+                            <tr>
+                                <th>Event</th>
+                                <th>Date</th>
+                                <th>Venue</th>
+                                <th>Attendance</th>
+                                <th>Revenue</th>
+                                <th>Expenses</th>
+                                <th>Profit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${fin.events.map(e => `
+                            <tr>
+                                <td>${e.event_name}</td>
+                                <td class="mono">${formatDate(e.date)}</td>
+                                <td>${e.venue}</td>
+                                <td class="mono">${e.attendance}</td>
+                                <td class="mono" style="color: var(--color-lime);">${formatCurrency(e.netRevenue)}</td>
+                                <td class="mono" style="color: var(--color-sunset);">${formatCurrency(e.eventExpenses)}</td>
+                                <td class="mono" style="color: ${e.eventProfit >= 0 ? 'var(--color-lime)' : 'var(--color-red)'};">${formatCurrency(e.eventProfit)}</td>
+                            </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </section>
+                ` : ''}
+            `;
+
+            document.getElementById('content').innerHTML = html;
+        }
+
+        // ============================================
+        // PASSWORD PROTECTION
+        // ============================================
+        
+        // To change the password:
+        // 1. Open browser console
+        // 2. Run: btoa('yournewpassword')
+        // 3. Replace the hash below with the result
+        const PASSWORD_HASH = 'c2VydmVzaXA='; // Default: "servesip"
+        
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value;
+            const inputHash = btoa(input);
+            
+            if (inputHash === PASSWORD_HASH) {
+                // Correct password
+                document.getElementById('loginOverlay').classList.add('hidden');
+                document.body.classList.remove('locked');
+                sessionStorage.setItem('tt_auth', 'true');
+                loadAllData();
+            } else {
+                // Wrong password
+                document.getElementById('loginError').classList.add('show');
+                document.getElementById('passwordInput').value = '';
+                document.getElementById('passwordInput').focus();
+            }
+        }
+        
+        // Allow Enter key to submit
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+        
+        // Check if already authenticated this session
+        function checkAuth() {
+            if (sessionStorage.getItem('tt_auth') === 'true') {
+                document.getElementById('loginOverlay').classList.add('hidden');
+                document.body.classList.remove('locked');
+                loadAllData();
+            }
+        }
+        
+        // Logout function
+        function logout() {
+            sessionStorage.removeItem('tt_auth');
+            document.getElementById('loginOverlay').classList.remove('hidden');
+            document.body.classList.add('locked');
+            document.getElementById('passwordInput').value = '';
+            document.getElementById('loginError').classList.remove('show');
+        }
+        
+        // ============================================
+        // INIT
+        // ============================================
+        checkAuth();
+    </script>
+</body>
+</html>
+
