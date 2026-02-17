@@ -98,12 +98,16 @@ html, body {
 
 body {
     @include body-font;
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.6;
     color: $color-charcoal;
     background-color: $color-white;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    
+    @media (max-width: 767px) {
+        font-size: 18px;
+    }
 }
 
 // --------------------------------------------
@@ -141,15 +145,25 @@ p {
     line-height: 1.7;
     margin-bottom: 1.25rem;
     color: $color-charcoal;
+    
+    @media (max-width: 767px) {
+        font-size: 1.0625rem; // 17px on mobile
+        line-height: 1.75;
+    }
 }
 
 .text-large {
     font-size: 1.25rem;
     line-height: 1.6;
+    
+    @media (max-width: 767px) {
+        font-size: 1.375rem; // 22px on mobile
+        line-height: 1.65;
+    }
 }
 
 .text-small {
-    font-size: 0.875rem;
+    font-size: 0.9375rem; // 15px instead of 14px
 }
 
 .text-faded {
@@ -517,6 +531,11 @@ aside {
     max-width: 700px;
     margin: 0 auto 4rem;
     text-align: center;
+    font-size: 1.125rem;
+    
+    @media (max-width: 767px) {
+        font-size: 1.1875rem; // 19px on mobile
+    }
 }
 
 // --------------------------------------------
@@ -2087,10 +2106,10 @@ footer {
     
     .kickoff-hero-tagline {
         color: rgba(255,255,255,0.9);
-        font-size: 1rem; // Smaller on mobile
+        font-size: 1.125rem; // Bumped up for mobile readability
         max-width: 320px;
         margin: 0 auto;
-        line-height: 1.5;
+        line-height: 1.6;
         
         @media (min-width: 768px) {
             font-size: 1.25rem;
@@ -2220,7 +2239,7 @@ footer {
         
         span {
             @include body-font-medium;
-            font-size: 0.875rem; // Mobile: smaller
+            font-size: 1rem; // Bumped up for mobile readability
             color: $color-charcoal;
             
             @media (min-width: 768px) {
@@ -2259,7 +2278,7 @@ footer {
     .highlight-text {
         @include heading-font;
         font-weight: 700;
-        font-size: 0.75rem; // Mobile: smaller text
+        font-size: 0.875rem; // Bumped up for mobile readability
         color: $color-charcoal;
         
         @media (min-width: 768px) {
@@ -2369,12 +2388,12 @@ footer {
         
         .price-note {
             display: block;
-            font-size: 0.8rem; // Mobile: smaller
+            font-size: 0.9375rem; // Bumped up for mobile readability
             color: $color-gray;
             margin-top: 0.25rem;
             
             @media (min-width: 768px) {
-                font-size: 0.875rem;
+                font-size: 0.9375rem;
             }
         }
     }
@@ -2389,8 +2408,8 @@ footer {
         }
         
         li {
-            padding: 0.4rem 0; // Mobile: tighter
-            font-size: 0.875rem; // Mobile: smaller
+            padding: 0.5rem 0; // Mobile: slightly more breathing room
+            font-size: 1rem; // Bumped up for mobile readability
             color: $color-charcoal;
             border-bottom: 1px solid $color-gray-light;
             
