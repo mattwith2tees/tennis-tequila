@@ -2494,6 +2494,36 @@ footer {
     }
 }
 
+.ticket-beginner {
+    border: 2px solid $color-lime-bright;
+    
+    @media (min-width: 768px) {
+        border-width: 3px;
+    }
+    
+    .ticket-badge {
+        color: $color-court-green;
+        background: $color-lime-bright;
+        padding: 0.25rem 0.75rem;
+        border-radius: 4px;
+        display: inline-block;
+    }
+    
+    .ticket-tier {
+        color: $color-black;
+    }
+
+    .price-amount {
+        color: $color-court-green;
+    }
+}
+
+.ticket-grid-3 {
+    @media (min-width: 992px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
 .btn-vip {
     background: linear-gradient(135deg, $color-golden 0%, darken($color-golden, 10%) 100%);
     color: $color-white;
