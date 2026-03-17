@@ -838,6 +838,11 @@ aside {
             background: $color-gray-light;
             color: $color-charcoal;
         }
+        
+        &.status-soldout {
+            background: $color-charcoal;
+            color: $color-white;
+        }
     }
     
     .upcoming-card-featured {
