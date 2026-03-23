@@ -2495,6 +2495,17 @@ footer {
     color: $color-gray;
     cursor: not-allowed;
     width: 100%;
+}
+
+.ticket-soldout-card {
+    opacity: 0.7;
+    
+    .ticket-badge {
+        background: $color-charcoal;
+        color: $color-white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 4px;
+    }
     
     &:hover {
         background: $color-gray-light;
