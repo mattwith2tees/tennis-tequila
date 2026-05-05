@@ -30,7 +30,6 @@
 ### 3. Update Registration Links
 Once forms are created, update these on website:
 - Monthly Mixers → link to registration
-- Sunset Sessions → link to registration
 - Beginner Clinics → link to registration
 - Advanced Clinics → link to registration
 - Signature Events → link to registration
@@ -49,9 +48,6 @@ Once forms are created, update these on website:
 
 ### **MONTHLY MIXERS** (Every 2nd Saturday, 12-4pm, $25)
 Mar 8 • Apr 12 • May 10 • Jun 14 • Jul 12 • Aug 9 • Sep 13 • Oct 11 • Nov 8 • Dec 13
-
-### **SUNSET SESSIONS** (Every 4th Friday, 6-8:30pm, $20)
-Apr 25 • May 23 • Jun 27 • Jul 25 • Aug 22 • Sep 26
 
 ### **BEGINNER CLINICS** (Every 1st Sunday, 10am-12pm, $35)
 Feb 2 • Mar 2 • Apr 6 • May 4 • Jun 1 • Jul 6 • Aug 3 • Sep 7 • Oct 5 • Nov 2 • Dec 7
@@ -96,10 +92,6 @@ player looking to compete, we've got something for you.
 🎾 MONTHLY MIXERS (Every 2nd Saturday)
 → Round-robin doubles, all skill levels
 → $25/person • 12-4pm
-
-🌅 SUNSET SESSIONS (Every 4th Friday, Apr-Sep)
-→ Golden hour tennis + drinks after
-→ $20/person • 6-8:30pm
 
 🎓 BEGINNER CLINICS (Every 1st Sunday)
 → 2-hour coaching for new players
@@ -187,21 +179,7 @@ $25/person
 10 dates throughout the year
 ```
 
-**Slide 5: Sunset Sessions**
-```
-🌅 SUNSET SESSIONS
-
-Every 4th Friday (Apr-Sep)
-6pm - 8:30pm
-
-Golden hour tennis
-Post-match drinks
-$20/person
-
-6 dates: Apr-Sep
-```
-
-**Slide 6: Beginner Clinics**
+**Slide 5: Beginner Clinics**
 ```
 🎓 BEGINNER CLINICS
 
@@ -325,8 +303,8 @@ Which event are you most excited for?
 
 🎉 Kickoff Party (Feb 28)
 🎾 Monthly Mixers
-🌅 Sunset Sessions
 🏆 Tournaments
+🎓 Clinics
 ```
 
 **Story 4:**
@@ -402,9 +380,8 @@ Let's gooo! 🎾🍹
 Track each event type separately:
 - Signature events revenue goal: $4,000
 - Monthly mixers revenue goal: $3,000
-- Sunset sessions revenue goal: $1,500
 - Clinics revenue goal: $5,000
-- **Total 2026 goal: $13,500+**
+- **Total 2026 goal: $12,000+**
 
 ---
 

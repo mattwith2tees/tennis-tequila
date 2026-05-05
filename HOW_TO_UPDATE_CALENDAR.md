@@ -162,7 +162,6 @@ Use these when details aren't confirmed yet:
 Use consistent naming:
 
 - **Monthly Mixer** (not "Mixer" or "Social Mixer")
-- **Sunset Session** (not "Sunset Sessions")
 - **Beginner Clinic** (not "Beginners Clinic")
 - **Advanced Clinic** (not "Advanced Training")
 - **Kickoff Party** (Feb event)
