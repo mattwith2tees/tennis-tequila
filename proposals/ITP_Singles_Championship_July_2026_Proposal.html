@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Tennis & Tequila Singles Championship at ITP - Event Proposal</title>
+  <style>
+    @page {
+      size: letter;
+      margin: 0.75in;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 11pt;
+      line-height: 1.5;
+      color: #1a1a1a;
+      max-width: 8.5in;
+      margin: 0 auto;
+      padding: 0.5in;
+      background: #fff;
+    }
+    
+    .header {
+      text-align: center;
+      border-bottom: 3px solid #2c5530;
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .header h1 {
+      font-size: 24pt;
+      color: #2c5530;
+      margin: 0 0 5px 0;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    
+    .header .subtitle {
+      font-size: 14pt;
+      color: #666;
+      margin: 0;
+      font-weight: 400;
+    }
+    
+    .header .date {
+      font-size: 11pt;
+      color: #999;
+      margin-top: 8px;
+    }
+    
+    h2 {
+      font-size: 16pt;
+      color: #2c5530;
+      border-bottom: 2px solid #e8b923;
+      padding-bottom: 6px;
+      margin-top: 28px;
+      margin-bottom: 14px;
+      page-break-after: avoid;
+    }
+    
+    h3 {
+      font-size: 12pt;
+      color: #1a1a1a;
+      margin-top: 18px;
+      margin-bottom: 10px;
+      page-break-after: avoid;
+    }
+    
+    h4 {
+      font-size: 11pt;
+      color: #2c5530;
+      margin-top: 14px;
+      margin-bottom: 8px;
+    }
+    
+    p {
+      margin: 0 0 10px 0;
+    }
+    
+    .executive-summary {
+      background: #f8f9f7;
+      border-left: 4px solid #2c5530;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+    }
+    
+    .executive-summary p {
+      margin-bottom: 10px;
+    }
+    
+    .executive-summary p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .highlight {
+      background: #fffde7;
+      border: 1px solid #e8b923;
+      padding: 12px 16px;
+      border-radius: 4px;
+      margin: 14px 0;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 18px 0;
+      font-size: 10pt;
+    }
+    
+    th {
+      background: #2c5530;
+      color: white;
+      font-weight: 600;
+      text-align: left;
+      padding: 10px 12px;
+    }
+    
+    td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    
+    tr:nth-child(even) {
+      background: #f8f9f7;
+    }
+    
+    tr.total-row {
+      background: #e8f5e9;
+      font-weight: 600;
+    }
+    
+    tr.total-row td {
+      border-top: 2px solid #2c5530;
+    }
+    
+    .two-column {
+      display: flex;
+      gap: 24px;
+    }
+    
+    .two-column > div {
+      flex: 1;
+    }
+    
+    ul {
+      margin: 8px 0;
+      padding-left: 20px;
+    }
+    
+    li {
+      margin-bottom: 6px;
+    }
+    
+    .value-box {
+      background: linear-gradient(135deg, #2c5530 0%, #3d7a44 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 6px;
+      text-align: center;
+      margin: 16px 0;
+    }
+    
+    .value-box .amount {
+      font-size: 28pt;
+      font-weight: 700;
+    }
+    
+    .value-box .label {
+      font-size: 11pt;
+      opacity: 0.9;
+    }
+    
+    .profit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 16px 0;
+    }
+    
+    .profit-card {
+      background: #f8f9f7;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      padding: 16px;
+      text-align: center;
+    }
+    
+    .profit-card.highlight-card {
+      background: #e8f5e9;
+      border-color: #2c5530;
+    }
+    
+    .profit-card .label {
+      font-size: 10pt;
+      color: #666;
+      margin-bottom: 4px;
+    }
+    
+    .profit-card .value {
+      font-size: 20pt;
+      font-weight: 700;
+      color: #2c5530;
+    }
+    
+    .timeline {
+      position: relative;
+      padding-left: 24px;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #e8b923;
+    }
+    
+    .timeline-item {
+      position: relative;
+      padding-bottom: 12px;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -22px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      background: #2c5530;
+      border-radius: 50%;
+    }
+    
+    .timeline-item .date {
+      font-weight: 600;
+      color: #2c5530;
+    }
+    
+    .page-break {
+      page-break-before: always;
+    }
+    
+    .summary-table {
+      background: #f8f9f7;
+      border: 2px solid #2c5530;
+    }
+    
+    .summary-table th {
+      width: 50%;
+    }
+    
+    .contact-section {
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 2px solid #e0e0e0;
+    }
+    
+    .contact-section .name {
+      font-size: 14pt;
+      font-weight: 600;
+      color: #2c5530;
+    }
+    
+    .contact-section .title {
+      color: #666;
+    }
+    
+    .footer {
+      text-align: center;
+      color: #999;
+      font-size: 9pt;
+      margin-top: 30px;
+      padding-top: 16px;
+      border-top: 1px solid #e0e0e0;
+    }
+    
+    .note {
+      font-size: 10pt;
+      color: #666;
+      font-style: italic;
+      margin: 10px 0;
+    }
+    
+    .strikethrough {
+      text-decoration: line-through;
+      color: #999;
+    }
+    
+    strong {
+      color: #1a1a1a;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+      }
+      
+      .page-break {
+        page-break-before: always;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>The Tennis & Tequila Singles Championship at ITP</h1>
+    <p class="subtitle">Event Proposal</p>
+    <p class="date">July 25, 2026</p>
+  </div>
+
+  <h2>Executive Summary</h2>
+  <div class="executive-summary">
+    <p>Tennis & Tequila is proposing a premier singles elimination tournament at ITP Training Academy on <strong>Saturday, July 25, 2026</strong>. This 32-player championship (16 men, 16 women) will feature a <strong>$10,000 prize purse</strong> and is projected to draw <strong>500+ spectators</strong> for an unforgettable day of competitive tennis and community celebration.</p>
+    <p><strong>We are inviting ITP Training Academy to be the Title Sponsor</strong> in exchange for waiving the $5,000 venue buyout fee. In return, ITP receives prominent naming placement, premium brand exposure to 500+ attendees, and positioning as the official home of Atlanta's premier amateur tennis championship.</p>
+  </div>
+
+  <h2>Event Overview</h2>
+  <table>
+    <tr><td><strong>Event Name</strong></td><td>The Tennis & Tequila Singles Championship at ITP</td></tr>
+    <tr><td><strong>Date</strong></td><td>Saturday, July 25, 2026</td></tr>
+    <tr><td><strong>Time</strong></td><td>9:00 AM - 7:00 PM</td></tr>
+    <tr><td><strong>Location</strong></td><td>ITP Training Academy</td></tr>
+    <tr><td><strong>Format</strong></td><td>Single Elimination Tournament</td></tr>
+    <tr><td><strong>Players</strong></td><td>32 total (16 men's draw, 16 women's draw)</td></tr>
+    <tr><td><strong>Expected Attendance</strong></td><td>500+ guests</td></tr>
+    <tr><td><strong>Prize Purse</strong></td><td>$10,000</td></tr>
+    <tr><td><strong>Player Buy-In</strong></td><td>$150</td></tr>
+  </table>
+
+  <h2>Tournament Structure</h2>
+  
+  <div class="two-column">
+    <div>
+      <h3>Men's Division (16 Players)</h3>
+      <table>
+        <tr><th>Round</th><th>Matches</th></tr>
+        <tr><td>Round of 16</td><td>8 matches</td></tr>
+        <tr><td>Quarterfinals</td><td>4 matches</td></tr>
+        <tr><td>Semifinals</td><td>2 matches</td></tr>
+        <tr><td>Final</td><td>1 match</td></tr>
+        <tr class="total-row"><td><strong>Total</strong></td><td><strong>15 matches</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <h3>Women's Division (16 Players)</h3>
+      <table>
+        <tr><th>Round</th><th>Matches</th></tr>
+        <tr><td>Round of 16</td><td>8 matches</td></tr>
+        <tr><td>Quarterfinals</td><td>4 matches</td></tr>
+        <tr><td>Semifinals</td><td>2 matches</td></tr>
+        <tr><td>Final</td><td>1 match</td></tr>
+        <tr class="total-row"><td><strong>Total</strong></td><td><strong>15 matches</strong></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h3>Event Schedule</h3>
+  <table>
+    <tr><th>Time</th><th>Activity</th></tr>
+    <tr><td>9:00 AM</td><td>Doors open, player check-in</td></tr>
+    <tr><td>9:30 AM</td><td>Opening ceremony</td></tr>
+    <tr><td>10:00 AM - 12:30 PM</td><td>Round of 16 (all matches)</td></tr>
+    <tr><td>12:30 PM - 1:30 PM</td><td>Lunch break / activations</td></tr>
+    <tr><td>1:30 PM - 3:30 PM</td><td>Quarterfinals</td></tr>
+    <tr><td>3:30 PM - 5:00 PM</td><td>Semifinals</td></tr>
+    <tr><td>5:30 PM - 6:30 PM</td><td>Finals (Men's & Women's)</td></tr>
+    <tr><td>6:30 PM - 7:00 PM</td><td>Awards ceremony & closing</td></tr>
+  </table>
+
+  <h2>Prize Purse Distribution: $10,000 Total</h2>
+  
+  <p>With a <strong>$150 player buy-in</strong>, we ensure Round of 16 players receive <strong>$125 (83% back)</strong>—rewarding competitive participation even for first-round exits.</p>
+
+  <div class="two-column">
+    <div>
+      <h3>Men's Division ($5,000)</h3>
+      <table>
+        <tr><th>Placement</th><th>Prize</th><th>Players</th><th>Total</th></tr>
+        <tr><td>Champion</td><td>$1,400</td><td>1</td><td>$1,400</td></tr>
+        <tr><td>Runner-up</td><td>$900</td><td>1</td><td>$900</td></tr>
+        <tr><td>Semifinalists</td><td>$350</td><td>2</td><td>$700</td></tr>
+        <tr><td>Quarterfinalists</td><td>$250</td><td>4</td><td>$1,000</td></tr>
+        <tr><td>Round of 16</td><td>$125</td><td>8</td><td>$1,000</td></tr>
+        <tr class="total-row"><td><strong>Total</strong></td><td></td><td><strong>16</strong></td><td><strong>$5,000</strong></td></tr>
+      </table>
+    </div>
+    <div>
+      <h3>Women's Division ($5,000)</h3>
+      <table>
+        <tr><th>Placement</th><th>Prize</th><th>Players</th><th>Total</th></tr>
+        <tr><td>Champion</td><td>$1,400</td><td>1</td><td>$1,400</td></tr>
+        <tr><td>Runner-up</td><td>$900</td><td>1</td><td>$900</td></tr>
+        <tr><td>Semifinalists</td><td>$350</td><td>2</td><td>$700</td></tr>
+        <tr><td>Quarterfinalists</td><td>$250</td><td>4</td><td>$1,000</td></tr>
+        <tr><td>Round of 16</td><td>$125</td><td>8</td><td>$1,000</td></tr>
+        <tr class="total-row"><td><strong>Total</strong></td><td></td><td><strong>16</strong></td><td><strong>$5,000</strong></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h3>Prize Philosophy</h3>
+  <ul>
+    <li><strong>Round of 16:</strong> $125 (83% of buy-in returned) — All players walk away with meaningful compensation</li>
+    <li><strong>Quarterfinalists:</strong> $250 (167% ROI) — Winning your first match is rewarded</li>
+    <li><strong>Semifinalists:</strong> $350 (233% ROI) — Deep run, solid payout</li>
+    <li><strong>Runner-up:</strong> $900 (6x buy-in) — Strong finish rewarded</li>
+    <li><strong>Champion:</strong> $1,400 (9x+ buy-in) — Winner takes the crown and the cash</li>
+  </ul>
+
+  <div class="page-break"></div>
+
+  <h2>Venue Utilization</h2>
+  
+  <div class="two-column">
+    <div>
+      <h3>Tennis Courts (Competition)</h3>
+      <ul>
+        <li>Main courts dedicated to tournament play</li>
+        <li>Center court reserved for semifinals and finals</li>
+        <li>Spectator seating arranged around feature courts</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Pickleball Courts (Activations)</h3>
+      <ul>
+        <li><strong>Vendor Village:</strong> Local sponsors, merchandise, food</li>
+        <li><strong>Activation Zone:</strong> Partner brand experiences, photo ops</li>
+        <li><strong>Lounge Area:</strong> Shaded seating, refreshments, bar</li>
+        <li><strong>DJ/Entertainment Stage:</strong> Music & announcements</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Financial Breakdown</h2>
+
+  <h3>Ticket Packages</h3>
+  <div class="two-column">
+    <div>
+      <h4>GA Tickets — $25</h4>
+      <ul>
+        <li>General admission access to all courts</li>
+        <li>$15 F&B voucher</li>
+        <li>Access to vendor village and activations</li>
+      </ul>
+    </div>
+    <div>
+      <h4>VIP Tickets — $50</h4>
+      <ul>
+        <li><strong>Reserved courtside seating</strong> for semifinals & finals</li>
+        <li><strong>VIP lounge access</strong> with shaded seating & separate bar</li>
+        <li><strong>$20 F&B voucher</strong> (vs $15 for GA)</li>
+        <li><strong>1 complimentary drink</strong> on arrival</li>
+        <li><strong>Event swag bag</strong> (T&T branded hat or shirt)</li>
+        <li><strong>Early entry</strong> (30 min before GA)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Revenue Projections</h3>
+  <table>
+    <tr><th>Revenue Source</th><th>Calculation</th><th>Amount</th></tr>
+    <tr><td>Player Registration</td><td>32 players × $150</td><td>$4,800</td></tr>
+    <tr><td>Spectator Tickets (GA)</td><td>350 tickets × $25 (incl. $15 F&B voucher)</td><td>$8,750</td></tr>
+    <tr><td>Spectator Tickets (VIP)</td><td>100 tickets × $50</td><td>$5,000</td></tr>
+    <tr><td>Vendor Booth Fees</td><td>10 vendors × $300</td><td>$3,000</td></tr>
+    <tr><td>Activation Sponsor Packages</td><td>4 sponsors × $750</td><td>$3,000</td></tr>
+    <tr><td>Bar Revenue (Net)</td><td>Estimate (above voucher spend)</td><td>$2,000</td></tr>
+    <tr><td>Merchandise Sales</td><td>Estimate</td><td>$1,000</td></tr>
+    <tr class="total-row"><td><strong>Total Gross Revenue</strong></td><td></td><td><strong>$27,550</strong></td></tr>
+  </table>
+
+  <div class="highlight">
+    <h4>GA Ticket Strategy: $25 with $15 F&B Voucher</h4>
+    <p>Each GA ticket includes a <strong>$15 food & beverage voucher</strong> redeemable at ITP. This drives ITP's minimum spend requirement (350 × $15 = $5,250 toward $7,500), enhances guest experience, and strengthens the ITP partnership by guaranteeing F&B traffic.</p>
+  </div>
+
+  <h3>Expense Breakdown</h3>
+  <table>
+    <tr><th>Expense Category</th><th>Amount</th><th>Notes</th></tr>
+    <tr><td>ITP Venue Buyout Fee</td><td><span class="strikethrough">$5,000</span> → $0</td><td><em>Waived via Title Sponsorship</em></td></tr>
+    <tr><td>ITP Minimum Spend</td><td>$7,500</td><td>500 guests × $15/person (covered by GA vouchers)</td></tr>
+    <tr><td>Prize Purse</td><td>$10,000</td><td>Distributed to all 32 players</td></tr>
+    <tr><td>Event Production</td><td>$1,500</td><td>Sound, staging, signage</td></tr>
+    <tr><td>Officiating & Staff</td><td>$1,200</td><td>Referees, volunteers, coordinators</td></tr>
+    <tr><td>Marketing & Promotion</td><td>$800</td><td>Digital ads, printed materials</td></tr>
+    <tr><td>Insurance & Permits</td><td>$500</td><td>Event liability coverage</td></tr>
+    <tr><td>Miscellaneous</td><td>$500</td><td>Contingency</td></tr>
+    <tr class="total-row"><td><strong>Total Expenses</strong></td><td><strong>$22,000</strong></td><td></td></tr>
+  </table>
+
+  <p class="note">Note: GA vouchers ($5,250) apply directly toward the $7,500 minimum spend, ensuring this obligation is met through ticket sales.</p>
+
+  <h2>Profit Analysis</h2>
+
+  <div class="profit-grid">
+    <div class="profit-card">
+      <div class="label">Conservative Profit</div>
+      <div class="value">$5,550</div>
+    </div>
+    <div class="profit-card highlight-card">
+      <div class="label">Optimized Profit</div>
+      <div class="value">$11,800</div>
+    </div>
+  </div>
+
+  <h3>Revenue Optimization Opportunities</h3>
+  <table>
+    <tr><th>Opportunity</th><th>Additional Revenue</th></tr>
+    <tr><td>Increase GA capacity (400 vs 350)</td><td>+$1,250</td></tr>
+    <tr><td>Premium VIP experience ($75 vs $50)</td><td>+$2,500</td></tr>
+    <tr><td>Additional sponsors (6 vs 4)</td><td>+$1,500</td></tr>
+    <tr><td>Raffle/silent auction</td><td>+$1,000</td></tr>
+    <tr class="total-row"><td><strong>Total Upside</strong></td><td><strong>+$6,250</strong></td></tr>
+  </table>
+
+  <h3>Target Profit Achievement: $8,500+</h3>
+  <p>To achieve the <strong>$8,500+ profit target</strong>, focus on:</p>
+  <ol>
+    <li><strong>VIP Ticket Pricing at $60</strong> (vs $50) → +$1,000</li>
+    <li><strong>Sell 400 GA tickets</strong> (vs 350) → +$1,250</li>
+    <li><strong>Add 2 activation sponsors</strong> → +$1,500</li>
+  </ol>
+  <p><strong>With these three optimizations: $5,550 + $3,750 = $9,300 profit</strong></p>
+
+  <div class="page-break"></div>
+
+  <h2>Title Sponsorship Proposal for ITP Training Academy</h2>
+
+  <div class="highlight">
+    <h3 style="margin-top: 0;">What We're Asking</h3>
+    <p style="margin-bottom: 0;"><strong>Waive the $5,000 venue buyout fee</strong> in exchange for Title Sponsor status</p>
+  </div>
+
+  <h3>What ITP Receives</h3>
+
+  <h4>Premium Brand Exposure</h4>
+  <ul>
+    <li><strong>Event naming placement:</strong> "The Tennis & Tequila Singles Championship <strong>at ITP</strong>"</li>
+    <li><strong>Logo placement:</strong> All marketing materials, signage, banners</li>
+    <li><strong>Digital presence:</strong> Website, email campaigns, social media (10K+ impressions)</li>
+    <li><strong>Announcements:</strong> PA mentions throughout the event</li>
+    <li><strong>Photo/video rights:</strong> Branded content for ITP marketing use</li>
+  </ul>
+
+  <h4>Audience Reach</h4>
+  <ul>
+    <li><strong>500+ attendees</strong> on-site for 10 hours</li>
+    <li><strong>32 competitive players</strong> (potential academy members)</li>
+    <li><strong>Email list exposure:</strong> 2,000+ Tennis & Tequila subscribers</li>
+    <li><strong>Social media reach:</strong> 5,000+ followers across platforms</li>
+  </ul>
+
+  <h4>Tangible Benefits</h4>
+  <ul>
+    <li><strong>VIP tickets:</strong> 10 complimentary VIP passes for ITP staff/clients</li>
+    <li><strong>Booth space:</strong> Premium placement in vendor area</li>
+    <li><strong>First right of refusal:</strong> Future Tennis & Tequila events</li>
+    <li><strong>Player recruitment:</strong> Direct access to 32 competitive players</li>
+  </ul>
+
+  <h4>Exclusive Title Sponsor Recognition</h4>
+  <ul>
+    <li><strong>"Official Home Court" designation:</strong> ITP branded as the official home of the T&T Singles Championship</li>
+    <li><strong>Trophy/medal branding:</strong> ITP logo engraved on all championship trophies and finalist medals</li>
+    <li><strong>Dedicated website section:</strong> ITP featured prominently on the event landing page with facility info and membership CTA</li>
+    <li><strong>Welcome remarks:</strong> ITP representative invited to deliver opening ceremony remarks</li>
+    <li><strong>On-court signage:</strong> ITP center court banner visible during semifinals and finals</li>
+    <li><strong>Post-event recap:</strong> ITP highlighted in all photo/video recap content shared to 5,000+ followers</li>
+  </ul>
+
+  <h3>Value of Title Sponsorship Package</h3>
+  <table>
+    <tr><th>Benefit</th><th>Estimated Value</th></tr>
+    <tr><td>Naming rights & logo placement</td><td>$3,000</td></tr>
+    <tr><td>Digital marketing exposure</td><td>$1,500</td></tr>
+    <tr><td>VIP tickets (10 × $50)</td><td>$500</td></tr>
+    <tr><td>Premium booth placement</td><td>$500</td></tr>
+    <tr><td>Trophy/medal branding</td><td>$300</td></tr>
+    <tr><td>Welcome remarks opportunity</td><td>$200</td></tr>
+    <tr><td>"Official Home Court" designation</td><td>$500</td></tr>
+    <tr><td>Player recruitment access</td><td>Priceless</td></tr>
+    <tr class="total-row"><td><strong>Total Value</strong></td><td><strong>$6,500+</strong></td></tr>
+  </table>
+
+  <div class="value-box">
+    <div class="label">Total Sponsorship Package Value</div>
+    <div class="amount">$6,500+</div>
+    <div class="label">in exchange for $5,000 buyout fee waiver</div>
+  </div>
+
+  <h2>Why This Partnership Makes Sense</h2>
+
+  <div class="two-column">
+    <div>
+      <h3>For ITP Training Academy</h3>
+      <ol>
+        <li><strong>Revenue:</strong> $7,500+ guaranteed F&B spend</li>
+        <li><strong>Exposure:</strong> Premier positioning as Atlanta's top tennis destination</li>
+        <li><strong>Pipeline:</strong> 32 competitive players introduced to ITP</li>
+        <li><strong>Content:</strong> Professional event photos/video for marketing</li>
+        <li><strong>Community:</strong> Strengthened position in Atlanta tennis scene</li>
+      </ol>
+    </div>
+    <div>
+      <h3>For Tennis & Tequila</h3>
+      <ol>
+        <li><strong>Premier venue:</strong> Professional facilities for a championship event</li>
+        <li><strong>Relationship:</strong> Continued partnership with ITP</li>
+        <li><strong>Credibility:</strong> Association with established academy</li>
+        <li><strong>Growth:</strong> Platform to scale T&T brand</li>
+      </ol>
+    </div>
+  </div>
+
+  <h3>For Players & Community</h3>
+  <ul>
+    <li><strong>Prize money:</strong> $10,000 purse attracts competitive talent</li>
+    <li><strong>Experience:</strong> Professional-level tournament at world-class facility</li>
+    <li><strong>Accessibility:</strong> Prize distribution to all Round of 16 participants</li>
+    <li><strong>Celebration:</strong> Full-day festival atmosphere with vendors & activations</li>
+  </ul>
+
+  <div class="page-break"></div>
+
+  <h2>Timeline & Next Steps</h2>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <span class="date">June 1</span> — Confirm ITP Title Sponsorship
+    </div>
+    <div class="timeline-item">
+      <span class="date">June 7</span> — Player registration opens
+    </div>
+    <div class="timeline-item">
+      <span class="date">June 14</span> — Spectator tickets on sale
+    </div>
+    <div class="timeline-item">
+      <span class="date">June 21</span> — Vendor/sponsor deadline
+    </div>
+    <div class="timeline-item">
+      <span class="date">July 18</span> — Player bracket finalized
+    </div>
+    <div class="timeline-item">
+      <span class="date">July 24</span> — Final logistics walkthrough
+    </div>
+    <div class="timeline-item">
+      <span class="date">July 25</span> — <strong>EVENT DAY</strong>
+    </div>
+  </div>
+
+  <h2>Marketing & Promotion Plan</h2>
+
+  <div class="two-column">
+    <div>
+      <h4>Pre-Event (6 weeks out)</h4>
+      <ul>
+        <li>Email announcement to 2,000+ subscribers</li>
+        <li>Social media campaign (Instagram, Facebook)</li>
+        <li>Player registration opens (32 spots)</li>
+        <li>Spectator ticket sales launch</li>
+        <li>Partner/sponsor outreach</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Event Week</h4>
+      <ul>
+        <li>Final email reminder</li>
+        <li>Social media countdown</li>
+        <li>Player bracket reveal</li>
+        <li>Day-of social coverage</li>
+      </ul>
+      <h4>Post-Event</h4>
+      <ul>
+        <li>Photo/video recap</li>
+        <li>Winner announcements</li>
+        <li>Thank you emails</li>
+        <li>Survey for feedback</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Summary</h2>
+
+  <table class="summary-table">
+    <tr><th>Key Metric</th><th>Value</th></tr>
+    <tr><td>Event Date</td><td>July 25, 2026</td></tr>
+    <tr><td>Players</td><td>32 (16M / 16W)</td></tr>
+    <tr><td>Expected Attendance</td><td>500+</td></tr>
+    <tr><td>Prize Purse</td><td>$10,000</td></tr>
+    <tr><td>Player Buy-In</td><td>$150</td></tr>
+    <tr><td>Projected Revenue</td><td>$27,550 - $33,800</td></tr>
+    <tr><td>Projected Expenses</td><td>$22,000</td></tr>
+    <tr><td>Projected Profit</td><td>$5,550 - $11,800</td></tr>
+    <tr><td>Title Sponsorship Ask</td><td>$5,000 buyout fee waiver</td></tr>
+  </table>
+
+  <p style="text-align: center; font-size: 12pt; margin-top: 24px;"><strong>We look forward to partnering with ITP Training Academy to make The Tennis & Tequila Singles Championship at ITP a flagship event for Atlanta tennis.</strong></p>
+
+  <div class="contact-section">
+    <p class="name">Matt Turner</p>
+    <p class="title">Founder, Tennis & Tequila</p>
+  </div>
+
+  <div class="footer">
+    <p>Proposal prepared: May 2026 | Event date: July 25, 2026</p>
+  </div>
+
+</body>
+</html>
