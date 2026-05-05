@@ -589,6 +589,178 @@
       .cover { min-height: 10in; }
       .page { min-height: auto; }
     }
+
+    /* MOBILE RESPONSIVE */
+    @media (max-width: 768px) {
+      body {
+        font-size: 10pt;
+        max-width: 100%;
+      }
+      
+      .cover {
+        min-height: 100vh;
+        padding: 40px 20px;
+      }
+      
+      .cover h1 {
+        font-size: 24pt;
+      }
+      
+      .cover .tagline {
+        font-size: 13pt;
+      }
+      
+      .cover .stats {
+        flex-wrap: wrap;
+        gap: 25px;
+      }
+      
+      .cover .stat-value {
+        font-size: 28pt;
+      }
+      
+      .cover .cta {
+        padding: 14px 30px;
+        font-size: 10pt;
+      }
+      
+      .page {
+        padding: 30px 20px;
+        min-height: auto;
+      }
+      
+      .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+      }
+      
+      h2 {
+        font-size: 18pt;
+      }
+      
+      h3 {
+        font-size: 12pt;
+      }
+      
+      .hero-image {
+        height: 150px;
+      }
+      
+      .audience-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      
+      .audience-item {
+        padding: 15px 10px;
+      }
+      
+      .audience-item .value {
+        font-size: 20pt;
+      }
+      
+      .why-partner-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .two-column {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .photo-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      
+      .photo-grid img {
+        height: 180px;
+      }
+      
+      .package-card {
+        padding: 20px 15px;
+      }
+      
+      .package-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      
+      .package-name {
+        font-size: 15pt;
+      }
+      
+      .package-price {
+        font-size: 20pt;
+      }
+      
+      .package-benefits {
+        columns: 1;
+      }
+      
+      .package-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      
+      .vendor-benefits {
+        grid-template-columns: 1fr;
+      }
+      
+      table {
+        font-size: 9pt;
+      }
+      
+      th, td {
+        padding: 8px 10px;
+      }
+      
+      .contact-section {
+        padding: 30px 20px;
+      }
+      
+      .contact-section h3 {
+        font-size: 16pt;
+      }
+      
+      .contact-section .name {
+        font-size: 14pt;
+      }
+      
+      .contact-section a {
+        font-size: 12pt;
+        word-break: break-all;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .cover h1 {
+        font-size: 20pt;
+      }
+      
+      .cover .stats {
+        gap: 20px;
+      }
+      
+      .cover .stat-value {
+        font-size: 24pt;
+      }
+      
+      .audience-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .audience-item .value {
+        font-size: 18pt;
+      }
+      
+      .audience-item .label {
+        font-size: 8pt;
+      }
+    }
   </style>
 </head>
 <body>
