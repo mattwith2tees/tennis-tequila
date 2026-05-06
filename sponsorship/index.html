@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sponsorship Opportunities - T&T Singles Championship</title>
+  <title>Partner With Us - T&T Singles Championship</title>
   <style>
     @page {
       size: letter;
@@ -15,7 +15,7 @@
     body {
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       font-size: 11pt;
-      line-height: 1.5;
+      line-height: 1.6;
       color: #1a1a1a;
       max-width: 8.5in;
       margin: 0 auto;
@@ -39,7 +39,7 @@
     
     /* COVER PAGE */
     .cover {
-      min-height: 10.5in;
+      min-height: 100vh;
       background: linear-gradient(135deg, var(--charcoal) 0%, var(--green-dark) 50%, var(--green-main) 100%);
       color: white;
       display: flex;
@@ -64,7 +64,7 @@
     }
     
     .cover-logo {
-      font-size: 12pt;
+      font-size: 11pt;
       letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--lime);
@@ -72,30 +72,25 @@
     }
     
     .cover h1 {
-      font-size: 38pt;
-      margin: 0 0 10px 0;
+      font-size: 36pt;
+      margin: 0 0 15px 0;
       line-height: 1.1;
       text-shadow: 0 2px 20px rgba(0,0,0,0.3);
     }
     
     .cover .tagline {
-      font-size: 16pt;
-      color: var(--lime);
-      margin-bottom: 10px;
-      font-weight: 500;
-    }
-    
-    .cover .event-info {
-      font-size: 13pt;
-      color: rgba(255,255,255,0.8);
-      margin-bottom: 50px;
+      font-size: 14pt;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 40px;
+      max-width: 500px;
     }
     
     .cover .stats {
       display: flex;
       justify-content: center;
-      gap: 50px;
-      margin-bottom: 50px;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
     }
     
     .cover .stat {
@@ -103,7 +98,7 @@
     }
     
     .cover .stat-value {
-      font-size: 42pt;
+      font-size: 36pt;
       font-weight: 700;
       color: var(--lime-bright);
       display: block;
@@ -114,20 +109,73 @@
       font-size: 9pt;
       color: rgba(255,255,255,0.8);
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
       margin-top: 5px;
     }
     
-    .cover .cta {
-      background: var(--lime);
-      color: var(--charcoal);
-      padding: 18px 50px;
+    .social-proof-banner {
+      background: rgba(255,255,255,0.1);
+      padding: 20px 30px;
+      border-radius: 12px;
+      margin: 30px 0;
+      max-width: 550px;
+    }
+    
+    .social-proof-banner p {
+      margin: 0 0 15px 0;
       font-size: 11pt;
+      color: rgba(255,255,255,0.9);
+    }
+    
+    .partner-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+    }
+    
+    .partner-logos span {
+      background: rgba(255,255,255,0.15);
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 10pt;
+      letter-spacing: 1px;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .cta {
+      padding: 16px 40px;
+      font-size: 10pt;
       font-weight: 700;
       border: none;
       letter-spacing: 2px;
       text-transform: uppercase;
-      margin-top: 30px;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: transform 0.2s;
+    }
+    
+    .cta:hover {
+      transform: translateY(-2px);
+    }
+    
+    .cta-primary {
+      background: var(--lime);
+      color: var(--charcoal);
+    }
+    
+    .cta-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255,255,255,0.5);
     }
     
     .cover-footer {
@@ -140,11 +188,8 @@
     /* PAGE STYLES */
     .page {
       padding: 50px;
-      min-height: 10.5in;
       position: relative;
     }
-    
-    .page-break { page-break-before: always; }
     
     .page-header {
       display: flex;
@@ -190,54 +235,71 @@
     h3 {
       font-size: 14pt;
       color: var(--green-main);
-      margin-top: 25px;
-      margin-bottom: 12px;
+      margin-top: 30px;
+      margin-bottom: 15px;
     }
     
     .section { margin-bottom: 30px; }
     
-    .two-column {
+    /* VIRAL ENGINE SECTION */
+    .viral-section {
+      background: linear-gradient(135deg, var(--charcoal) 0%, var(--green-dark) 100%);
+      color: white;
+      padding: 40px;
+      border-radius: 16px;
+      margin: 30px 0;
+    }
+    
+    .viral-section h3 {
+      color: var(--lime);
+      margin-top: 0;
+      font-size: 18pt;
+    }
+    
+    .viral-section p {
+      color: rgba(255,255,255,0.9);
+      font-size: 12pt;
+      max-width: 600px;
+    }
+    
+    .viral-stats {
       display: flex;
       gap: 30px;
+      margin-top: 25px;
+      flex-wrap: wrap;
     }
     
-    .two-column > div { flex: 1; }
-    
-    /* HERO IMAGE */
-    .hero-image {
-      width: 100%;
-      height: 200px;
-      background: linear-gradient(rgba(30,61,36,0.3), rgba(30,61,36,0.5)), url('imgs/DSCF7611.jpg') center/cover;
-      border-radius: 12px;
-      margin-bottom: 30px;
-      display: flex;
-      align-items: flex-end;
-      padding: 20px;
+    .viral-stat {
+      text-align: center;
     }
     
-    .hero-image p {
-      color: white;
-      font-size: 10pt;
-      margin: 0;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    .viral-stat .value {
+      font-size: 28pt;
+      font-weight: 700;
+      color: var(--lime-bright);
+      display: block;
     }
     
-    /* PHOTO GRID */
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin: 20px 0;
+    .viral-stat .label {
+      font-size: 9pt;
+      color: rgba(255,255,255,0.7);
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
     
-    .photo-grid img {
-      width: 100%;
-      height: 120px;
-      object-fit: cover;
+    .viral-note {
+      margin-top: 20px;
+      padding: 15px 20px;
+      background: rgba(164,214,94,0.15);
       border-radius: 8px;
+      font-size: 11pt;
     }
     
-    /* STATS GRID */
+    .viral-note strong {
+      color: var(--lime);
+    }
+    
+    /* AUDIENCE BREAKDOWN */
     .audience-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -266,7 +328,7 @@
     }
     
     .audience-item .value {
-      font-size: 28pt;
+      font-size: 26pt;
       font-weight: 700;
       color: var(--green-dark);
       line-height: 1;
@@ -278,63 +340,22 @@
       margin-top: 5px;
     }
     
-    /* HIGHLIGHT BOX */
-    .highlight-box {
-      background: linear-gradient(135deg, var(--sand) 0%, var(--cream) 100%);
-      border-left: 4px solid var(--golden);
-      border-radius: 0 12px 12px 0;
-      padding: 20px 25px;
-      margin: 20px 0;
-    }
-    
-    .highlight-box strong {
-      color: var(--green-dark);
-    }
-    
-    /* WHY PARTNER CARDS */
-    .why-partner-grid {
+    /* PHOTO GRID */
+    .photo-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      margin: 20px 0;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 25px 0;
     }
     
-    .why-card {
-      background: #fff;
-      border: 1px solid #e8e8e8;
-      border-radius: 10px;
-      padding: 18px;
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-    }
-    
-    .why-card .icon {
-      width: 36px;
-      height: 36px;
-      background: linear-gradient(135deg, var(--green-main), var(--green-light));
+    .photo-grid img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
       border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 16pt;
-      flex-shrink: 0;
     }
     
-    .why-card h4 {
-      margin: 0 0 4px 0;
-      font-size: 11pt;
-      color: var(--green-dark);
-    }
-    
-    .why-card p {
-      margin: 0;
-      font-size: 10pt;
-      color: #666;
-    }
-    
-    /* PACKAGE CARDS */
+    /* PACKAGE CARDS - Result Based Names */
     .package-card {
       border: 2px solid #e0e0e0;
       border-radius: 16px;
@@ -342,16 +363,15 @@
       margin-bottom: 20px;
       position: relative;
       background: #fff;
-      transition: all 0.2s;
     }
     
-    .package-card.presenting {
+    .package-card.title-partner {
       border-color: var(--golden);
       background: linear-gradient(135deg, #fffef5 0%, #fff 100%);
     }
     
-    .package-card.presenting::before {
-      content: 'TOP TIER';
+    .package-card.title-partner::before {
+      content: 'HEADLINE VISIBILITY';
       position: absolute;
       top: -12px;
       right: 25px;
@@ -364,12 +384,12 @@
       letter-spacing: 1px;
     }
     
-    .package-card.featured {
+    .package-card.experiential {
       border-color: var(--lime);
       background: linear-gradient(135deg, #f8fcf3 0%, #fff 100%);
     }
     
-    .package-card.featured::before {
+    .package-card.experiential::before {
       content: 'MOST POPULAR';
       position: absolute;
       top: -12px;
@@ -403,7 +423,6 @@
     }
     
     .package-tagline {
-      font-style: italic;
       color: #666;
       margin-bottom: 15px;
       font-size: 11pt;
@@ -468,33 +487,17 @@
       font-size: 14pt;
     }
     
-    /* TESTIMONIAL */
-    .testimonial {
-      background: var(--green-dark);
-      color: white;
-      padding: 25px 30px;
-      border-radius: 12px;
+    /* HIGHLIGHT BOX */
+    .highlight-box {
+      background: linear-gradient(135deg, var(--sand) 0%, var(--cream) 100%);
+      border-left: 4px solid var(--golden);
+      border-radius: 0 12px 12px 0;
+      padding: 20px 25px;
       margin: 25px 0;
-      position: relative;
     }
     
-    .testimonial::before {
-      content: '"';
-      font-size: 60pt;
-      color: var(--lime);
-      position: absolute;
-      top: 10px;
-      left: 20px;
-      line-height: 1;
-      opacity: 0.5;
-    }
-    
-    .testimonial p {
-      font-style: italic;
-      font-size: 12pt;
-      line-height: 1.6;
-      margin: 0;
-      padding-left: 40px;
+    .highlight-box strong {
+      color: var(--green-dark);
     }
     
     /* TABLE */
@@ -567,6 +570,11 @@
       text-decoration: none;
     }
     
+    .contact-section .cta {
+      margin-top: 20px;
+      display: inline-block;
+    }
+    
     /* FOOTER */
     .footer-note {
       text-align: center;
@@ -583,9 +591,15 @@
     }
     
     li { margin-bottom: 6px; }
+    
+    .two-column {
+      display: flex;
+      gap: 30px;
+    }
+    
+    .two-column > div { flex: 1; }
 
     @media print {
-      .page-break { page-break-before: always; }
       .cover { min-height: 10in; }
       .page { min-height: auto; }
     }
@@ -607,26 +621,38 @@
       }
       
       .cover .tagline {
-        font-size: 13pt;
+        font-size: 12pt;
       }
       
       .cover .stats {
-        flex-wrap: wrap;
-        gap: 25px;
+        gap: 20px;
       }
       
       .cover .stat-value {
-        font-size: 28pt;
+        font-size: 26pt;
       }
       
-      .cover .cta {
-        padding: 14px 30px;
-        font-size: 10pt;
+      .social-proof-banner {
+        padding: 15px 20px;
+      }
+      
+      .partner-logos {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      .cta {
+        width: 100%;
+        text-align: center;
       }
       
       .page {
         padding: 30px 20px;
-        min-height: auto;
       }
       
       .page-header {
@@ -640,11 +666,23 @@
       }
       
       h3 {
-        font-size: 12pt;
+        font-size: 13pt;
       }
       
-      .hero-image {
-        height: 150px;
+      .viral-section {
+        padding: 25px 20px;
+      }
+      
+      .viral-section h3 {
+        font-size: 16pt;
+      }
+      
+      .viral-stats {
+        gap: 20px;
+      }
+      
+      .viral-stat .value {
+        font-size: 22pt;
       }
       
       .audience-grid {
@@ -660,18 +698,8 @@
         font-size: 20pt;
       }
       
-      .why-partner-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .two-column {
-        flex-direction: column;
-        gap: 15px;
-      }
-      
       .photo-grid {
         grid-template-columns: 1fr;
-        gap: 8px;
       }
       
       .photo-grid img {
@@ -710,6 +738,11 @@
         grid-template-columns: 1fr;
       }
       
+      .two-column {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
       table {
         font-size: 9pt;
       }
@@ -741,16 +774,8 @@
         font-size: 20pt;
       }
       
-      .cover .stats {
-        gap: 20px;
-      }
-      
       .cover .stat-value {
-        font-size: 24pt;
-      }
-      
-      .audience-grid {
-        grid-template-columns: 1fr 1fr;
+        font-size: 22pt;
       }
       
       .audience-item .value {
@@ -767,225 +792,199 @@
 
   <!-- COVER PAGE -->
   <div class="cover">
-    <div class="cover-logo">Tennis & Tequila Presents</div>
-    <h1>The Singles<br>Championship</h1>
-    <p class="tagline">Sponsorship & Vendor Opportunities</p>
-    <p class="event-info">July 25, 2026 | ITP Training Academy | Atlanta, GA</p>
+    <div class="cover-logo">Tennis & Tequila</div>
+    <h1>Partner With the Club<br>That Drives Results</h1>
+    <p class="tagline">350K+ organic views. 500+ ticket sell-outs across 3 events. Atlanta's most engaged young professionals.</p>
     
     <div class="stats">
       <div class="stat">
+        <span class="stat-value">350K+</span>
+        <span class="stat-label">IG Views (90 days)</span>
+      </div>
+      <div class="stat">
         <span class="stat-value">500+</span>
-        <span class="stat-label">Attendees</span>
+        <span class="stat-label">Event Guests (3 events)</span>
       </div>
       <div class="stat">
-        <span class="stat-value">$10K</span>
-        <span class="stat-label">Prize Purse</span>
-      </div>
-      <div class="stat">
-        <span class="stat-value">32</span>
-        <span class="stat-label">Players</span>
-      </div>
-      <div class="stat">
-        <span class="stat-value">10</span>
-        <span class="stat-label">Hours</span>
+        <span class="stat-value">1,200+</span>
+        <span class="stat-label">Community Members</span>
       </div>
     </div>
     
-    <p style="max-width: 450px; color: rgba(255,255,255,0.85); font-size: 12pt;">
-      Atlanta's premier amateur tennis championship. A full day of competitive tennis, 
-      live entertainment, food & drinks, and brand activations.
-    </p>
+    <div class="social-proof-banner">
+      <p><strong>Brands that partner with us:</strong></p>
+      <div class="partner-logos">
+        <img src="imgs/tennis-warehouse.png" alt="Tennis Warehouse" style="height: 35px; filter: brightness(0) invert(1);">
+        <img src="imgs/tierra-de-ensueno.jpg" alt="Tierra de Ensueno Tequila" style="height: 40px; border-radius: 4px;">
+        <img src="imgs/reign-logo.png" alt="REIGN" style="height: 35px; filter: brightness(0) invert(1);">
+      </div>
+    </div>
     
-    <a href="mailto:mcrump@10sandtequila.social" class="cta" style="text-decoration: none;">Partner With Us</a>
+    <div class="cta-buttons">
+      <a href="mailto:mcrump@10sandtequila.social" class="cta cta-primary">Schedule a Call</a>
+    </div>
     
     <div class="cover-footer">@10sandtequila | tennisandtequila.social</div>
   </div>
 
-  <!-- PAGE 2: THE OPPORTUNITY -->
-  <div class="page-break"></div>
+  <!-- PAGE 2: THE VIRAL ENGINE -->
   <div class="page">
     <div class="page-header">
       <span class="brand">Tennis & Tequila</span>
       <span class="page-title">The Opportunity</span>
     </div>
     
-    <div class="hero-image">
-      <p>T&T community events bring together Atlanta's most engaged young professionals</p>
-    </div>
+    <h2>July 2026: The Singles Championship</h2>
     
-    <h2>The Opportunity</h2>
+    <p style="font-size: 12pt; max-width: 600px;">Atlanta's premier amateur tennis championship. A full day of competitive tennis, live entertainment, and brand activations. 32 players. $10K prize purse. 500+ expected attendees.</p>
     
-    <div class="section">
-      <p><strong>Tennis & Tequila</strong> is Atlanta's fastest-growing social tennis community with <strong>1,200+ members</strong>. On July 25, 2026, we're hosting our first-ever Singles Championship, a $10,000 prize purse tournament featuring 32 of Atlanta's top amateur players.</p>
+    <div class="viral-section">
+      <h3>We Build Shareable Moments</h3>
+      <p>From viral creator content to custom-branded photo props, we ensure your brand lives on the feeds of thousands of young professionals.</p>
       
-      <p>This is more than a tournament. It's a full-day festival with live music, craft cocktails, vendor village, and brand activations. Your brand gets premium exposure to an engaged, affluent audience of young professionals.</p>
+      <div class="viral-stats">
+        <div class="viral-stat">
+          <span class="value">350K+</span>
+          <span class="label">IG Views (90 days)</span>
+        </div>
+        <div class="viral-stat">
+          <span class="value">170K+</span>
+          <span class="label">Views (last 30 days)</span>
+        </div>
+        <div class="viral-stat">
+          <span class="value">13K+</span>
+          <span class="label">Interactions (90 days)</span>
+        </div>
+      </div>
+      
+      <div class="viral-note">
+        <strong>Custom Branding Integration:</strong> We can co-brand our viral photo props with your logo, ensuring your brand is at the center of every selfie taken at the event.
+      </div>
     </div>
 
-    <h3>Our Audience</h3>
+    <h3>The Audience</h3>
     <div class="audience-grid">
       <div class="audience-item">
-        <div class="value">500+</div>
-        <div class="label">On-Site Attendees</div>
-      </div>
-      <div class="audience-item">
-        <div class="value">25-40</div>
+        <div class="value">22-45</div>
         <div class="label">Age Range</div>
       </div>
       <div class="audience-item">
-        <div class="value">1,200+</div>
-        <div class="label">Community Members</div>
-      </div>
-      <div class="audience-item">
-        <div class="value">170K+</div>
-        <div class="label">Social Reach</div>
-      </div>
-      <div class="audience-item">
-        <div class="value">2,000+</div>
-        <div class="label">Email Subscribers</div>
+        <div class="value">500+</div>
+        <div class="label">On-Site Attendees</div>
       </div>
       <div class="audience-item">
         <div class="value">10 hrs</div>
         <div class="label">Event Duration</div>
       </div>
     </div>
-
+    
     <div class="highlight-box">
-      <strong>Who attends T&T events?</strong> Young professionals (25-40) who are health-conscious, socially active, and have disposable income. They invest in fitness, experiences, travel, and quality products. Whether you're a neighborhood business or a regional brand, they're your ideal customer.
-    </div>
-
-    <h3>Why Atlanta Brands Partner With Us</h3>
-    <div class="why-partner-grid">
-      <div class="why-card">
-        <div class="icon">1</div>
-        <div>
-          <h4>Hyper-Local Audience</h4>
-          <p>Atlanta residents who live, work, and spend here</p>
-        </div>
-      </div>
-      <div class="why-card">
-        <div class="icon">2</div>
-        <div>
-          <h4>High Engagement</h4>
-          <p>Real face-to-face interaction, not passive impressions</p>
-        </div>
-      </div>
-      <div class="why-card">
-        <div class="icon">3</div>
-        <div>
-          <h4>Community Trust</h4>
-          <p>Our members trust brands we partner with</p>
-        </div>
-      </div>
-      <div class="why-card">
-        <div class="icon">4</div>
-        <div>
-          <h4>Flexible Packages</h4>
-          <p>Options from $300 to $5,000 to fit any budget</p>
-        </div>
-      </div>
+      <strong>Who attends?</strong> Young professionals in tech, finance, and creative industries. Health-conscious, socially active, with disposable income. They invest in fitness, experiences, travel, and quality products.
     </div>
 
     <div class="photo-grid">
-      <img src="imgs/DSC_6447.jpg" alt="T&T Event">
-      <img src="imgs/DSCF7836.jpg" alt="T&T Event">
-      <img src="imgs/DSCF7757.jpg" alt="T&T Event">
+      <img src="imgs/reign-popup.jpg" alt="REIGN Pop-Up Activation">
+      <img src="imgs/tt-branded-backdrop.jpg" alt="T&T Branded Backdrop">
+      <img src="imgs/tt-photo-ops.jpg" alt="Branded Photo Booth">
+    </div>
+    
+    <div class="photo-grid">
+      <img src="imgs/ensueno-team.jpg" alt="Ensueno Tequila Activation">
+      <img src="imgs/crowd.jpg" alt="T&T Event Crowd">
+      <img src="imgs/reign-customer.jpg" alt="REIGN Sampling">
     </div>
   </div>
 
-  <!-- PAGE 3: SPONSORSHIP PACKAGES -->
-  <div class="page-break"></div>
+  <!-- PAGE 3: PARTNERSHIP TIERS -->
   <div class="page">
     <div class="page-header">
       <span class="brand">Tennis & Tequila</span>
-      <span class="page-title">Sponsorship Packages</span>
+      <span class="page-title">Partnership Tiers</span>
     </div>
     
-    <h2>Sponsorship Packages</h2>
+    <h2>Partnership Tiers</h2>
     
-    <p style="margin-bottom: 25px; color: #666;"><em>ITP Training Academy is the Title Sponsor for this event. The packages below are available for local Atlanta businesses looking to reach our audience.</em></p>
+    <p style="margin-bottom: 25px; color: #666;"><em>ITP Training Academy is the Title Sponsor. The tiers below are available for brands looking to reach our audience.</em></p>
 
-    <div class="package-card presenting">
+    <div class="package-card title-partner">
       <div class="package-header">
-        <span class="package-name">Presenting Sponsor</span>
+        <span class="package-name">Presenting Partner</span>
         <span class="package-price">$5,000</span>
       </div>
-      <p class="package-tagline">"The T&T Singles Championship at ITP, Presented by [Your Brand]"</p>
+      <p class="package-tagline">"The T&T Singles Championship, Presented by [Your Brand]"</p>
       <ul class="package-benefits">
-        <li><strong>"Presented by"</strong> naming rights</li>
-        <li>Logo on all marketing materials</li>
+        <li><strong>"Presented by"</strong> naming rights on all marketing</li>
+        <li>Logo on championship trophies (the "money shot")</li>
         <li>Center court banner placement</li>
-        <li>6 VIP tickets</li>
-        <li>Dedicated social media feature</li>
+        <li>Dedicated viral Reel featuring your brand</li>
         <li>Email blast to 2,000+ subscribers</li>
+        <li>6 VIP tickets + premium booth space</li>
         <li>PA announcements throughout event</li>
-        <li>Logo on championship trophies</li>
-        <li>Premium booth space</li>
         <li>First right of refusal for 2027</li>
       </ul>
       <div class="package-footer">
-        <span class="package-great-for"><strong>Great for:</strong> Established Atlanta businesses looking for maximum brand visibility</span>
+        <span class="package-great-for"><strong>Result:</strong> Maximum brand visibility + trophy ceremony content</span>
         <span class="package-availability">1 available</span>
       </div>
     </div>
 
-    <div class="package-card featured">
+    <div class="package-card experiential">
       <div class="package-header">
-        <span class="package-name">Courtside Sponsor</span>
+        <span class="package-name">Experiential Partner</span>
         <span class="package-price">$1,250</span>
       </div>
-      <p class="package-tagline">Premium visibility with court-level branding</p>
+      <p class="package-tagline">Premium booth placement with high-traffic activation space</p>
       <ul class="package-benefits">
-        <li>Banner on assigned court</li>
+        <li>Premium booth location (high-visibility placement)</li>
+        <li>Banner on assigned court (visible all day)</li>
         <li>Logo on event signage</li>
         <li>4 VIP tickets</li>
         <li>2 PA mentions during event</li>
         <li>Social media recognition</li>
-        <li>Listed on event website</li>
       </ul>
       <div class="package-footer">
-        <span class="package-great-for"><strong>Great for:</strong> Local businesses, medical practices, fitness studios</span>
+        <span class="package-great-for"><strong>Result:</strong> Prime real estate + direct audience engagement</span>
         <span class="package-availability">4 available</span>
       </div>
     </div>
 
     <div class="package-card">
       <div class="package-header">
-        <span class="package-name">Activation Sponsor</span>
+        <span class="package-name">Content Partner</span>
         <span class="package-price">$750</span>
       </div>
-      <p class="package-tagline">Experiential marketing with direct audience engagement</p>
+      <p class="package-tagline">Guaranteed placement in creator content and social tagging</p>
       <ul class="package-benefits">
         <li>Dedicated activation space</li>
-        <li>Logo on event materials</li>
+        <li>Featured in event Reels + Stories</li>
+        <li>Social media tagging on all content</li>
         <li>4 VIP tickets</li>
         <li>2 PA mentions</li>
-        <li>Social media feature</li>
         <li>Direct audience interaction</li>
       </ul>
       <div class="package-footer">
-        <span class="package-great-for"><strong>Great for:</strong> Product sampling, lead generation, interactive experiences</span>
+        <span class="package-great-for"><strong>Result:</strong> Content creation + social proof</span>
         <span class="package-availability">6 available</span>
       </div>
     </div>
 
   </div>
 
-  <!-- PAGE 4: VENDOR OPPORTUNITIES -->
-  <div class="page-break"></div>
+  <!-- PAGE 4: VENDOR + DETAILS -->
   <div class="page">
     <div class="page-header">
       <span class="brand">Tennis & Tequila</span>
       <span class="page-title">Vendor Opportunities</span>
     </div>
     
-    <h2>Vendor Opportunities</h2>
+    <h2>Vendor Marketplace</h2>
 
-    <div class="package-card featured">
+    <div class="package-card experiential">
       <div class="package-header">
         <span class="package-name">Vendor Booth</span>
         <span class="package-price">$300</span>
       </div>
-      <p class="package-tagline">Sell your products or services directly to 500+ attendees</p>
+      <p class="package-tagline">Sell your products directly to 500+ attendees</p>
       
       <div class="vendor-benefits">
         <div class="vendor-benefit">
@@ -1006,7 +1005,7 @@
         </div>
         <div class="vendor-benefit">
           <span class="icon">✓</span>
-          <span>Listed in event program</span>
+          <span>Keep 100% of your sales</span>
         </div>
         <div class="vendor-benefit">
           <span class="icon">✓</span>
@@ -1014,100 +1013,33 @@
         </div>
       </div>
       <div class="package-footer">
-        <span></span>
+        <span class="package-great-for"><strong>Great for:</strong> Food trucks, boutiques, local businesses</span>
         <span class="package-availability">10 booths available</span>
       </div>
     </div>
 
-    <h3>Ideal Vendor Categories</h3>
-    <div class="two-column">
-      <div>
-        <ul>
-          <li>Tennis & athletic apparel</li>
-          <li>Fitness studios & gyms</li>
-          <li>Sports nutrition & supplements</li>
-          <li>Health & wellness brands</li>
-          <li>Sports medicine & recovery</li>
-          <li>Sunglasses & accessories</li>
-        </ul>
-      </div>
-      <div>
-        <ul>
-          <li>Local restaurants & food trucks</li>
-          <li>Breweries & beverage brands</li>
-          <li>Lifestyle & boutique shops</li>
-          <li>Beauty & skincare</li>
-          <li>Local artisans & makers</li>
-          <li>Real estate & financial services</li>
-        </ul>
-      </div>
-    </div>
-
-
-    <div class="photo-grid">
-      <img src="imgs/DSCF7498.jpg" alt="T&T Event">
-      <img src="imgs/DSC_6400.jpg" alt="T&T Event">
-      <img src="imgs/DSCF7611.jpg" alt="T&T Event">
-    </div>
-  </div>
-
-  <!-- PAGE 5: EVENT DETAILS & CONTACT -->
-  <div class="page-break"></div>
-  <div class="page">
-    <div class="page-header">
-      <span class="brand">Tennis & Tequila</span>
-      <span class="page-title">Event Details</span>
-    </div>
-    
-    <h2>Event Details</h2>
-
+    <h3>Event Details</h3>
     <table>
       <tr><td style="width: 35%;"><strong>Event</strong></td><td>The Tennis & Tequila Singles Championship at ITP</td></tr>
-      <tr><td><strong>Date</strong></td><td>Saturday, July 25, 2026</td></tr>
+      <tr><td><strong>Date</strong></td><td>July 2026 (exact date TBD)</td></tr>
       <tr><td><strong>Time</strong></td><td>8:00 AM – 7:00 PM</td></tr>
       <tr><td><strong>Location</strong></td><td>ITP Training Academy, Atlanta, GA</td></tr>
       <tr><td><strong>Format</strong></td><td>32-player singles elimination (16 men, 16 women)</td></tr>
       <tr><td><strong>Prize Purse</strong></td><td>$10,000</td></tr>
-      <tr><td><strong>Expected Attendance</strong></td><td>500+ spectators</td></tr>
-    </table>
-
-    <h3>What's Happening</h3>
-    <div class="two-column">
-      <div>
-        <ul>
-          <li>30 competitive tennis matches</li>
-          <li>Live DJ & entertainment</li>
-          <li>Craft cocktails & food vendors</li>
-          <li>VIP lounge experience</li>
-        </ul>
-      </div>
-      <div>
-        <ul>
-          <li>Vendor village marketplace</li>
-          <li>Brand activations & games</li>
-          <li>Championship awards ceremony</li>
-          <li>All-day festival atmosphere</li>
-        </ul>
-      </div>
-    </div>
-
-    <h3>Key Dates</h3>
-    <table>
-      <tr><td style="width: 35%;"><strong>June 21</strong></td><td>Sponsorship & vendor deadline</td></tr>
-      <tr><td><strong>July 25</strong></td><td>Event day</td></tr>
     </table>
 
     <div class="contact-section">
-      <h3>Let's Partner</h3>
-      <p style="color: rgba(255,255,255,0.9);">Ready to get your brand in front of 500+ engaged attendees?<br>Let's talk about how we can work together.</p>
-      <p class="name">Milan Crump</p>
+      <h3>Ready to Partner?</h3>
+      <p style="color: rgba(255,255,255,0.9);">Let's talk about how we can get your brand in front of Atlanta's most engaged young professionals.</p>
+      <a href="mailto:mcrump@10sandtequila.social" class="cta cta-primary">Schedule a Call</a>
+      <p class="name" style="margin-top: 25px;">Milan Crump</p>
       <p class="title">COO, Tennis & Tequila</p>
       <p><a href="mailto:mcrump@10sandtequila.social">mcrump@10sandtequila.social</a></p>
     </div>
 
     <p class="footer-note">
       Tennis & Tequila | @10sandtequila | tennisandtequila.social<br>
-      Sponsorship packages are limited. Reserve your spot today.
+      Partnership tiers are limited. Reserve your spot today.
     </p>
   </div>
 
