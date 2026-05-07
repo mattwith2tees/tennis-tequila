@@ -131,7 +131,17 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 30px;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+    
+    .partner-logos img {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+      background: rgba(255,255,255,0.95);
+      padding: 8px 15px;
+      border-radius: 6px;
     }
     
     .partner-logos span {
@@ -344,15 +354,16 @@
     .photo-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
+      gap: 12px;
       margin: 25px 0;
     }
     
     .photo-grid img {
       width: 100%;
-      height: 140px;
+      height: 160px;
       object-fit: cover;
-      border-radius: 8px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
     
     /* PACKAGE CARDS - Result Based Names */
@@ -637,8 +648,12 @@
       }
       
       .partner-logos {
-        flex-direction: column;
-        gap: 10px;
+        gap: 15px;
+      }
+      
+      .partner-logos img {
+        height: 35px;
+        padding: 6px 12px;
       }
       
       .cta-buttons {
@@ -699,11 +714,12 @@
       }
       
       .photo-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
       }
       
       .photo-grid img {
-        height: 180px;
+        height: 120px;
       }
       
       .package-card {
@@ -814,9 +830,9 @@
     <div class="social-proof-banner">
       <p><strong>Brands that partner with us:</strong></p>
       <div class="partner-logos">
-        <img src="imgs/tennis-warehouse.png" alt="Tennis Warehouse" style="height: 30px; filter: brightness(0) invert(1);">
-        <img src="imgs/tierra-de-ensueno.jpg" alt="Tierra de Ensueno Tequila" style="height: 30px; border-radius: 4px;">
-        <img src="imgs/reign-logo.jpeg" alt="REIGN" style="height: 30px; border-radius: 4px;">
+        <img src="imgs/tennis-warehouse.png" alt="Tennis Warehouse">
+        <img src="imgs/tierra-de-ensueno.jpg" alt="Tierra de Ensueno Tequila">
+        <img src="imgs/reign-logo.jpeg" alt="REIGN">
       </div>
     </div>
     
@@ -904,7 +920,6 @@
     
     <h2>Partnership Tiers</h2>
     
-    <p style="margin-bottom: 25px; color: #666;"><em>ITP Training Academy is the Title Sponsor. The tiers below are available for brands looking to reach our audience.</em></p>
 
     <div class="package-card title-partner">
       <div class="package-header">
