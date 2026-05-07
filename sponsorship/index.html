@@ -129,19 +129,25 @@
     
     .partner-logos {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      gap: 15px;
-      flex-wrap: wrap;
+      gap: 20px;
     }
     
-    .partner-logos img {
-      height: 50px;
-      max-width: 120px;
-      object-fit: contain;
-      background: rgba(255,255,255,0.95);
-      padding: 10px 15px;
-      border-radius: 8px;
+    .partner-logos .tw-logo {
+      height: 45px;
+      width: auto;
+    }
+    
+    .partner-logos .other-logos {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    
+    .partner-logos .other-logos img {
+      height: 55px;
+      width: auto;
     }
     
     .partner-logos span {
@@ -274,7 +280,8 @@
     
     .viral-stats {
       display: flex;
-      gap: 30px;
+      justify-content: center;
+      gap: 40px;
       margin-top: 25px;
       flex-wrap: wrap;
     }
@@ -360,10 +367,8 @@
     
     .photo-grid img {
       width: 100%;
-      height: auto;
-      aspect-ratio: 1 / 1;
-      object-fit: contain;
-      background: #f5f5f5;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
       border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
@@ -650,13 +655,15 @@
       }
       
       .partner-logos {
-        gap: 12px;
+        gap: 15px;
       }
       
-      .partner-logos img {
+      .partner-logos .tw-logo {
+        height: 35px;
+      }
+      
+      .partner-logos .other-logos img {
         height: 45px;
-        max-width: 100px;
-        padding: 8px 12px;
       }
       
       .cta-buttons {
@@ -722,7 +729,7 @@
       }
       
       .photo-grid img {
-        aspect-ratio: 1 / 1;
+        aspect-ratio: 3 / 4;
       }
       
       .package-card {
@@ -833,9 +840,11 @@
     <div class="social-proof-banner">
       <p><strong>Brands that partner with us:</strong></p>
       <div class="partner-logos">
-        <img src="imgs/tennis-warehouse.png" alt="Tennis Warehouse">
-        <img src="imgs/tierra-de-ensueno.jpg" alt="Tierra de Ensueno Tequila">
-        <img src="imgs/reign-logo.jpeg" alt="REIGN">
+        <img src="imgs/tennis-warehouse.png" alt="Tennis Warehouse" class="tw-logo" style="filter: brightness(0) invert(1);">
+        <div class="other-logos">
+          <img src="imgs/tierra-de-ensueno.jpg" alt="Tierra de Ensueno Tequila" style="border-radius: 8px;">
+          <img src="imgs/reign-logo.jpeg" alt="REIGN" style="border-radius: 8px;">
+        </div>
       </div>
     </div>
     
