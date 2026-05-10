@@ -1070,26 +1070,168 @@ aside {
     // Signature Events
     .signature-events {
         background: linear-gradient(135deg, $color-court-green 0%, $color-court-green-dark 100%);
-        
+
         .category-header {
             h4 {
                 color: $color-white;
             }
-            
+
             .category-frequency {
                 background: rgba(255,255,255,0.15);
                 color: $color-white;
             }
         }
-        
+
         .category-details {
             p {
                 color: rgba(255,255,255,0.9);
             }
-            
+
             .event-schedule-note {
                 color: rgba(255,255,255,0.8);
 }
+        }
+    }
+
+    // Clinic Packages
+    .clinic-packages {
+        margin-top: 4rem;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+
+        .packages-title {
+            @include heading-font;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            color: $color-black;
+        }
+
+        .packages-intro {
+            font-size: 1.1rem;
+            color: $color-gray;
+            margin-bottom: 2rem;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+
+            @media (min-width: 600px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .package-card {
+            background: $color-white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 2px solid transparent;
+            position: relative;
+            text-align: left;
+            @include transition-all;
+
+            &:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+                border-color: $color-lime;
+            }
+
+            &.package-featured {
+                border-color: $color-lime-bright;
+                background: linear-gradient(135deg, rgba($color-lime-bright, 0.08) 0%, $color-white 100%);
+            }
+
+            .package-badge {
+                position: absolute;
+                top: -12px;
+                right: 20px;
+                background: $color-lime-bright;
+                color: $color-black;
+                font-size: 0.75rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                padding: 0.35rem 0.75rem;
+                border-radius: 20px;
+            }
+
+            .package-header {
+                margin-bottom: 1rem;
+
+                h4 {
+                    @include heading-font;
+                    font-size: 1.5rem;
+                    font-weight: 800;
+                    color: $color-black;
+                    margin-bottom: 0.25rem;
+                }
+
+                .package-price {
+                    font-size: 2rem;
+                    font-weight: 800;
+                    color: $color-court-green;
+                }
+
+                .package-savings {
+                    display: inline-block;
+                    background: rgba($color-lime-bright, 0.2);
+                    color: $color-court-green-dark;
+                    font-size: 0.8rem;
+                    font-weight: 600;
+                    padding: 0.25rem 0.5rem;
+                    border-radius: 4px;
+                    margin-left: 0.5rem;
+                }
+            }
+
+            .package-details {
+                .price-per-class {
+                    font-size: 0.95rem;
+                    color: $color-gray;
+                    margin-bottom: 1rem;
+                }
+
+                ul {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0 0 1.5rem 0;
+
+                    li {
+                        padding: 0.4rem 0;
+                        padding-left: 1.5rem;
+                        position: relative;
+                        font-size: 0.95rem;
+                        color: $color-dark-gray;
+
+                        &:before {
+                            content: "✓";
+                            position: absolute;
+                            left: 0;
+                            color: $color-lime-bright;
+                            font-weight: 700;
+                        }
+                    }
+                }
+
+                .package-btn {
+                    width: 100%;
+                    padding: 0.75rem 1.5rem;
+                }
+            }
+        }
+
+        .packages-disclaimer {
+            font-size: 0.9rem;
+            color: $color-gray;
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
     }
 }
