@@ -14,11 +14,23 @@
 
     .featured-event-meta {
         color: $color-charcoal;
+        font-size: 1.1rem;
         margin-bottom: 2rem;
     }
 
+    .featured-event-more {
+        margin: 1rem 0 0;
+
+        a {
+            color: $color-court-green;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+    }
+
     .featured-event-widget {
-        max-width: 760px;
+        max-width: 640px;
+        padding: 0.5rem;
         margin: 0 auto;
         background: $color-white;
         border: 2px solid $color-lime-bright;
